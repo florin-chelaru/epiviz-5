@@ -1,0 +1,4 @@
+.idea
+bower_components
+res/css/*.min.css
+externs.js
