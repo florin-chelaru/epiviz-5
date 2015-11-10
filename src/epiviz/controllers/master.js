@@ -44,7 +44,7 @@ epiviz.controllers.Master = function($scope) {
               bottom: 10,
               top: 10
             },
-            cols: [0, 0],
+            cols: [1, 0],
             vals: 'dna methylation'
           },
           decorators: {

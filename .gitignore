@@ -2,3 +2,5 @@
 bower_components
 res/css/*.min.css
 externs.js
+index-local.html
+index-local-min.html

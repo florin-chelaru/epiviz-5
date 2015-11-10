@@ -1120,6 +1120,12 @@ vs.ui.DataHandler.prototype.children;
 vs.ui.DataHandler.prototype.visualizations;
 
 /**
+ * @param {vs.models.Query|Array.<vs.models.Query>} queries
+ * @returns {Promise.<vs.models.DataSource>}
+ */
+vs.ui.DataHandler.prototype.query = function(queries) {};
+
+/**
  * @param {angular.Scope} $scope
  * @param {angular.$templateCache} $templateCache
  * @constructor

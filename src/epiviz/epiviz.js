@@ -10,6 +10,8 @@ goog.require('epiviz.Configuration');
 goog.require('epiviz.controllers.Master');
 goog.require('epiviz.controllers.DataContext');
 
+u.log.VERBOSE = 'info';
+
 epiviz.main = angular.module('epiviz', ['vs']);
 
 epiviz.main.provider('epivizConfig', function() {
