@@ -291,7 +291,8 @@ epiviz.controllers.Master = function($scope) {
             cls: [
               'vs-window',
               'vs-resizable',
-              'vs-movable'
+              'vs-movable',
+              'vs-loader'
             ],
             elem: [
               {
@@ -348,7 +349,8 @@ epiviz.controllers.Master = function($scope) {
             cls: [
               'vs-window',
               'vs-resizable',
-              'vs-movable'
+              'vs-movable',
+              'vs-loader'
             ],
             elem: [
               {
@@ -407,7 +409,8 @@ epiviz.controllers.Master = function($scope) {
             cls: [
               'vs-window',
               'vs-resizable',
-              'vs-movable'
+              'vs-movable',
+              'vs-loader'
             ],
             elem: [
               {
@@ -465,7 +468,8 @@ epiviz.controllers.Master = function($scope) {
             cls: [
               'vs-window',
               'vs-resizable',
-              'vs-movable'
+              'vs-movable',
+              'vs-loader'
             ],
             elem: [
               {
@@ -508,10 +512,11 @@ epiviz.controllers.Master = function($scope) {
           'http://egg2.wustl.edu/roadmap/data/byFileType/signal/consolidated/macs2signal/pval/E001-H3K36me3.pval.signal.bigwig'],
         {
           proxyURI: 'http://localhost/bigwig/test/partial.php',
+          //proxyURI: 'http://epiviz-dev.cbcb.umd.edu/bigwig/partial.php',
           initialQuery: [
             new vs.models.Query({target: 'rows', targetLabel: 'chr', test: '==', testArgs: 'chr1'}),
-            new vs.models.Query({target: 'rows', targetLabel: 'start', test: '<', testArgs: '100000'}),
-            new vs.models.Query({target: 'rows', targetLabel: 'end', test: '>=', testArgs: '1000'})
+            new vs.models.Query({target: 'rows', targetLabel: 'start', test: '<', testArgs: '2635772'}),
+            new vs.models.Query({target: 'rows', targetLabel: 'end', test: '>=', testArgs: '0'})
           ]
         }
       )
@@ -540,7 +545,7 @@ goog.require('epiviz.Configuration');
 goog.require('epiviz.controllers.Master');
 goog.require('epiviz.controllers.DataContext');
 
-u.log.VERBOSE = 'info';
+// u.log.VERBOSE = 'info';
 
 epiviz.main = angular.module('epiviz', ['vs']);
 
