@@ -109,8 +109,8 @@ epiviz.controllers.Master = function($scope) {
             cls: [
               'vs-window',
               'vs-resizable',
-              'vs-movable',
-              'vs-loader'
+              'vs-movable'/*,
+              'vs-loader'*/
             ],
             elem: [
               {
@@ -138,6 +138,9 @@ epiviz.controllers.Master = function($scope) {
                 options: {
                   type: 'y'
                 }
+              },
+              {
+                cls: 'vs-brushing'
               }
             ]
           }
@@ -209,7 +212,7 @@ epiviz.controllers.Master = function($scope) {
           },
           options: {
             xBoundries: {min: 1000, max: 100000},
-            yBoundaries: {min: 0, max: 0.5},
+            yBoundaries: {min: 0, max: 120},
             x: 430,
             y: 290,
             width: 400,
@@ -228,8 +231,7 @@ epiviz.controllers.Master = function($scope) {
             cls: [
               'vs-window',
               'vs-resizable',
-              'vs-movable',
-              'vs-loader'
+              'vs-movable'
             ],
             elem: [
               {
@@ -257,6 +259,9 @@ epiviz.controllers.Master = function($scope) {
                 options: {
                   type: 'y'
                 }
+              },
+              {
+                cls: 'vs-brushing'
               }
             ]
           }
