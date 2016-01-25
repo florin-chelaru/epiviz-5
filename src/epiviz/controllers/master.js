@@ -45,7 +45,8 @@ epiviz.controllers.Master = function($scope) {
               top: 10
             },
             cols: [1, 0],
-            vals: 'dna methylation'
+            vals: 'dna methylation',
+            selectStrokeThickness: 4
           },
           decorators: {
             cls: [
@@ -106,7 +107,10 @@ epiviz.controllers.Master = function($scope) {
               top: 10
             },
             cols: [0, 1],
-            vals: 'dna methylation'
+            vals: 'dna methylation',
+            fill: 'rgba(30,96,212,0.3)',
+            stroke: 'rgba(30,96,212,1)',
+            strokeThickness: 1
           },
           decorators: {
             cls: [
@@ -156,11 +160,18 @@ epiviz.controllers.Master = function($scope) {
           options: {
             doubleBuffer: true,
             xBoundries: {min: 1000, max: 100000},
-            yBoundaries: {min: 0, max: 0.5},
+            yBoundaries: {min: 0, max: 60},
             x: 1030,
             y: 60,
             width: 400,
             height: 200,
+            fill: 'rgba(255,96,50,0.3)',
+            stroke: 'rgba(255,96,50,1)',
+            strokeThickness: 1,
+            itemRatio: 0.01,
+            selectFill: 'rgba(30,96,212,1)',
+            selectStroke: '#ff0000',
+            selectStrokeThickness: 4,
             margins: {
               left: 10,
               right: 10,
@@ -175,8 +186,8 @@ epiviz.controllers.Master = function($scope) {
             cls: [
               'vs-window',
               'vs-resizable',
-              'vs-movable',
-              'vs-loader'
+              'vs-movable'/*,
+              'vs-loader'*/
             ],
             elem: [
               {
@@ -204,6 +215,9 @@ epiviz.controllers.Master = function($scope) {
                 options: {
                   type: 'y'
                 }
+              },
+              {
+                cls: 'vs-brushing'
               }
             ]
           }
@@ -215,7 +229,7 @@ epiviz.controllers.Master = function($scope) {
           },
           options: {
             xBoundries: {min: 1000, max: 100000},
-            yBoundaries: {min: 0, max: 120},
+            yBoundaries: {min: 0, max: 60},
             x: 1030,
             y: 290,
             width: 400,
@@ -272,14 +286,15 @@ epiviz.controllers.Master = function($scope) {
       ],
       data: new vs.models.plugins.BigwigDataSource(
         [
-          'http://localhost/E001-H3K4me1.pval.signal.bigwig',
+          'http://egg2.wustl.edu/roadmap/data/byFileType/signal/consolidated/macs2signal/pval/E001-H3K4me1.pval.signal.bigwig',
           'http://egg2.wustl.edu/roadmap/data/byFileType/signal/consolidated/macs2signal/pval/E001-H3K4me3.pval.signal.bigwig',
           'http://egg2.wustl.edu/roadmap/data/byFileType/signal/consolidated/macs2signal/pval/E001-H3K9ac.pval.signal.bigwig',
           'http://egg2.wustl.edu/roadmap/data/byFileType/signal/consolidated/macs2signal/pval/E001-H3K9me3.pval.signal.bigwig',
           'http://egg2.wustl.edu/roadmap/data/byFileType/signal/consolidated/macs2signal/pval/E001-H3K27me3.pval.signal.bigwig',
           'http://egg2.wustl.edu/roadmap/data/byFileType/signal/consolidated/macs2signal/pval/E001-H3K36me3.pval.signal.bigwig'],
         {
-          proxyURI: 'http://localhost/bigwig/test/partial.php',
+          //proxyURI: 'http://localhost/bigwig/test/partial.php',
+          proxyURI: 'bower_components/bigwig.js/test/partial.php',
           //proxyURI: 'http://epiviz-dev.cbcb.umd.edu/bigwig/partial.php',
           initialQuery: [
             new vs.models.Query({target: 'rows', targetLabel: 'chr', test: '==', testArgs: 'chr1'}),
