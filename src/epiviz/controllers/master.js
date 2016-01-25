@@ -36,8 +36,8 @@ epiviz.controllers.Master = function($scope) {
             axisBoundaries: {},
             x: 10,
             y: 60,
-            width: 200,
-            height: 200,
+            width: 500,
+            height: 500,
             margins: {
               left: 10,
               right: 10,
@@ -51,8 +51,8 @@ epiviz.controllers.Master = function($scope) {
             cls: [
               'vs-window',
               'vs-resizable',
-              'vs-movable',
-              'vs-loader'
+              'vs-movable'/*,
+              'vs-loader'*/
             ],
             elem: [
               {
@@ -80,6 +80,9 @@ epiviz.controllers.Master = function($scope) {
                 options: {
                   type: 'y'
                 }
+              },
+              {
+                cls: 'vs-brushing'
               }
             ]
           }
@@ -92,10 +95,10 @@ epiviz.controllers.Master = function($scope) {
           options: {
             doubleBuffer: false,
             axisBoundaries: {},
-            x: 220,
+            x: 520,
             y: 60,
-            width: 200,
-            height: 200,
+            width: 500,
+            height: 500,
             margins: {
               left: 10,
               right: 10,
@@ -154,7 +157,7 @@ epiviz.controllers.Master = function($scope) {
             doubleBuffer: true,
             xBoundries: {min: 1000, max: 100000},
             yBoundaries: {min: 0, max: 0.5},
-            x: 430,
+            x: 1030,
             y: 60,
             width: 400,
             height: 200,
@@ -213,7 +216,7 @@ epiviz.controllers.Master = function($scope) {
           options: {
             xBoundries: {min: 1000, max: 100000},
             yBoundaries: {min: 0, max: 120},
-            x: 430,
+            x: 1030,
             y: 290,
             width: 400,
             height: 200,
