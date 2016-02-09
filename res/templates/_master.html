@@ -1,6 +1,27 @@
 <div ng-controller="epiviz.controllers.Master as master">
-  <div ng-repeat="dataContext in master.controller.dataContexts" vs-style="{width: '1500px', height: '1100px', left: '10px', top: ($index * 600 + 70 + 'px')}"
+  <div ng-repeat="dataContext in master.dataContexts" vs-style="{width: '950px', height: '750px', left: '10px', top: ($index * 600 + 10 + 'px')}"
        class="vs-data-context vs-window vs-movable vs-resizable">
     <div ng-include="'res/templates/_data-context-nav.html'"></div>
+  </div>
+  <div class="vs-window vs-movable vs-resizable" vs-style="{width: '300px', height: '400px', left: '970px', top: '10px'}">
+    <div class="ngb-multiselect-list"
+         ngb-multiselect-list
+         ngb-title="'Epigenomes'"
+         ngb-items="master.epigenomes"
+         ngb-load-more="master.loadMoreEpigenomes()"
+         ngb-filter="master.epigenomeFilter"
+         ngb-selection="master.epigenomeSelection"
+         ngb-select-all="master.selectAllEpigenomes()"></div>
+  </div>
+
+  <div class="vs-window vs-movable vs-resizable" vs-style="{width: '300px', height: '330px', left: '970px', top: '430px'}">
+    <div class="ngb-multiselect-list"
+         ngb-multiselect-list
+         ngb-title="'Groups'"
+         ngb-items="master.groups"
+         ngb-load-more="master.loadMoreGroups()"
+         ngb-filter="master.groupFilter"
+         ngb-selection="master.groupSelection"
+         ngb-select-all="master.selectAllGroups()"></div>
   </div>
 </div>

@@ -1,23 +1,23 @@
-<div class="nav navbar navbar-default navbar-fixed-top ez-data-context-nav" style="position: absolute; cursor: move;" ng-controller="epiviz.controllers.DataContext as d" ng-mousedown="d.controller.mousedown($event)">
+<div class="nav navbar navbar-default navbar-fixed-top ez-data-context-nav" style="position: absolute; cursor: move;" ng-controller="epiviz.controllers.DataContext as d" ng-mousedown="d.mousedown($event)">
   <div class="container-fluid">
     <div class="navbar-header">
       <div class="ez-logo navbar-brand" >
         <img src="res/img/epiviz_5_e_short_path_wt.svg"/>
       </div>
-      <div class="navbar-brand"><a href="#" style="cursor: move;">{{ d.controller.name }}</a></div>
+      <div class="navbar-brand"><a href="#" style="cursor: move;">{{ d.name }}</a></div>
     </div>
 
-    <form class="navbar-form navbar-left" role="search" ng-submit="d.controller.query()" ng-mousedown="$event.stopPropagation()" style="cursor: auto;">
+    <form class="navbar-form navbar-left" role="search" ng-submit="d.query()" ng-mousedown="$event.stopPropagation()" style="cursor: auto;">
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="Search" ng-model="d.controller.location"/>
+        <input type="text" class="form-control" placeholder="Search" ng-model="d.location"/>
       </div>
     </form>
 
     <ul class="nav navbar-nav" ng-mousedown="$event.stopPropagation()" style="cursor: auto;">
-      <li><a href="#" class="glyphicon glyphicon-triangle-left" ng-click="d.controller.left()"></a></li>
-      <li><a href="#" class="glyphicon glyphicon-triangle-right" ng-click="d.controller.right()"></a></li>
-      <li><a href="#" class="glyphicon glyphicon-zoom-in" ng-click="d.controller.zoomIn()"></a></li>
-      <li><a href="#" class="glyphicon glyphicon-zoom-out" ng-click="d.controller.zoomOut()"></a></li>
+      <li><a href="#" class="glyphicon glyphicon-triangle-left" ng-click="d.left()"></a></li>
+      <li><a href="#" class="glyphicon glyphicon-triangle-right" ng-click="d.right()"></a></li>
+      <li><a href="#" class="glyphicon glyphicon-zoom-in" ng-click="d.zoomIn()"></a></li>
+      <li><a href="#" class="glyphicon glyphicon-zoom-out" ng-click="d.zoomOut()"></a></li>
     </ul>
 
     <ul class="nav navbar-nav navbar-right" ng-mousedown="$event.stopPropagation()" style="cursor: auto;">

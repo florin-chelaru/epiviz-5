@@ -6,29 +6,27 @@
 
 goog.provide('epiviz.controllers.DataContext');
 
-goog.require('epiviz.controllers.Controller');
-
 goog.require('goog.string.format');
 
 /**
  * @param {angular.Scope} $scope
  * @constructor
- * @extends {epiviz.controllers.Controller}
+ * @extends {ngu.Controller}
  */
 epiviz.controllers.DataContext = function($scope) {
-  epiviz.controllers.Controller.apply(this, arguments);
+  ngu.Controller.apply(this, arguments);
 
   /**
    * @type {vs.ui.DataHandler}
    * @private
    */
-  this._dataHandler = $scope['vsDataContext'].handler.handler;
+  this._dataHandler = $scope['vsDataContext'].handler;
 
   /**
    * @type {jQuery}
    * @private
    */
-  this._$window = $scope['vsWindow'].handler.$window;
+  this._$window = $scope['vsWindow'].$window;
 
   /**
    * @type {string}
@@ -51,7 +49,7 @@ epiviz.controllers.DataContext = function($scope) {
   this._locationRegex = /^\s*([a-zA-Z0-9]+)\s*\:\s*([0-9]+)\s*\-\s*([0-9]+)\s*$/;
 };
 
-goog.inherits(epiviz.controllers.DataContext, epiviz.controllers.Controller);
+goog.inherits(epiviz.controllers.DataContext, ngu.Controller);
 
 /**
  * @type {string}

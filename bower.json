@@ -30,8 +30,11 @@
     "angular": "1.4.4",
     "d3": "3.5.6",
     "jquery": "2.1.4",
-    "bootstrap": "3.3.5",
-    "angular-bootstrap": "0.14.2"
+    "bootstrap": "3.3.6",
+    "angular-bootstrap": "0.14.2",
+
+    "ng-utils": "git://github.com/florin-chelaru/ng-utils.git",
+    "ng-bootstrap-controls": "git://github.com/florin-chelaru/ng-bootstrap-controls.git"
   },
 
   "devDependencies": {

@@ -16,3 +16,10 @@ epiviz.Configuration = function() {
 Object.defineProperties(epiviz.Configuration.prototype, {
 
 });
+
+/**
+ * @returns {epiviz.Configuration}
+ */
+epiviz.Configuration.prototype.$get = function() {
+  return this;
+};

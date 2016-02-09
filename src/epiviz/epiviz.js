@@ -12,12 +12,13 @@ goog.require('epiviz.controllers.DataContext');
 
 u.log.VERBOSE = 'info';
 
-epiviz.main = angular.module('epiviz', ['vs']);
+epiviz.main = angular.module('epiviz', ['vs', 'ngb']);
 
 epiviz.main.provider('epivizConfig', function() {
-  var self = this;
+  /*var self = this;
   self.__proto__ = new epiviz.Configuration();
-  self.$get = function() { return self; };
+  self.$get = function() { return self; };*/
+  return new epiviz.Configuration();
 });
 
 epiviz.main.config(['epivizConfigProvider', /** @param {epiviz.Configuration} config */ function(config) {
@@ -50,9 +51,9 @@ epiviz.main.config(['configurationProvider', function(configuration) {
 }]);
 
 epiviz.main.controller('epiviz.controllers.Master', ['$scope', function($scope) {
-  this['controller'] = u.reflection.applyConstructor(epiviz.controllers.Master, arguments);
+  return u.reflection.applyConstructor(epiviz.controllers.Master, arguments);
 }]);
 
 epiviz.main.controller('epiviz.controllers.DataContext', ['$scope', function($scope) {
-  this['controller'] = u.reflection.applyConstructor(epiviz.controllers.DataContext, arguments);
+  return u.reflection.applyConstructor(epiviz.controllers.DataContext, arguments);
 }]);
