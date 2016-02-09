@@ -8,18 +8,12 @@ goog.provide('epiviz.Configuration');
 
 /**
  * @constructor
+ * @extends {ngu.Configuration}
  */
 epiviz.Configuration = function() {
 
 };
 
-Object.defineProperties(epiviz.Configuration.prototype, {
+goog.inherits(epiviz.Configuration, ngu.Configuration);
 
-});
-
-/**
- * @returns {epiviz.Configuration}
- */
-epiviz.Configuration.prototype.$get = function() {
-  return this;
-};
+Object.defineProperties(epiviz.Configuration.prototype, {});

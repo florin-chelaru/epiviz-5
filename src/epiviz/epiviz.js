@@ -15,9 +15,6 @@ u.log.VERBOSE = 'info';
 epiviz.main = angular.module('epiviz', ['vs', 'ngb']);
 
 epiviz.main.provider('epivizConfig', function() {
-  /*var self = this;
-  self.__proto__ = new epiviz.Configuration();
-  self.$get = function() { return self; };*/
   return new epiviz.Configuration();
 });
 
