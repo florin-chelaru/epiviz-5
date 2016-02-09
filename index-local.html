@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Epiviz 5</title>
+
+  <link rel="shortcut icon" href="res/img/epiviz_icon.png"/>
+
+  <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+  <link href="lib/vis.js/vis.min.css" rel="stylesheet" />
+
+  <link href="res/css/data-context-nav.css" rel="stylesheet" />
+
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/d3/d3.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="bower_components/google-closure-library/closure/goog/base.js"></script>
+
+  <!-- Custom libraries -->
+  <script src="lib/utils.js/utils.js"></script>
+  <script src="lib/bigwig.js/bower_components/zlib.js/bin/zlib.min.js"></script>
+  <script src="lib/bigwig.js/bigwig.js"></script>
+  <script src="lib/threadpool.js/parallel.js"></script>
+  <script src="lib/vis.js/vis.js"></script>
+  <script src="lib/vs.ui.plugins.js/vs.ui.plugins.js"></script>
+  <script src="lib/vs.models.plugins.js/vs.models.plugins.js"></script>
+
+  <script src="deps.js"></script>
+  <script src="src/epiviz/epiviz.js"></script>
+
+</head>
+<body ng-app="epiviz" ng-include="'res/templates/_master.html'">
+</body>
+</html>

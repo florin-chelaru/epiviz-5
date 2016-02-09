@@ -36,6 +36,10 @@ epiviz.main.config(['configurationProvider', function(configuration) {
         'svg': 'vs.ui.plugins.svg.ManhattanPlot',
         'canvas': 'vs.ui.plugins.canvas.ManhattanPlot',
         'default': 'svg'
+      },
+      'heatmap': {
+        'svg': 'vs.ui.plugins.svg.Heatmap',
+        'default': 'svg'
       }
     },
     'parallel': {

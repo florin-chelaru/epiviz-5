@@ -86,6 +86,361 @@ Object.defineProperties(epiviz.controllers.Controller.prototype, {
 });
 
 
+goog.provide('epiviz.controllers.Master');
+
+goog.require('epiviz.controllers.Controller');
+
+/**
+ * @param {angular.Scope} $scope
+ * @constructor
+ * @extends {epiviz.controllers.Controller}
+ */
+epiviz.controllers.Master = function($scope) {
+  epiviz.controllers.Controller.apply(this, arguments);
+
+  /**
+   * @type {Array.<vs.ui.DataHandler>}
+   * @private
+   */
+  this._dataContexts = [
+    u.reflection.wrap({
+      name: 'Genetic Variants',
+      children: [],
+      dataChanged: new u.Event(),
+      visualizations: [
+        {
+          construct: {
+            render: 'canvas',
+            type: 'scatterplot'
+          },
+          options: {
+            doubleBuffer: true,
+            axisBoundaries: {},
+            x: 10,
+            y: 60,
+            width: 500,
+            height: 500,
+            margins: {
+              left: 10,
+              right: 10,
+              bottom: 10,
+              top: 10
+            },
+            cols: [1, 0],
+            vals: 'dna methylation',
+            selectStrokeThickness: 4
+          },
+          decorators: {
+            cls: [
+              'vs-window',
+              'vs-resizable',
+              'vs-movable'/*,
+              'vs-loader'*/
+            ],
+            elem: [
+              {
+                cls: 'vs-axis',
+                options: {
+                  type: 'x',
+                  ticks: 10
+                }
+              },
+              {
+                cls: 'vs-axis',
+                options: {
+                  type: 'y'
+                }
+              },
+              {
+                cls: 'vs-grid',
+                options: {
+                  type: 'x',
+                  ticks: 10
+                }
+              },
+              {
+                cls: 'vs-grid',
+                options: {
+                  type: 'y'
+                }
+              },
+              {
+                cls: 'vs-brushing'
+              }
+            ]
+          }
+        },
+        {
+          construct: {
+            render: 'svg',
+            type: 'scatterplot'
+          },
+          options: {
+            doubleBuffer: false,
+            axisBoundaries: {},
+            x: 520,
+            y: 60,
+            width: 500,
+            height: 500,
+            margins: {
+              left: 10,
+              right: 10,
+              bottom: 10,
+              top: 10
+            },
+            cols: [0, 1],
+            vals: 'dna methylation',
+            fill: 'rgba(30,96,212,0.3)',
+            stroke: 'rgba(30,96,212,1)',
+            strokeThickness: 1
+          },
+          decorators: {
+            cls: [
+              'vs-window',
+              'vs-resizable',
+              'vs-movable'/*,
+              'vs-loader'*/
+            ],
+            elem: [
+              {
+                cls: 'vs-axis',
+                options: {
+                  type: 'x',
+                  ticks: 10
+                }
+              },
+              {
+                cls: 'vs-axis',
+                options: {
+                  type: 'y'
+                }
+              },
+              {
+                cls: 'vs-grid',
+                options: {
+                  type: 'x',
+                  ticks: 10
+                }
+              },
+              {
+                cls: 'vs-grid',
+                options: {
+                  type: 'y'
+                }
+              },
+              {
+                cls: 'vs-brushing'
+              }
+            ]
+          }
+        },
+        {
+          construct: {
+            render: 'canvas',
+            type: 'manhattan'
+          },
+          options: {
+            doubleBuffer: true,
+            //xBoundaries: {min: 1000, max: 100000},
+            yBoundaries: {min: 0, max: 60},
+            x: 1030,
+            y: 60,
+            width: 400,
+            height: 200,
+            fill: 'rgba(255,96,50,0.3)',
+            stroke: 'rgba(255,96,50,1)',
+            strokeThickness: 1,
+            itemRatio: 0.01,
+            selectFill: 'rgba(30,96,212,1)',
+            selectStroke: '#ff0000',
+            selectStrokeThickness: 4,
+            margins: {
+              left: 10,
+              right: 10,
+              bottom: 10,
+              top: 10
+            },
+            cols: [0, 1],
+            vals: 'v0',
+            rows: ['start', 'end']
+          },
+          decorators: {
+            cls: [
+              'vs-window',
+              'vs-resizable',
+              'vs-movable'/*,
+              'vs-loader'*/
+            ],
+            elem: [
+              {
+                cls: 'vs-axis',
+                options: {
+                  type: 'x',
+                  ticks: 10
+                }
+              },
+              {
+                cls: 'vs-axis',
+                options: {
+                  type: 'y'
+                }
+              },
+              {
+                cls: 'vs-grid',
+                options: {
+                  type: 'x',
+                  ticks: 10
+                }
+              },
+              {
+                cls: 'vs-grid',
+                options: {
+                  type: 'y'
+                }
+              },
+              {
+                cls: 'vs-brushing'
+              }
+            ]
+          }
+        },
+        {
+          construct: {
+            render: 'svg',
+            type: 'manhattan'
+          },
+          options: {
+            //xBoundaries: {min: 1000, max: 100000},
+            yBoundaries: {min: 0, max: 60},
+            x: 1030,
+            y: 290,
+            width: 400,
+            height: 200,
+            margins: {
+              left: 10,
+              right: 10,
+              bottom: 10,
+              top: 10
+            },
+            cols: [0, 1],
+            vals: 'v0',
+            rows: ['start', 'end']
+          },
+          decorators: {
+            cls: [
+              'vs-window',
+              'vs-resizable',
+              'vs-movable'
+            ],
+            elem: [
+              {
+                cls: 'vs-axis',
+                options: {
+                  type: 'x',
+                  ticks: 10
+                }
+              },
+              {
+                cls: 'vs-axis',
+                options: {
+                  type: 'y'
+                }
+              },
+              {
+                cls: 'vs-grid',
+                options: {
+                  type: 'x',
+                  ticks: 10
+                }
+              },
+              {
+                cls: 'vs-grid',
+                options: {
+                  type: 'y'
+                }
+              },
+              {
+                cls: 'vs-brushing'
+              }
+            ]
+          }
+        },
+        {
+          construct: {
+            render: 'svg',
+            type: 'heatmap'
+          },
+          options: {
+            xBoundaries: {min: 1000, max: 100000},
+            yBoundaries: {min: 0, max: 10},
+            x: 10,
+            y: 590,
+            width: 500,
+            height: 400,
+            margins: {
+              left: 10,
+              right: 10,
+              bottom: 10,
+              top: 10
+            },
+            cols: [0, 1, 2, 3, 4, 5],
+            vals: 'v0',
+            rows: ['start', 'end'],
+            fill: 'rgb(30,96,212)'
+          },
+          decorators: {
+            cls: [
+              'vs-window',
+              'vs-resizable',
+              'vs-movable'
+            ],
+            elem: [
+              {
+                cls: 'vs-brushing'
+              }
+            ]
+          }
+        }
+      ],
+      data: new vs.models.plugins.BigwigDataSource(
+        [
+          'http://egg2.wustl.edu/roadmap/data/byFileType/signal/consolidated/macs2signal/pval/E001-H3K4me1.pval.signal.bigwig',
+          'http://egg2.wustl.edu/roadmap/data/byFileType/signal/consolidated/macs2signal/pval/E001-H3K4me3.pval.signal.bigwig',
+          'http://egg2.wustl.edu/roadmap/data/byFileType/signal/consolidated/macs2signal/pval/E001-H3K9ac.pval.signal.bigwig',
+          'http://egg2.wustl.edu/roadmap/data/byFileType/signal/consolidated/macs2signal/pval/E001-H3K9me3.pval.signal.bigwig',
+          'http://egg2.wustl.edu/roadmap/data/byFileType/signal/consolidated/macs2signal/pval/E001-H3K27me3.pval.signal.bigwig',
+          'http://egg2.wustl.edu/roadmap/data/byFileType/signal/consolidated/macs2signal/pval/E001-H3K36me3.pval.signal.bigwig'],
+        {
+          //proxyURI: 'http://localhost/bigwig/test/partial.php',
+          proxyURI: 'bower_components/bigwig.js/test/partial.php',
+          //proxyURI: 'http://epiviz-dev.cbcb.umd.edu/bigwig/partial.php',
+          initialQuery: [
+            new vs.models.Query({target: 'rows', targetLabel: 'chr', test: '==', testArgs: 'chr1'}),
+            //new vs.models.Query({target: 'rows', targetLabel: 'start', test: '<', testArgs: '10000'}),
+            new vs.models.Query({target: 'rows', targetLabel: 'start', test: '<', testArgs: '1336878'}),
+            new vs.models.Query({target: 'rows', targetLabel: 'end', test: '>=', testArgs: '1298894'})
+          ]
+        }
+      )
+    }, vs.ui.DataHandler)
+  ];
+};
+
+goog.inherits(epiviz.controllers.Master, epiviz.controllers.Controller);
+
+/**
+ * @type {Array.<vs.ui.DataHandler>}
+ * @name epiviz.controllers.Master#dataContexts
+ */
+epiviz.controllers.Master.prototype.dataContexts;
+
+Object.defineProperties(epiviz.controllers.Master.prototype, {
+  'dataContexts': {
+    get: /** @type {function (this:epiviz.controllers.Master)} */ (function() { return this._dataContexts; })
+  }
+});
+
+
 goog.provide('epiviz.controllers.DataContext');
 
 goog.require('epiviz.controllers.Controller');
@@ -244,324 +599,6 @@ epiviz.controllers.DataContext.prototype.mousedown = function(e) {
 };
 
 
-goog.provide('epiviz.controllers.Master');
-
-goog.require('epiviz.controllers.Controller');
-
-/**
- * @param {angular.Scope} $scope
- * @constructor
- * @extends {epiviz.controllers.Controller}
- */
-epiviz.controllers.Master = function($scope) {
-  epiviz.controllers.Controller.apply(this, arguments);
-
-  /**
-   * @type {Array.<vs.ui.DataHandler>}
-   * @private
-   */
-  this._dataContexts = [
-    u.reflection.wrap({
-      name: 'Genetic Variants',
-      children: [],
-      dataChanged: new u.Event(),
-      visualizations: [
-        {
-          construct: {
-            render: 'canvas',
-            type: 'scatterplot'
-          },
-          options: {
-            doubleBuffer: true,
-            axisBoundaries: {},
-            x: 10,
-            y: 60,
-            width: 500,
-            height: 500,
-            margins: {
-              left: 10,
-              right: 10,
-              bottom: 10,
-              top: 10
-            },
-            cols: [1, 0],
-            vals: 'dna methylation',
-            selectStrokeThickness: 4
-          },
-          decorators: {
-            cls: [
-              'vs-window',
-              'vs-resizable',
-              'vs-movable'/*,
-              'vs-loader'*/
-            ],
-            elem: [
-              {
-                cls: 'vs-axis',
-                options: {
-                  type: 'x',
-                  ticks: 10
-                }
-              },
-              {
-                cls: 'vs-axis',
-                options: {
-                  type: 'y'
-                }
-              },
-              {
-                cls: 'vs-grid',
-                options: {
-                  type: 'x',
-                  ticks: 10
-                }
-              },
-              {
-                cls: 'vs-grid',
-                options: {
-                  type: 'y'
-                }
-              },
-              {
-                cls: 'vs-brushing'
-              }
-            ]
-          }
-        },
-        {
-          construct: {
-            render: 'svg',
-            type: 'scatterplot'
-          },
-          options: {
-            doubleBuffer: false,
-            axisBoundaries: {},
-            x: 520,
-            y: 60,
-            width: 500,
-            height: 500,
-            margins: {
-              left: 10,
-              right: 10,
-              bottom: 10,
-              top: 10
-            },
-            cols: [0, 1],
-            vals: 'dna methylation',
-            fill: 'rgba(30,96,212,0.3)',
-            stroke: 'rgba(30,96,212,1)',
-            strokeThickness: 1
-          },
-          decorators: {
-            cls: [
-              'vs-window',
-              'vs-resizable',
-              'vs-movable'/*,
-              'vs-loader'*/
-            ],
-            elem: [
-              {
-                cls: 'vs-axis',
-                options: {
-                  type: 'x',
-                  ticks: 10
-                }
-              },
-              {
-                cls: 'vs-axis',
-                options: {
-                  type: 'y'
-                }
-              },
-              {
-                cls: 'vs-grid',
-                options: {
-                  type: 'x',
-                  ticks: 10
-                }
-              },
-              {
-                cls: 'vs-grid',
-                options: {
-                  type: 'y'
-                }
-              },
-              {
-                cls: 'vs-brushing'
-              }
-            ]
-          }
-        },
-        {
-          construct: {
-            render: 'canvas',
-            type: 'manhattan'
-          },
-          options: {
-            doubleBuffer: true,
-            xBoundries: {min: 1000, max: 100000},
-            yBoundaries: {min: 0, max: 60},
-            x: 1030,
-            y: 60,
-            width: 400,
-            height: 200,
-            fill: 'rgba(255,96,50,0.3)',
-            stroke: 'rgba(255,96,50,1)',
-            strokeThickness: 1,
-            itemRatio: 0.01,
-            selectFill: 'rgba(30,96,212,1)',
-            selectStroke: '#ff0000',
-            selectStrokeThickness: 4,
-            margins: {
-              left: 10,
-              right: 10,
-              bottom: 10,
-              top: 10
-            },
-            cols: [0, 1],
-            vals: 'v0',
-            rows: ['start', 'end']
-          },
-          decorators: {
-            cls: [
-              'vs-window',
-              'vs-resizable',
-              'vs-movable'/*,
-              'vs-loader'*/
-            ],
-            elem: [
-              {
-                cls: 'vs-axis',
-                options: {
-                  type: 'x',
-                  ticks: 10
-                }
-              },
-              {
-                cls: 'vs-axis',
-                options: {
-                  type: 'y'
-                }
-              },
-              {
-                cls: 'vs-grid',
-                options: {
-                  type: 'x',
-                  ticks: 10
-                }
-              },
-              {
-                cls: 'vs-grid',
-                options: {
-                  type: 'y'
-                }
-              },
-              {
-                cls: 'vs-brushing'
-              }
-            ]
-          }
-        },
-        {
-          construct: {
-            render: 'svg',
-            type: 'manhattan'
-          },
-          options: {
-            xBoundries: {min: 1000, max: 100000},
-            yBoundaries: {min: 0, max: 60},
-            x: 1030,
-            y: 290,
-            width: 400,
-            height: 200,
-            margins: {
-              left: 10,
-              right: 10,
-              bottom: 10,
-              top: 10
-            },
-            cols: [0, 1],
-            vals: 'v0',
-            rows: ['start', 'end']
-          },
-          decorators: {
-            cls: [
-              'vs-window',
-              'vs-resizable',
-              'vs-movable'
-            ],
-            elem: [
-              {
-                cls: 'vs-axis',
-                options: {
-                  type: 'x',
-                  ticks: 10
-                }
-              },
-              {
-                cls: 'vs-axis',
-                options: {
-                  type: 'y'
-                }
-              },
-              {
-                cls: 'vs-grid',
-                options: {
-                  type: 'x',
-                  ticks: 10
-                }
-              },
-              {
-                cls: 'vs-grid',
-                options: {
-                  type: 'y'
-                }
-              },
-              {
-                cls: 'vs-brushing'
-              }
-            ]
-          }
-        }
-      ],
-      data: new vs.models.plugins.BigwigDataSource(
-        [
-          'http://egg2.wustl.edu/roadmap/data/byFileType/signal/consolidated/macs2signal/pval/E001-H3K4me1.pval.signal.bigwig',
-          'http://egg2.wustl.edu/roadmap/data/byFileType/signal/consolidated/macs2signal/pval/E001-H3K4me3.pval.signal.bigwig',
-          'http://egg2.wustl.edu/roadmap/data/byFileType/signal/consolidated/macs2signal/pval/E001-H3K9ac.pval.signal.bigwig',
-          'http://egg2.wustl.edu/roadmap/data/byFileType/signal/consolidated/macs2signal/pval/E001-H3K9me3.pval.signal.bigwig',
-          'http://egg2.wustl.edu/roadmap/data/byFileType/signal/consolidated/macs2signal/pval/E001-H3K27me3.pval.signal.bigwig',
-          'http://egg2.wustl.edu/roadmap/data/byFileType/signal/consolidated/macs2signal/pval/E001-H3K36me3.pval.signal.bigwig'],
-        {
-          //proxyURI: 'http://localhost/bigwig/test/partial.php',
-          proxyURI: 'bower_components/bigwig.js/test/partial.php',
-          //proxyURI: 'http://epiviz-dev.cbcb.umd.edu/bigwig/partial.php',
-          initialQuery: [
-            new vs.models.Query({target: 'rows', targetLabel: 'chr', test: '==', testArgs: 'chr1'}),
-            new vs.models.Query({target: 'rows', targetLabel: 'start', test: '<', testArgs: '2635772'}),
-            new vs.models.Query({target: 'rows', targetLabel: 'end', test: '>=', testArgs: '0'})
-          ]
-        }
-      )
-    }, vs.ui.DataHandler)
-  ];
-};
-
-goog.inherits(epiviz.controllers.Master, epiviz.controllers.Controller);
-
-/**
- * @type {Array.<vs.ui.DataHandler>}
- * @name epiviz.controllers.Master#dataContexts
- */
-epiviz.controllers.Master.prototype.dataContexts;
-
-Object.defineProperties(epiviz.controllers.Master.prototype, {
-  'dataContexts': {
-    get: /** @type {function (this:epiviz.controllers.Master)} */ (function() { return this._dataContexts; })
-  }
-});
-
-
 goog.provide('epiviz');
 
 goog.require('epiviz.Configuration');
@@ -593,6 +630,10 @@ epiviz.main.config(['configurationProvider', function(configuration) {
       'manhattan': {
         'svg': 'vs.ui.plugins.svg.ManhattanPlot',
         'canvas': 'vs.ui.plugins.canvas.ManhattanPlot',
+        'default': 'svg'
+      },
+      'heatmap': {
+        'svg': 'vs.ui.plugins.svg.Heatmap',
         'default': 'svg'
       }
     },
