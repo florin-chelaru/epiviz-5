@@ -11,7 +11,7 @@ goog.provide('epiviz.Configuration');
  * @extends {ngu.Configuration}
  */
 epiviz.Configuration = function() {
-
+  ngu.Configuration.apply(this, arguments);
 };
 
 goog.inherits(epiviz.Configuration, ngu.Configuration);

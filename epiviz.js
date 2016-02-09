@@ -613,21 +613,6 @@ epiviz.controllers.Master.prototype.selectAllGroups = function() {
 };
 
 
-goog.provide('epiviz.Configuration');
-
-/**
- * @constructor
- * @extends {ngu.Configuration}
- */
-epiviz.Configuration = function() {
-
-};
-
-goog.inherits(epiviz.Configuration, ngu.Configuration);
-
-Object.defineProperties(epiviz.Configuration.prototype, {});
-
-
 goog.provide('epiviz.controllers.DataContext');
 
 goog.require('goog.string.format');
@@ -782,6 +767,21 @@ epiviz.controllers.DataContext.prototype.zoomIn = function() {
 epiviz.controllers.DataContext.prototype.mousedown = function(e) {
   this._$window.trigger(new $.Event('mousedown', {'target': this._$window[0], 'originalEvent': e, 'pageX': e.pageX, 'pageY': e.pageY}));
 };
+
+
+goog.provide('epiviz.Configuration');
+
+/**
+ * @constructor
+ * @extends {ngu.Configuration}
+ */
+epiviz.Configuration = function() {
+  ngu.Configuration.apply(this, arguments);
+};
+
+goog.inherits(epiviz.Configuration, ngu.Configuration);
+
+Object.defineProperties(epiviz.Configuration.prototype, {});
 
 
 goog.provide('epiviz');
