@@ -26,6 +26,27 @@ epiviz.controllers.Master = function($scope) {
       'visualizations': [
         {
           'construct': {
+            'render': 'svg',
+            'type': 'demo'
+          },
+          'options': {
+            'x': 550,
+            'y': 350,
+            'width': 250,
+            'height': 250
+          },
+          'decorators': {
+            'cls': [
+              'vs-window',
+              'vs-resizable',
+              'vs-movable',
+              'vs-loader'
+            ],
+            'elem': []
+          }
+        },
+        {
+          'construct': {
             'render': 'canvas',
             'type': 'scatterplot'
           },

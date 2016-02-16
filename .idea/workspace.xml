@@ -3,12 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="80ec56e4-01a3-4f57-ab9b-635059d01241" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower.json" afterPath="$PROJECT_DIR$/bower.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/epiviz.js" afterPath="$PROJECT_DIR$/epiviz.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/epiviz.min.js" afterPath="$PROJECT_DIR$/epiviz.min.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/epiviz.min.js.map" afterPath="$PROJECT_DIR$/epiviz.min.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index-local-min.html" afterPath="$PROJECT_DIR$/index-local-min.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index-min.html" afterPath="$PROJECT_DIR$/index-min.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/epiviz/controllers/master.js" afterPath="$PROJECT_DIR$/src/epiviz/controllers/master.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/epiviz/epiviz.js" afterPath="$PROJECT_DIR$/src/epiviz/epiviz.js" />
     </list>
     <ignored path="epiviz-5.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,14 +28,14 @@
     <favorites_list name="epiviz-5" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.35963655">
+    <splitter split-orientation="horizontal" split-proportion="0.697274">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/index.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-13.076923">
-                  <caret line="20" column="77" selection-start-line="20" selection-start-column="77" selection-end-line="20" selection-end-column="77" />
+                <state vertical-scroll-proportion="-22.23077">
+                  <caret line="34" column="24" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
                   <folding />
                 </state>
               </provider>
@@ -44,8 +44,8 @@
           <file leaf-file-name="bower.json" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/bower.json">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-19.615385">
-                  <caret line="30" column="20" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="20" />
+                <state vertical-scroll-proportion="-17.0">
+                  <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="87" />
                   <folding />
                 </state>
               </provider>
@@ -55,12 +55,11 @@
             <entry file="file://$PROJECT_DIR$/src/epiviz/epiviz.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="14" column="51" selection-start-line="14" selection-start-column="51" selection-end-line="14" selection-end-column="51" />
+                  <caret line="24" column="19" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="19" />
                   <folding>
                     <element signature="e#0#118#0" expanded="false" />
                     <element signature="e#706#842#0" expanded="false" />
                     <element signature="e#863#1003#0" expanded="false" />
-                    <element signature="e#1022#1100#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -96,39 +95,120 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="master.js" pinned="false" current-in-tab="false">
+          <file leaf-file-name="master.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/epiviz/controllers/master.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="6" column="42" selection-start-line="6" selection-start-column="42" selection-end-line="6" selection-end-column="42" />
+                <state vertical-scroll-proportion="0.082994305">
+                  <caret line="14" column="40" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
                   <folding>
-                    <element signature="e#15201#19503#0" expanded="false" />
-                    <element signature="e#19570#19613#0" expanded="false" />
-                    <element signature="e#19768#19811#0" expanded="false" />
-                    <element signature="e#19837#19880#0" expanded="false" />
-                    <element signature="e#20431#20474#0" expanded="false" />
-                    <element signature="e#20681#20773#0" expanded="false" />
-                    <element signature="e#20825#20901#0" expanded="false" />
-                    <element signature="e#21579#21617#0" expanded="false" />
-                    <element signature="e#21704#21743#0" expanded="false" />
-                    <element signature="e#21853#21896#0" expanded="false" />
-                    <element signature="e#21983#22027#0" expanded="false" />
-                    <element signature="e#22140#22186#0" expanded="false" />
-                    <element signature="e#22273#22320#0" expanded="false" />
-                    <element signature="e#22421#22455#0" expanded="false" />
-                    <element signature="e#22542#22577#0" expanded="false" />
-                    <element signature="e#22683#22722#0" expanded="false" />
-                    <element signature="e#22809#22849#0" expanded="false" />
-                    <element signature="e#22958#23000#0" expanded="false" />
-                    <element signature="e#23087#23130#0" expanded="false" />
-                    <element signature="e#23142#23171#0" expanded="false" />
-                    <element signature="e#23240#23450#0" expanded="false" />
-                    <element signature="e#23303#23326#0" expanded="false" />
-                    <element signature="e#23453#23460#0" expanded="false" />
-                    <element signature="e#23654#23683#0" expanded="false" />
-                    <element signature="e#23748#23767#0" expanded="false" />
-                    <element signature="e#23770#23777#0" expanded="false" />
+                    <element signature="e#0#118#0" expanded="false" />
+                    <element signature="e#164#249#0" expanded="false" />
+                    <element signature="e#1349#1469#0" expanded="false" />
+                    <element signature="e#3217#3343#0" expanded="false" />
+                    <element signature="e#3365#4087#0" expanded="false" />
+                    <element signature="e#3381#3540#0" expanded="false" />
+                    <element signature="e#3444#3524#0" expanded="false" />
+                    <element signature="e#3556#3684#0" expanded="false" />
+                    <element signature="e#3619#3668#0" expanded="false" />
+                    <element signature="e#3700#3859#0" expanded="false" />
+                    <element signature="e#3763#3843#0" expanded="false" />
+                    <element signature="e#3875#4003#0" expanded="false" />
+                    <element signature="e#3938#3987#0" expanded="false" />
+                    <element signature="e#4019#4073#0" expanded="false" />
+                    <element signature="e#5056#5182#0" expanded="false" />
+                    <element signature="e#5204#5926#0" expanded="false" />
+                    <element signature="e#5220#5379#0" expanded="false" />
+                    <element signature="e#5283#5363#0" expanded="false" />
+                    <element signature="e#5395#5523#0" expanded="false" />
+                    <element signature="e#5458#5507#0" expanded="false" />
+                    <element signature="e#5539#5698#0" expanded="false" />
+                    <element signature="e#5602#5682#0" expanded="false" />
+                    <element signature="e#5714#5842#0" expanded="false" />
+                    <element signature="e#5777#5826#0" expanded="false" />
+                    <element signature="e#5858#5912#0" expanded="false" />
+                    <element signature="e#6554#6680#0" expanded="false" />
+                    <element signature="e#6702#7424#0" expanded="false" />
+                    <element signature="e#6718#6877#0" expanded="false" />
+                    <element signature="e#6781#6861#0" expanded="false" />
+                    <element signature="e#6893#7021#0" expanded="false" />
+                    <element signature="e#6956#7005#0" expanded="false" />
+                    <element signature="e#7037#7196#0" expanded="false" />
+                    <element signature="e#7100#7180#0" expanded="false" />
+                    <element signature="e#7212#7340#0" expanded="false" />
+                    <element signature="e#7275#7324#0" expanded="false" />
+                    <element signature="e#7356#7410#0" expanded="false" />
+                    <element signature="e#8125#8251#0" expanded="false" />
+                    <element signature="e#8273#8357#0" expanded="false" />
+                    <element signature="e#8289#8343#0" expanded="false" />
+                    <element signature="e#8451#9245#0" expanded="false" />
+                    <element signature="e#10271#10730#0" expanded="false" />
+                    <element signature="e#15558#15631#0" expanded="false" />
+                    <element signature="e#15656#19958#0" expanded="false" />
+                    <element signature="e#20025#20068#0" expanded="false" />
+                    <element signature="e#20102#20186#0" expanded="false" />
+                    <element signature="e#20223#20266#0" expanded="false" />
+                    <element signature="e#20292#20335#0" expanded="false" />
+                    <element signature="e#20362#20435#0" expanded="false" />
+                    <element signature="e#20506#20580#0" expanded="false" />
+                    <element signature="e#20886#20929#0" expanded="false" />
+                    <element signature="e#20959#21043#0" expanded="false" />
+                    <element signature="e#21136#21228#0" expanded="false" />
+                    <element signature="e#21280#21356#0" expanded="false" />
+                    <element signature="e#21411#21512#0" expanded="false" />
+                    <element signature="e#21562#21680#0" expanded="false" />
+                    <element signature="e#21799#23593#0" expanded="false" />
+                    <element signature="e#21819#21934#0" expanded="false" />
+                    <element signature="e#21830#21886#0" expanded="false" />
+                    <element signature="e#21953#22203#0" expanded="false" />
+                    <element signature="e#21964#22020#0" expanded="false" />
+                    <element signature="e#22034#22072#0" expanded="false" />
+                    <element signature="e#22084#22140#0" expanded="false" />
+                    <element signature="e#22159#22198#0" expanded="false" />
+                    <element signature="e#22227#22487#0" expanded="false" />
+                    <element signature="e#22238#22294#0" expanded="false" />
+                    <element signature="e#22308#22351#0" expanded="false" />
+                    <element signature="e#22363#22419#0" expanded="false" />
+                    <element signature="e#22438#22482#0" expanded="false" />
+                    <element signature="e#22514#22780#0" expanded="false" />
+                    <element signature="e#22525#22581#0" expanded="false" />
+                    <element signature="e#22595#22641#0" expanded="false" />
+                    <element signature="e#22653#22709#0" expanded="false" />
+                    <element signature="e#22728#22775#0" expanded="false" />
+                    <element signature="e#22795#23037#0" expanded="false" />
+                    <element signature="e#22806#22862#0" expanded="false" />
+                    <element signature="e#22876#22910#0" expanded="false" />
+                    <element signature="e#22922#22978#0" expanded="false" />
+                    <element signature="e#22997#23032#0" expanded="false" />
+                    <element signature="e#23057#23309#0" expanded="false" />
+                    <element signature="e#23068#23124#0" expanded="false" />
+                    <element signature="e#23138#23177#0" expanded="false" />
+                    <element signature="e#23189#23245#0" expanded="false" />
+                    <element signature="e#23264#23304#0" expanded="false" />
+                    <element signature="e#23332#23590#0" expanded="false" />
+                    <element signature="e#23343#23399#0" expanded="false" />
+                    <element signature="e#23413#23455#0" expanded="false" />
+                    <element signature="e#23467#23523#0" expanded="false" />
+                    <element signature="e#23542#23585#0" expanded="false" />
+                    <element signature="e#23597#23626#0" expanded="false" />
+                    <element signature="e#23695#23905#0" expanded="false" />
+                    <element signature="e#23758#23781#0" expanded="false" />
+                    <element signature="e#23908#23915#0" expanded="false" />
+                    <element signature="e#23985#24106#0" expanded="false" />
+                    <element signature="e#24109#24138#0" expanded="false" />
+                    <element signature="e#24203#24222#0" expanded="false" />
+                    <element signature="e#24225#24232#0" expanded="false" />
+                    <element signature="e#24298#24408#0" expanded="false" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="query.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/bower_components/vis.js/src/vs/models/query.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -143,20 +223,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="epigenomes" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/epigenomes">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="216" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="index-local-min.html" pinned="false" current-in-tab="true">
+          <file leaf-file-name="index-local-min.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/index-local-min.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.26849544">
+                <state vertical-scroll-proportion="-12.423077">
                   <caret line="19" column="77" selection-start-line="19" selection-start-column="77" selection-end-line="19" selection-end-column="77" />
                   <folding />
                 </state>
@@ -167,10 +237,10 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="data-context.js" pinned="false" current-in-tab="false">
+          <file leaf-file-name="data-context.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/epiviz/controllers/data-context.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
+                <state vertical-scroll-proportion="0.31814483">
                   <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
                   <folding>
                     <element signature="e#1208#1282#0" expanded="false" />
@@ -212,7 +282,10 @@
                 <state vertical-scroll-proportion="0.0">
                   <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
                   <folding>
-                    <marker date="1455657339822" expanded="true" signature="29987:30026" placeholder="{...}" />
+                    <marker date="1455665315903" expanded="true" signature="51008:51017" placeholder="{&quot;svg&quot;: 'vs.ui.plugins.svg.Heatmap'...}" />
+                    <marker date="1455665315903" expanded="true" signature="51008:51023" placeholder="{...}" />
+                    <marker date="1455665315903" expanded="true" signature="51008:51103" placeholder="{...}" />
+                    <marker date="1455665315903" expanded="true" signature="51008:51106" placeholder="{...}" />
                   </folding>
                 </state>
               </provider>
@@ -284,10 +357,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="index-min.html" pinned="false" current-in-tab="true">
+          <file leaf-file-name="index-min.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/index-min.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.28262678">
+                <state vertical-scroll-proportion="-13.076923">
                   <caret line="20" column="68" selection-start-line="20" selection-start-column="68" selection-end-line="20" selection-end-column="68" />
                   <folding />
                 </state>
@@ -338,14 +411,14 @@
         <option value="$PROJECT_DIR$/res/templates/_data-context-nav.html" />
         <option value="$PROJECT_DIR$/res/templates/_master.html" />
         <option value="$PROJECT_DIR$/src/epiviz/controllers/data-context.js" />
-        <option value="$PROJECT_DIR$/src/epiviz/controllers/master.js" />
         <option value="$PROJECT_DIR$/src/epiviz/configuration.js" />
-        <option value="$PROJECT_DIR$/src/epiviz/epiviz.js" />
         <option value="$PROJECT_DIR$/index-local.html" />
-        <option value="$PROJECT_DIR$/bower.json" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/index-local-min.html" />
         <option value="$PROJECT_DIR$/index-min.html" />
+        <option value="$PROJECT_DIR$/bower.json" />
+        <option value="$PROJECT_DIR$/src/epiviz/epiviz.js" />
+        <option value="$PROJECT_DIR$/src/epiviz/controllers/master.js" />
       </list>
     </option>
   </component>
@@ -682,14 +755,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/index-local.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="81" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="81" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index-min.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -751,32 +816,103 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="13" column="43" selection-start-line="13" selection-start-column="43" selection-end-line="13" selection-end-column="43" />
           <folding>
-            <element signature="e#15201#19503#0" expanded="false" />
-            <element signature="e#19570#19613#0" expanded="false" />
-            <element signature="e#19768#19811#0" expanded="false" />
-            <element signature="e#19837#19880#0" expanded="false" />
-            <element signature="e#20431#20474#0" expanded="false" />
-            <element signature="e#20681#20773#0" expanded="false" />
-            <element signature="e#20825#20901#0" expanded="false" />
-            <element signature="e#21579#21617#0" expanded="false" />
-            <element signature="e#21704#21743#0" expanded="false" />
-            <element signature="e#21853#21896#0" expanded="false" />
-            <element signature="e#21983#22027#0" expanded="false" />
-            <element signature="e#22140#22186#0" expanded="false" />
-            <element signature="e#22273#22320#0" expanded="false" />
-            <element signature="e#22421#22455#0" expanded="false" />
-            <element signature="e#22542#22577#0" expanded="false" />
-            <element signature="e#22683#22722#0" expanded="false" />
-            <element signature="e#22809#22849#0" expanded="false" />
-            <element signature="e#22958#23000#0" expanded="false" />
-            <element signature="e#23087#23130#0" expanded="false" />
-            <element signature="e#23142#23171#0" expanded="false" />
-            <element signature="e#23240#23450#0" expanded="false" />
-            <element signature="e#23303#23326#0" expanded="false" />
-            <element signature="e#23453#23460#0" expanded="false" />
-            <element signature="e#23654#23683#0" expanded="false" />
-            <element signature="e#23748#23767#0" expanded="false" />
-            <element signature="e#23770#23777#0" expanded="false" />
+            <element signature="e#0#118#0" expanded="false" />
+            <element signature="e#164#249#0" expanded="false" />
+            <element signature="e#1349#1469#0" expanded="false" />
+            <element signature="e#3217#3343#0" expanded="false" />
+            <element signature="e#3365#4087#0" expanded="false" />
+            <element signature="e#3381#3540#0" expanded="false" />
+            <element signature="e#3444#3524#0" expanded="false" />
+            <element signature="e#3556#3684#0" expanded="false" />
+            <element signature="e#3619#3668#0" expanded="false" />
+            <element signature="e#3700#3859#0" expanded="false" />
+            <element signature="e#3763#3843#0" expanded="false" />
+            <element signature="e#3875#4003#0" expanded="false" />
+            <element signature="e#3938#3987#0" expanded="false" />
+            <element signature="e#4019#4073#0" expanded="false" />
+            <element signature="e#5056#5182#0" expanded="false" />
+            <element signature="e#5204#5926#0" expanded="false" />
+            <element signature="e#5220#5379#0" expanded="false" />
+            <element signature="e#5283#5363#0" expanded="false" />
+            <element signature="e#5395#5523#0" expanded="false" />
+            <element signature="e#5458#5507#0" expanded="false" />
+            <element signature="e#5539#5698#0" expanded="false" />
+            <element signature="e#5602#5682#0" expanded="false" />
+            <element signature="e#5714#5842#0" expanded="false" />
+            <element signature="e#5777#5826#0" expanded="false" />
+            <element signature="e#5858#5912#0" expanded="false" />
+            <element signature="e#6554#6680#0" expanded="false" />
+            <element signature="e#6702#7424#0" expanded="false" />
+            <element signature="e#6718#6877#0" expanded="false" />
+            <element signature="e#6781#6861#0" expanded="false" />
+            <element signature="e#6893#7021#0" expanded="false" />
+            <element signature="e#6956#7005#0" expanded="false" />
+            <element signature="e#7037#7196#0" expanded="false" />
+            <element signature="e#7100#7180#0" expanded="false" />
+            <element signature="e#7212#7340#0" expanded="false" />
+            <element signature="e#7275#7324#0" expanded="false" />
+            <element signature="e#7356#7410#0" expanded="false" />
+            <element signature="e#8125#8251#0" expanded="false" />
+            <element signature="e#8273#8357#0" expanded="false" />
+            <element signature="e#8289#8343#0" expanded="false" />
+            <element signature="e#8451#9245#0" expanded="false" />
+            <element signature="e#10271#10730#0" expanded="false" />
+            <element signature="e#15558#15631#0" expanded="false" />
+            <element signature="e#15656#19958#0" expanded="false" />
+            <element signature="e#20025#20068#0" expanded="false" />
+            <element signature="e#20102#20186#0" expanded="false" />
+            <element signature="e#20223#20266#0" expanded="false" />
+            <element signature="e#20292#20335#0" expanded="false" />
+            <element signature="e#20362#20435#0" expanded="false" />
+            <element signature="e#20506#20580#0" expanded="false" />
+            <element signature="e#20886#20929#0" expanded="false" />
+            <element signature="e#20959#21043#0" expanded="false" />
+            <element signature="e#21136#21228#0" expanded="false" />
+            <element signature="e#21280#21356#0" expanded="false" />
+            <element signature="e#21411#21512#0" expanded="false" />
+            <element signature="e#21562#21680#0" expanded="false" />
+            <element signature="e#21799#23593#0" expanded="false" />
+            <element signature="e#21819#21934#0" expanded="false" />
+            <element signature="e#21830#21886#0" expanded="false" />
+            <element signature="e#21953#22203#0" expanded="false" />
+            <element signature="e#21964#22020#0" expanded="false" />
+            <element signature="e#22034#22072#0" expanded="false" />
+            <element signature="e#22084#22140#0" expanded="false" />
+            <element signature="e#22159#22198#0" expanded="false" />
+            <element signature="e#22227#22487#0" expanded="false" />
+            <element signature="e#22238#22294#0" expanded="false" />
+            <element signature="e#22308#22351#0" expanded="false" />
+            <element signature="e#22363#22419#0" expanded="false" />
+            <element signature="e#22438#22482#0" expanded="false" />
+            <element signature="e#22514#22780#0" expanded="false" />
+            <element signature="e#22525#22581#0" expanded="false" />
+            <element signature="e#22595#22641#0" expanded="false" />
+            <element signature="e#22653#22709#0" expanded="false" />
+            <element signature="e#22728#22775#0" expanded="false" />
+            <element signature="e#22795#23037#0" expanded="false" />
+            <element signature="e#22806#22862#0" expanded="false" />
+            <element signature="e#22876#22910#0" expanded="false" />
+            <element signature="e#22922#22978#0" expanded="false" />
+            <element signature="e#22997#23032#0" expanded="false" />
+            <element signature="e#23057#23309#0" expanded="false" />
+            <element signature="e#23068#23124#0" expanded="false" />
+            <element signature="e#23138#23177#0" expanded="false" />
+            <element signature="e#23189#23245#0" expanded="false" />
+            <element signature="e#23264#23304#0" expanded="false" />
+            <element signature="e#23332#23590#0" expanded="false" />
+            <element signature="e#23343#23399#0" expanded="false" />
+            <element signature="e#23413#23455#0" expanded="false" />
+            <element signature="e#23467#23523#0" expanded="false" />
+            <element signature="e#23542#23585#0" expanded="false" />
+            <element signature="e#23597#23626#0" expanded="false" />
+            <element signature="e#23695#23905#0" expanded="false" />
+            <element signature="e#23758#23781#0" expanded="false" />
+            <element signature="e#23908#23915#0" expanded="false" />
+            <element signature="e#23985#24106#0" expanded="false" />
+            <element signature="e#24109#24138#0" expanded="false" />
+            <element signature="e#24203#24222#0" expanded="false" />
+            <element signature="e#24225#24232#0" expanded="false" />
+            <element signature="e#24298#24408#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1023,41 +1159,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/epiviz/controllers/master.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="42" selection-start-line="6" selection-start-column="42" selection-end-line="6" selection-end-column="42" />
-          <folding>
-            <element signature="e#15201#19503#0" expanded="false" />
-            <element signature="e#19570#19613#0" expanded="false" />
-            <element signature="e#19768#19811#0" expanded="false" />
-            <element signature="e#19837#19880#0" expanded="false" />
-            <element signature="e#20431#20474#0" expanded="false" />
-            <element signature="e#20681#20773#0" expanded="false" />
-            <element signature="e#20825#20901#0" expanded="false" />
-            <element signature="e#21579#21617#0" expanded="false" />
-            <element signature="e#21704#21743#0" expanded="false" />
-            <element signature="e#21853#21896#0" expanded="false" />
-            <element signature="e#21983#22027#0" expanded="false" />
-            <element signature="e#22140#22186#0" expanded="false" />
-            <element signature="e#22273#22320#0" expanded="false" />
-            <element signature="e#22421#22455#0" expanded="false" />
-            <element signature="e#22542#22577#0" expanded="false" />
-            <element signature="e#22683#22722#0" expanded="false" />
-            <element signature="e#22809#22849#0" expanded="false" />
-            <element signature="e#22958#23000#0" expanded="false" />
-            <element signature="e#23087#23130#0" expanded="false" />
-            <element signature="e#23142#23171#0" expanded="false" />
-            <element signature="e#23240#23450#0" expanded="false" />
-            <element signature="e#23303#23326#0" expanded="false" />
-            <element signature="e#23453#23460#0" expanded="false" />
-            <element signature="e#23654#23683#0" expanded="false" />
-            <element signature="e#23748#23767#0" expanded="false" />
-            <element signature="e#23770#23777#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/externs/ng-utils.externs.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1074,6 +1175,51 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/epiviz.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding>
+            <marker date="1455665315903" expanded="true" signature="51008:51017" placeholder="{&quot;svg&quot;: 'vs.ui.plugins.svg.Heatmap'...}" />
+            <marker date="1455665315903" expanded="true" signature="51008:51023" placeholder="{...}" />
+            <marker date="1455665315903" expanded="true" signature="51008:51103" placeholder="{...}" />
+            <marker date="1455665315903" expanded="true" signature="51008:51106" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index-local.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.423077">
+          <caret line="19" column="2" selection-start-line="19" selection-start-column="2" selection-end-line="20" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index-local-min.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.423077">
+          <caret line="19" column="77" selection-start-line="19" selection-start-column="77" selection-end-line="19" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bower_components/vis.js/src/vs/models/query.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bower.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-17.0">
+          <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="87" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/epiviz/configuration.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1082,9 +1228,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/index-min.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.076923">
+          <caret line="20" column="68" selection-start-line="20" selection-start-column="68" selection-end-line="20" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/epiviz/controllers/data-context.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.31814483">
           <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding>
             <element signature="e#1208#1282#0" expanded="false" />
@@ -1109,66 +1263,129 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/epiviz.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding>
-            <marker date="1455657339822" expanded="true" signature="29987:30026" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/epiviz/epiviz.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="51" selection-start-line="14" selection-start-column="51" selection-end-line="14" selection-end-column="51" />
+          <caret line="24" column="19" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="19" />
           <folding>
             <element signature="e#0#118#0" expanded="false" />
             <element signature="e#706#842#0" expanded="false" />
             <element signature="e#863#1003#0" expanded="false" />
-            <element signature="e#1022#1100#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bower.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.615385">
-          <caret line="30" column="20" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.076923">
-          <caret line="20" column="77" selection-start-line="20" selection-start-column="77" selection-end-line="20" selection-end-column="77" />
+        <state vertical-scroll-proportion="-22.23077">
+          <caret line="34" column="24" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index-local-min.html">
+    <entry file="file://$PROJECT_DIR$/src/epiviz/controllers/master.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26849544">
-          <caret line="19" column="77" selection-start-line="19" selection-start-column="77" selection-end-line="19" selection-end-column="77" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index-local.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.423077">
-          <caret line="19" column="2" selection-start-line="19" selection-start-column="2" selection-end-line="20" selection-end-column="77" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index-min.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.28262678">
-          <caret line="20" column="68" selection-start-line="20" selection-start-column="68" selection-end-line="20" selection-end-column="68" />
-          <folding />
+        <state vertical-scroll-proportion="0.082994305">
+          <caret line="14" column="40" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#118#0" expanded="false" />
+            <element signature="e#164#249#0" expanded="false" />
+            <element signature="e#1349#1469#0" expanded="false" />
+            <element signature="e#3217#3343#0" expanded="false" />
+            <element signature="e#3365#4087#0" expanded="false" />
+            <element signature="e#3381#3540#0" expanded="false" />
+            <element signature="e#3444#3524#0" expanded="false" />
+            <element signature="e#3556#3684#0" expanded="false" />
+            <element signature="e#3619#3668#0" expanded="false" />
+            <element signature="e#3700#3859#0" expanded="false" />
+            <element signature="e#3763#3843#0" expanded="false" />
+            <element signature="e#3875#4003#0" expanded="false" />
+            <element signature="e#3938#3987#0" expanded="false" />
+            <element signature="e#4019#4073#0" expanded="false" />
+            <element signature="e#5056#5182#0" expanded="false" />
+            <element signature="e#5204#5926#0" expanded="false" />
+            <element signature="e#5220#5379#0" expanded="false" />
+            <element signature="e#5283#5363#0" expanded="false" />
+            <element signature="e#5395#5523#0" expanded="false" />
+            <element signature="e#5458#5507#0" expanded="false" />
+            <element signature="e#5539#5698#0" expanded="false" />
+            <element signature="e#5602#5682#0" expanded="false" />
+            <element signature="e#5714#5842#0" expanded="false" />
+            <element signature="e#5777#5826#0" expanded="false" />
+            <element signature="e#5858#5912#0" expanded="false" />
+            <element signature="e#6554#6680#0" expanded="false" />
+            <element signature="e#6702#7424#0" expanded="false" />
+            <element signature="e#6718#6877#0" expanded="false" />
+            <element signature="e#6781#6861#0" expanded="false" />
+            <element signature="e#6893#7021#0" expanded="false" />
+            <element signature="e#6956#7005#0" expanded="false" />
+            <element signature="e#7037#7196#0" expanded="false" />
+            <element signature="e#7100#7180#0" expanded="false" />
+            <element signature="e#7212#7340#0" expanded="false" />
+            <element signature="e#7275#7324#0" expanded="false" />
+            <element signature="e#7356#7410#0" expanded="false" />
+            <element signature="e#8125#8251#0" expanded="false" />
+            <element signature="e#8273#8357#0" expanded="false" />
+            <element signature="e#8289#8343#0" expanded="false" />
+            <element signature="e#8451#9245#0" expanded="false" />
+            <element signature="e#10271#10730#0" expanded="false" />
+            <element signature="e#15558#15631#0" expanded="false" />
+            <element signature="e#15656#19958#0" expanded="false" />
+            <element signature="e#20025#20068#0" expanded="false" />
+            <element signature="e#20102#20186#0" expanded="false" />
+            <element signature="e#20223#20266#0" expanded="false" />
+            <element signature="e#20292#20335#0" expanded="false" />
+            <element signature="e#20362#20435#0" expanded="false" />
+            <element signature="e#20506#20580#0" expanded="false" />
+            <element signature="e#20886#20929#0" expanded="false" />
+            <element signature="e#20959#21043#0" expanded="false" />
+            <element signature="e#21136#21228#0" expanded="false" />
+            <element signature="e#21280#21356#0" expanded="false" />
+            <element signature="e#21411#21512#0" expanded="false" />
+            <element signature="e#21562#21680#0" expanded="false" />
+            <element signature="e#21799#23593#0" expanded="false" />
+            <element signature="e#21819#21934#0" expanded="false" />
+            <element signature="e#21830#21886#0" expanded="false" />
+            <element signature="e#21953#22203#0" expanded="false" />
+            <element signature="e#21964#22020#0" expanded="false" />
+            <element signature="e#22034#22072#0" expanded="false" />
+            <element signature="e#22084#22140#0" expanded="false" />
+            <element signature="e#22159#22198#0" expanded="false" />
+            <element signature="e#22227#22487#0" expanded="false" />
+            <element signature="e#22238#22294#0" expanded="false" />
+            <element signature="e#22308#22351#0" expanded="false" />
+            <element signature="e#22363#22419#0" expanded="false" />
+            <element signature="e#22438#22482#0" expanded="false" />
+            <element signature="e#22514#22780#0" expanded="false" />
+            <element signature="e#22525#22581#0" expanded="false" />
+            <element signature="e#22595#22641#0" expanded="false" />
+            <element signature="e#22653#22709#0" expanded="false" />
+            <element signature="e#22728#22775#0" expanded="false" />
+            <element signature="e#22795#23037#0" expanded="false" />
+            <element signature="e#22806#22862#0" expanded="false" />
+            <element signature="e#22876#22910#0" expanded="false" />
+            <element signature="e#22922#22978#0" expanded="false" />
+            <element signature="e#22997#23032#0" expanded="false" />
+            <element signature="e#23057#23309#0" expanded="false" />
+            <element signature="e#23068#23124#0" expanded="false" />
+            <element signature="e#23138#23177#0" expanded="false" />
+            <element signature="e#23189#23245#0" expanded="false" />
+            <element signature="e#23264#23304#0" expanded="false" />
+            <element signature="e#23332#23590#0" expanded="false" />
+            <element signature="e#23343#23399#0" expanded="false" />
+            <element signature="e#23413#23455#0" expanded="false" />
+            <element signature="e#23467#23523#0" expanded="false" />
+            <element signature="e#23542#23585#0" expanded="false" />
+            <element signature="e#23597#23626#0" expanded="false" />
+            <element signature="e#23695#23905#0" expanded="false" />
+            <element signature="e#23758#23781#0" expanded="false" />
+            <element signature="e#23908#23915#0" expanded="false" />
+            <element signature="e#23985#24106#0" expanded="false" />
+            <element signature="e#24109#24138#0" expanded="false" />
+            <element signature="e#24203#24222#0" expanded="false" />
+            <element signature="e#24225#24232#0" expanded="false" />
+            <element signature="e#24298#24408#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
