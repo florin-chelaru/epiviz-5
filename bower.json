@@ -27,11 +27,12 @@
     "vs.models.plugins.js": "git://github.com/florin-chelaru/vs.models.plugins.js.git",
 
     "google-closure-library": "git://github.com/google/closure-library.git#56712dfced32778fc8435a4bea6a2e422e5f03c1",
-    "angular": "1.4.4",
-    "d3": "3.5.6",
-    "jquery": "2.1.4",
-    "bootstrap": "3.3.6",
-    "angular-bootstrap": "0.14.2",
+    "angular": "~1.5.0",
+    "angular-animate": "~1.5.0",
+    "d3": "~3.5.6",
+    "jquery": "*",
+    "bootstrap": "~3.3.6",
+    "angular-bootstrap": "~1.1.2",
 
     "ng-utils": "git://github.com/florin-chelaru/ng-utils.git",
     "ng-bootstrap-controls": "git://github.com/florin-chelaru/ng-bootstrap-controls.git"
