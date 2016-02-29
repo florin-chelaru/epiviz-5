@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="80ec56e4-01a3-4f57-ab9b-635059d01241" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/epiviz.js" afterPath="$PROJECT_DIR$/epiviz.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/epiviz.min.js" afterPath="$PROJECT_DIR$/epiviz.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/epiviz.min.js.map" afterPath="$PROJECT_DIR$/epiviz.min.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index-local-min.html" afterPath="$PROJECT_DIR$/index-local-min.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index-min.html" afterPath="$PROJECT_DIR$/index-min.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower.json" afterPath="$PROJECT_DIR$/bower.json" />
     </list>
     <ignored path="epiviz-5.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,18 +28,18 @@
           <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/index.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-13.076923">
+                <state vertical-scroll-proportion="0.0">
                   <caret line="20" column="77" selection-start-line="20" selection-start-column="77" selection-end-line="20" selection-end-column="77" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="bower.json" pinned="false" current-in-tab="false">
+          <file leaf-file-name="bower.json" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/bower.json">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-19.615385">
-                  <caret line="30" column="20" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="20" />
+                <state vertical-scroll-proportion="0.398827">
+                  <caret line="32" column="21" selection-start-line="32" selection-start-column="21" selection-end-line="32" selection-end-column="21" />
                   <folding />
                 </state>
               </provider>
@@ -153,10 +147,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="index-local-min.html" pinned="false" current-in-tab="true">
+          <file leaf-file-name="index-local-min.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/index-local-min.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.26849544">
+                <state vertical-scroll-proportion="-12.423077">
                   <caret line="19" column="77" selection-start-line="19" selection-start-column="77" selection-end-line="19" selection-end-column="77" />
                   <folding />
                 </state>
@@ -211,9 +205,7 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
                   <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-                  <folding>
-                    <marker date="1455657339822" expanded="true" signature="29987:30026" placeholder="{...}" />
-                  </folding>
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -277,7 +269,7 @@
           <file leaf-file-name="index-local.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/index-local.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-12.423077">
+                <state vertical-scroll-proportion="0.0">
                   <caret line="19" column="2" selection-start-line="19" selection-start-column="2" selection-end-line="20" selection-end-column="77" />
                   <folding />
                 </state>
@@ -287,7 +279,7 @@
           <file leaf-file-name="index-min.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/index-min.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.28262678">
+                <state vertical-scroll-proportion="0.24926686">
                   <caret line="20" column="68" selection-start-line="20" selection-start-column="68" selection-end-line="20" selection-end-column="68" />
                   <folding />
                 </state>
@@ -342,10 +334,10 @@
         <option value="$PROJECT_DIR$/src/epiviz/configuration.js" />
         <option value="$PROJECT_DIR$/src/epiviz/epiviz.js" />
         <option value="$PROJECT_DIR$/index-local.html" />
-        <option value="$PROJECT_DIR$/bower.json" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/index-local-min.html" />
         <option value="$PROJECT_DIR$/index-min.html" />
+        <option value="$PROJECT_DIR$/bower.json" />
       </list>
     </option>
   </component>
@@ -365,7 +357,7 @@
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="2576" />
-    <option name="height" value="1416" />
+    <option name="height" value="1576" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -392,8 +384,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -645,7 +637,7 @@
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
+    <frame x="-8" y="-8" width="2576" height="1576" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17612293" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1113,9 +1105,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding>
-            <marker date="1455657339822" expanded="true" signature="29987:30026" placeholder="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1132,33 +1122,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bower.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.615385">
-          <caret line="30" column="20" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.076923">
+        <state vertical-scroll-proportion="0.0">
           <caret line="20" column="77" selection-start-line="20" selection-start-column="77" selection-end-line="20" selection-end-column="77" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index-local-min.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26849544">
-          <caret line="19" column="77" selection-start-line="19" selection-start-column="77" selection-end-line="19" selection-end-column="77" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index-local.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.423077">
+        <state vertical-scroll-proportion="0.0">
           <caret line="19" column="2" selection-start-line="19" selection-start-column="2" selection-end-line="20" selection-end-column="77" />
           <folding />
         </state>
@@ -1166,8 +1140,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index-min.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.28262678">
+        <state vertical-scroll-proportion="0.24926686">
           <caret line="20" column="68" selection-start-line="20" selection-start-column="68" selection-end-line="20" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index-local-min.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.423077">
+          <caret line="19" column="77" selection-start-line="19" selection-start-column="77" selection-end-line="19" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bower.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.398827">
+          <caret line="32" column="21" selection-start-line="32" selection-start-column="21" selection-end-line="32" selection-end-column="21" />
           <folding />
         </state>
       </provider>
