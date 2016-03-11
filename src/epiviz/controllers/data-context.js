@@ -34,7 +34,7 @@ epiviz.controllers.DataContext = function($scope) {
    */
   this._name = this._dataHandler.name;
 
-  var range = vs.models.GenomicRangeQuery.extract(this._dataHandler.data.query);
+  var range = vs.models.GenomicRangeQuery.extract(u.fast.concat(u.fast.map(this._dataHandler.data, function(d) { return d.query; })));
 
   /**
    * @type {string}
@@ -92,7 +92,7 @@ epiviz.controllers.DataContext.prototype.query = function() {
 
 epiviz.controllers.DataContext.prototype.left = function() {
   try {
-    var range = vs.models.GenomicRangeQuery.extract(this._dataHandler.data.query);
+    var range = vs.models.GenomicRangeQuery.extract(u.fast.concat(u.fast.map(this._dataHandler.data, function(d) { return d.query; })));
     var width = range.end - range.start;
     if (width <= 0) { return; }
     var tenth = Math.ceil(width * 0.1);
@@ -108,7 +108,7 @@ epiviz.controllers.DataContext.prototype.left = function() {
 
 epiviz.controllers.DataContext.prototype.right = function() {
   try {
-    var range = vs.models.GenomicRangeQuery.extract(this._dataHandler.data.query);
+    var range = vs.models.GenomicRangeQuery.extract(u.fast.concat(u.fast.map(this._dataHandler.data, function(d) { return d.query; })));
     var width = range.end - range.start;
     if (width <= 0) { return; }
     var tenth = Math.ceil(width * 0.1);
@@ -122,7 +122,7 @@ epiviz.controllers.DataContext.prototype.right = function() {
 
 epiviz.controllers.DataContext.prototype.zoomOut = function() {
   try {
-    var range = vs.models.GenomicRangeQuery.extract(this._dataHandler.data.query);
+    var range = vs.models.GenomicRangeQuery.extract(u.fast.concat(u.fast.map(this._dataHandler.data, function(d) { return d.query; })));
     var width = range.end - range.start;
     if (width <= 0) { return; }
     var tenth = Math.ceil(width * 0.1);
@@ -139,7 +139,7 @@ epiviz.controllers.DataContext.prototype.zoomOut = function() {
 
 epiviz.controllers.DataContext.prototype.zoomIn = function() {
   try {
-    var range = vs.models.GenomicRangeQuery.extract(this._dataHandler.data.query);
+    var range = vs.models.GenomicRangeQuery.extract(u.array.unique(u.fast.concat(u.fast.map(this._dataHandler.data, function(d) { return d.query; }))));
     var width = range.end - range.start;
     if (width <= 1) { return; }
     var tenth = Math.ceil(width * 0.1);
