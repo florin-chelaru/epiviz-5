@@ -18,6 +18,21 @@
 */
 
 
+goog.provide('epiviz.Configuration');
+
+/**
+ * @constructor
+ * @extends {ngu.Configuration}
+ */
+epiviz.Configuration = function() {
+  ngu.Configuration.apply(this, arguments);
+};
+
+goog.inherits(epiviz.Configuration, ngu.Configuration);
+
+Object.defineProperties(epiviz.Configuration.prototype, {});
+
+
 goog.provide('epiviz.controllers.DataContext');
 
 goog.require('goog.string.format');
@@ -176,21 +191,6 @@ epiviz.controllers.DataContext.prototype.mousedown = function(e) {
 };
 
 
-goog.provide('epiviz.Configuration');
-
-/**
- * @constructor
- * @extends {ngu.Configuration}
- */
-epiviz.Configuration = function() {
-  ngu.Configuration.apply(this, arguments);
-};
-
-goog.inherits(epiviz.Configuration, ngu.Configuration);
-
-Object.defineProperties(epiviz.Configuration.prototype, {});
-
-
 goog.provide('epiviz.controllers.Master');
 
 /**
@@ -220,7 +220,7 @@ epiviz.controllers.Master = function($scope) {
       'children': [],
       'dataChanged': new u.Event(),
       'visualizations': [
-        {
+        /*{
           'construct': {
             'render': 'canvas',
             'type': 'scatterplot'
@@ -257,7 +257,8 @@ epiviz.controllers.Master = function($scope) {
                 'cls': 'vs-axis',
                 'options': {
                   'type': 'x',
-                  'ticks': 10
+                  'ticks': 10,
+                  'label': true
                 }
               },
               {
@@ -281,7 +282,7 @@ epiviz.controllers.Master = function($scope) {
               }
             ]
           }
-        },
+        },*/
         {
           'construct': {
             'render': 'svg',
@@ -314,13 +315,15 @@ epiviz.controllers.Master = function($scope) {
                 'cls': 'vs-axis',
                 'options': {
                   'type': 'x',
-                  'ticks': 10
+                  'ticks': 10,
+                  'label': 'true'
                 }
               },
               {
                 'cls': 'vs-axis',
                 'options': {
-                  'type': 'y'
+                  'type': 'y',
+                  'label': 'true'
                 }
               },
               {
@@ -339,6 +342,7 @@ epiviz.controllers.Master = function($scope) {
             ]
           }
         },
+        /*
         {
           'construct': {
             'render': 'canvas',
@@ -401,7 +405,7 @@ epiviz.controllers.Master = function($scope) {
               }
             ]
           }
-        },
+        },*/
         {
           'construct': {
             'render': 'svg',
@@ -438,13 +442,15 @@ epiviz.controllers.Master = function($scope) {
                 'cls': 'vs-axis',
                 'options': {
                   'type': 'x',
-                  'ticks': 10
+                  'ticks': 10,
+                  'label': 'genomic location'
                 }
               },
               {
                 'cls': 'vs-axis',
                 'options': {
-                  'type': 'y'
+                  'type': 'y',
+                  'label': 'p-val'
                 }
               },
               {
@@ -462,7 +468,7 @@ epiviz.controllers.Master = function($scope) {
               }
             ]
           }
-        },
+        }/*,
         {
           'construct': {
             'render': 'svg',
@@ -480,7 +486,7 @@ epiviz.controllers.Master = function($scope) {
               'top': 10
             },
             'yBoundaries': {'min': 0, 'max': 10},
-            'cols': ['sample2','sample1'],
+            'cols': ['sample2','sample1', 'sample0', 'sample3', 'sample4', 'sample5'],
             'xVal': 'start',
             'yVal': 'avg',
             'fill': 'rgb(30,96,212)'
@@ -494,7 +500,7 @@ epiviz.controllers.Master = function($scope) {
             ],
             'elem': []
           }
-        }
+        }*/
       ],
       'data': [
         'http://egg2.wustl.edu/roadmap/data/byFileType/signal/consolidated/macs2signal/foldChange/E001-H3K4me1.fc.signal.bigwig',

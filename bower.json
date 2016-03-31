@@ -22,10 +22,9 @@
     "tests"
   ],
   "dependencies": {
-    "vis.js": "https://github.com/florin-chelaru/vis.js/archive/data_source_migration.zip",
+    "vis.js": "git://github.com/florin-chelaru/vis.js.git#19a5437556db9539c6911d2320e2c1d1065f8246",
     "vs.ui.plugins.js": "https://github.com/florin-chelaru/vs.ui.plugins.js/archive/data_source_migration.zip",
     "vs.models.plugins.js": "https://github.com/florin-chelaru/vs.models.plugins.js/archive/data_source_migration.zip",
-
     "google-closure-library": "git://github.com/google/closure-library.git#56712dfced32778fc8435a4bea6a2e422e5f03c1",
     "angular": "~1.5.0",
     "angular-animate": "~1.5.0",
@@ -33,13 +32,14 @@
     "jquery": "~2.2.0",
     "bootstrap": "~3.3.6",
     "angular-bootstrap": "~1.1.2",
-
     "ng-utils": "git://github.com/florin-chelaru/ng-utils.git",
     "ng-bootstrap-controls": "git://github.com/florin-chelaru/ng-bootstrap-controls.git"
   },
-
   "devDependencies": {
     "closure-compiler": "0.2.7",
     "qunit": "1.19.0"
+  },
+  "resolutions": {
+    "vis.js": "19a5437556db9539c6911d2320e2c1d1065f8246"
   }
 }
