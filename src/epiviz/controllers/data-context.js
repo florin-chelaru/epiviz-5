@@ -84,7 +84,9 @@ epiviz.controllers.DataContext.prototype.query = function() {
 
     u.log.info(q.chr + ' ' + q.start + ' ' + q.end);
     this._dataHandler.query(q.query)
-      .then(function (data) { u.log.info('New data: ', data); });
+      .then(function (data) {
+        u.log.info('query, data:', q, data);
+      });
   } catch (err) {
     u.log.error(err);
   }

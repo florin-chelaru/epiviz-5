@@ -22,9 +22,9 @@
     "tests"
   ],
   "dependencies": {
-    "vis.js": "https://github.com/florin-chelaru/vis.js/archive/data_source_migration.zip",
-    "vs.ui.plugins.js": "https://github.com/florin-chelaru/vs.ui.plugins.js/archive/data_source_migration.zip",
-    "vs.models.plugins.js": "https://github.com/florin-chelaru/vs.models.plugins.js/archive/data_source_migration.zip",
+    "vis.js": "git://github.com/florin-chelaru/vis.js.git",
+    "vs.ui.plugins.js": "git://github.com/florin-chelaru/vs.ui.plugins.js.git",
+    "vs.models.plugins.js": "git://github.com/florin-chelaru/vs.models.plugins.js.git",
 
     "google-closure-library": "git://github.com/google/closure-library.git#56712dfced32778fc8435a4bea6a2e422e5f03c1",
     "angular": "~1.5.0",

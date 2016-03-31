@@ -18,21 +18,6 @@
 */
 
 
-goog.provide('epiviz.Configuration');
-
-/**
- * @constructor
- * @extends {ngu.Configuration}
- */
-epiviz.Configuration = function() {
-  ngu.Configuration.apply(this, arguments);
-};
-
-goog.inherits(epiviz.Configuration, ngu.Configuration);
-
-Object.defineProperties(epiviz.Configuration.prototype, {});
-
-
 goog.provide('epiviz.controllers.DataContext');
 
 goog.require('goog.string.format');
@@ -63,7 +48,7 @@ epiviz.controllers.DataContext = function($scope) {
    */
   this._name = this._dataHandler.name;
 
-  var range = vs.models.GenomicRangeQuery.extract(this._dataHandler.data.query);
+  var range = vs.models.GenomicRangeQuery.extract(u.fast.concat(u.fast.map(this._dataHandler.data, function(d) { return d.query; })));
 
   /**
    * @type {string}
@@ -113,7 +98,9 @@ epiviz.controllers.DataContext.prototype.query = function() {
 
     u.log.info(q.chr + ' ' + q.start + ' ' + q.end);
     this._dataHandler.query(q.query)
-      .then(function (data) { u.log.info('New data: ', data); });
+      .then(function (data) {
+        u.log.info('query, data:', q, data);
+      });
   } catch (err) {
     u.log.error(err);
   }
@@ -121,7 +108,7 @@ epiviz.controllers.DataContext.prototype.query = function() {
 
 epiviz.controllers.DataContext.prototype.left = function() {
   try {
-    var range = vs.models.GenomicRangeQuery.extract(this._dataHandler.data.query);
+    var range = vs.models.GenomicRangeQuery.extract(u.fast.concat(u.fast.map(this._dataHandler.data, function(d) { return d.query; })));
     var width = range.end - range.start;
     if (width <= 0) { return; }
     var tenth = Math.ceil(width * 0.1);
@@ -137,7 +124,7 @@ epiviz.controllers.DataContext.prototype.left = function() {
 
 epiviz.controllers.DataContext.prototype.right = function() {
   try {
-    var range = vs.models.GenomicRangeQuery.extract(this._dataHandler.data.query);
+    var range = vs.models.GenomicRangeQuery.extract(u.fast.concat(u.fast.map(this._dataHandler.data, function(d) { return d.query; })));
     var width = range.end - range.start;
     if (width <= 0) { return; }
     var tenth = Math.ceil(width * 0.1);
@@ -151,7 +138,7 @@ epiviz.controllers.DataContext.prototype.right = function() {
 
 epiviz.controllers.DataContext.prototype.zoomOut = function() {
   try {
-    var range = vs.models.GenomicRangeQuery.extract(this._dataHandler.data.query);
+    var range = vs.models.GenomicRangeQuery.extract(u.fast.concat(u.fast.map(this._dataHandler.data, function(d) { return d.query; })));
     var width = range.end - range.start;
     if (width <= 0) { return; }
     var tenth = Math.ceil(width * 0.1);
@@ -168,7 +155,7 @@ epiviz.controllers.DataContext.prototype.zoomOut = function() {
 
 epiviz.controllers.DataContext.prototype.zoomIn = function() {
   try {
-    var range = vs.models.GenomicRangeQuery.extract(this._dataHandler.data.query);
+    var range = vs.models.GenomicRangeQuery.extract(u.array.unique(u.fast.concat(u.fast.map(this._dataHandler.data, function(d) { return d.query; }))));
     var width = range.end - range.start;
     if (width <= 1) { return; }
     var tenth = Math.ceil(width * 0.1);
@@ -189,6 +176,21 @@ epiviz.controllers.DataContext.prototype.mousedown = function(e) {
 };
 
 
+goog.provide('epiviz.Configuration');
+
+/**
+ * @constructor
+ * @extends {ngu.Configuration}
+ */
+epiviz.Configuration = function() {
+  ngu.Configuration.apply(this, arguments);
+};
+
+goog.inherits(epiviz.Configuration, ngu.Configuration);
+
+Object.defineProperties(epiviz.Configuration.prototype, {});
+
+
 goog.provide('epiviz.controllers.Master');
 
 /**
@@ -198,6 +200,15 @@ goog.provide('epiviz.controllers.Master');
  */
 epiviz.controllers.Master = function($scope) {
   ngu.Controller.apply(this, arguments);
+
+  var palette = d3.scale.category10();
+
+  var proxyUrl = 'bower_components/bigwig.js/test/partial.php';
+  var initialQuery = [
+    new vs.models.Query({'target': 'chr', 'test': '==', 'testArgs': 'chr1'}),
+    new vs.models.Query({'target': 'start', 'test': '<', 'testArgs': '1336878'}),
+    new vs.models.Query({'target': 'end', 'test': '>=', 'testArgs': '1298894'})
+  ];
 
   /**
    * @type {Array.<vs.ui.DataHandler>}
@@ -218,17 +229,20 @@ epiviz.controllers.Master = function($scope) {
             'doubleBuffer': true,
             'axisBoundaries': {},
             'x': 10,
-            'y': 50,
-            'width': 250,
-            'height': 250,
+            'y': 60,
+            'width': 200,
+            'height': 200,
             'margins': {
               'left': 10,
               'right': 10,
               'bottom': 10,
               'top': 10
             },
-            'cols': [1, 0],
-            'vals': 'dna methylation',
+            'cols': ['sample2','sample1'],
+            'xVal': 'start',
+            'yVal': 'avg',
+            'fills': function() { return palette; },
+            'strokes': function() { return palette; },
             'selectStrokeThickness': 4
           },
           'decorators': {
@@ -264,9 +278,6 @@ epiviz.controllers.Master = function($scope) {
                 'options': {
                   'type': 'y'
                 }
-              },
-              {
-                'cls': 'vs-brushing'
               }
             ]
           }
@@ -277,23 +288,19 @@ epiviz.controllers.Master = function($scope) {
             'type': 'scatterplot'
           },
           'options': {
-            'doubleBuffer': false,
-            'axisBoundaries': {},
-            'x': 270,
-            'y': 50,
-            'width': 250,
-            'height': 250,
+            'x': 220,
+            'y': 60,
+            'width': 200,
+            'height': 200,
             'margins': {
               'left': 10,
               'right': 10,
               'bottom': 10,
               'top': 10
             },
-            'cols': [0, 1],
-            'vals': 'dna methylation',
-            'fill': 'rgba(30,96,212,0.3)',
-            'stroke': 'rgba(30,96,212,1)',
-            'strokeThickness': 1
+            'cols': ['sample2','sample1'],
+            'xVal': 'start',
+            'yVal': 'avg'
           },
           'decorators': {
             'cls': [
@@ -328,9 +335,6 @@ epiviz.controllers.Master = function($scope) {
                 'options': {
                   'type': 'y'
                 }
-              },
-              {
-                'cls': 'vs-brushing'
               }
             ]
           }
@@ -341,29 +345,25 @@ epiviz.controllers.Master = function($scope) {
             'type': 'manhattan'
           },
           'options': {
+            'yBoundaries': {'min': 0, 'max': 30},
             'doubleBuffer': true,
-            //'xBoundaries': {'min': 1000, 'max': 100000},
-            'yBoundaries': {'min': 0, 'max': 10},
-            'x': 530,
-            'y': 50,
+            'x': 430,
+            'y': 60,
             'width': 400,
-            'height': 115,
-            'fill': 'rgba(255,96,50,0.3)',
-            'stroke': 'rgba(255,96,50,1)',
-            'strokeThickness': 1,
-            'itemRatio': 0.03,
-            'selectFill': 'rgba(30,96,212,1)',
-            'selectStroke': '#ff0000',
-            'selectStrokeThickness': 4,
+            'height': 200,
             'margins': {
               'left': 10,
               'right': 10,
               'bottom': 10,
               'top': 10
             },
-            'cols': [0, 1],
-            'vals': 'v0',
-            'rows': ['start', 'end']
+            'cols': ['sample1'],
+            'xVal': 'start',
+            'yVal': 'avg',
+            'fills': function() { return palette; },
+            'strokes': function() { return palette; },
+            'selectStrokeThickness': 4,
+            'itemRatio': 0.03
           },
           'decorators': {
             'cls': [
@@ -398,9 +398,6 @@ epiviz.controllers.Master = function($scope) {
                 'options': {
                   'type': 'y'
                 }
-              },
-              {
-                'cls': 'vs-brushing'
               }
             ]
           }
@@ -411,21 +408,23 @@ epiviz.controllers.Master = function($scope) {
             'type': 'manhattan'
           },
           'options': {
-            'yBoundaries': {'min': 0, 'max': 10},
-            'x': 530,
-            'y': 185,
+            'yBoundaries': {'min': 0, 'max': 30},
+            'x': 430,
+            'y': 290,
             'width': 400,
-            'height': 115,
-            'itemRatio': 0.03,
+            'height': 200,
             'margins': {
               'left': 10,
               'right': 10,
               'bottom': 10,
               'top': 10
             },
-            'cols': [0, 1],
-            'vals': 'v0',
-            'rows': ['start', 'end']
+            'cols': ['sample2'],
+            'xVal': 'start',
+            'yVal': 'avg',
+            'fills': function() { return palette; },
+            'strokes': function() { return palette; },
+            'itemRatio': 0.03
           },
           'decorators': {
             'cls': [
@@ -460,9 +459,6 @@ epiviz.controllers.Master = function($scope) {
                 'options': {
                   'type': 'y'
                 }
-              },
-              {
-                'cls': 'vs-brushing'
               }
             ]
           }
@@ -473,21 +469,20 @@ epiviz.controllers.Master = function($scope) {
             'type': 'heatmap'
           },
           'options': {
-            'xBoundaries': {'min': 1000, 'max': 100000},
-            'yBoundaries': {'min': 0, 'max': 10},
             'x': 10,
-            'y': 320,
-            'width': 500,
-            'height': 400,
+            'y': 290,
+            'width': 400,
+            'height': 200,
             'margins': {
               'left': 10,
               'right': 10,
               'bottom': 10,
               'top': 10
             },
-            'cols': [0, 1, 2, 3, 4, 5],
-            'vals': 'v0',
-            'rows': ['start', 'end'],
+            'yBoundaries': {'min': 0, 'max': 10},
+            'cols': ['sample2','sample1'],
+            'xVal': 'start',
+            'yVal': 'avg',
             'fill': 'rgb(30,96,212)'
           },
           'decorators': {
@@ -497,15 +492,21 @@ epiviz.controllers.Master = function($scope) {
               'vs-movable',
               'vs-loader'
             ],
-            'elem': [
-              {
-                'cls': 'vs-brushing'
-              }
-            ]
+            'elem': []
           }
         }
       ],
-      'data': new vs.models.plugins.BigwigDataSource(
+      'data': [
+        'http://egg2.wustl.edu/roadmap/data/byFileType/signal/consolidated/macs2signal/foldChange/E001-H3K4me1.fc.signal.bigwig',
+        'http://egg2.wustl.edu/roadmap/data/byFileType/signal/consolidated/macs2signal/foldChange/E001-H3K4me3.fc.signal.bigwig',
+        'http://egg2.wustl.edu/roadmap/data/byFileType/signal/consolidated/macs2signal/foldChange/E001-H3K9ac.fc.signal.bigwig',
+        'http://egg2.wustl.edu/roadmap/data/byFileType/signal/consolidated/macs2signal/foldChange/E001-H3K9me3.fc.signal.bigwig',
+        'http://egg2.wustl.edu/roadmap/data/byFileType/signal/consolidated/macs2signal/foldChange/E001-H3K27me3.fc.signal.bigwig',
+        'http://egg2.wustl.edu/roadmap/data/byFileType/signal/consolidated/macs2signal/foldChange/E001-H3K36me3.fc.signal.bigwig'
+       ].map(function(url, i) {
+         return new vs.models.plugins.BigwigDataSource(url, {'initialQuery': initialQuery, 'proxyURL': proxyUrl, 'id': 'sample' + i});
+       })
+      /*'data': new vs.models.plugins.BigwigDataSource(
         [
           'http://egg2.wustl.edu/roadmap/data/byFileType/signal/consolidated/macs2signal/foldChange/E001-H3K4me1.fc.signal.bigwig',
           'http://egg2.wustl.edu/roadmap/data/byFileType/signal/consolidated/macs2signal/foldChange/E001-H3K4me3.fc.signal.bigwig',
@@ -513,12 +514,12 @@ epiviz.controllers.Master = function($scope) {
           'http://egg2.wustl.edu/roadmap/data/byFileType/signal/consolidated/macs2signal/foldChange/E001-H3K9me3.fc.signal.bigwig',
           'http://egg2.wustl.edu/roadmap/data/byFileType/signal/consolidated/macs2signal/foldChange/E001-H3K27me3.fc.signal.bigwig',
           'http://egg2.wustl.edu/roadmap/data/byFileType/signal/consolidated/macs2signal/foldChange/E001-H3K36me3.fc.signal.bigwig'],
-          /*'http://egg2.wustl.edu/roadmap/data/byFileType/signal/consolidated/macs2signal/pval/E001-H3K4me1.pval.signal.bigwig',
+          /!*'http://egg2.wustl.edu/roadmap/data/byFileType/signal/consolidated/macs2signal/pval/E001-H3K4me1.pval.signal.bigwig',
           'http://egg2.wustl.edu/roadmap/data/byFileType/signal/consolidated/macs2signal/pval/E001-H3K4me3.pval.signal.bigwig',
           'http://egg2.wustl.edu/roadmap/data/byFileType/signal/consolidated/macs2signal/pval/E001-H3K9ac.pval.signal.bigwig',
           'http://egg2.wustl.edu/roadmap/data/byFileType/signal/consolidated/macs2signal/pval/E001-H3K9me3.pval.signal.bigwig',
           'http://egg2.wustl.edu/roadmap/data/byFileType/signal/consolidated/macs2signal/pval/E001-H3K27me3.pval.signal.bigwig',
-          'http://egg2.wustl.edu/roadmap/data/byFileType/signal/consolidated/macs2signal/pval/E001-H3K36me3.pval.signal.bigwig'],*/
+          'http://egg2.wustl.edu/roadmap/data/byFileType/signal/consolidated/macs2signal/pval/E001-H3K36me3.pval.signal.bigwig'],*!/
         {
           //'proxyURI': 'http://localhost/bigwig/test/partial.php',
           'proxyURI': 'bower_components/bigwig.js/test/partial.php',
@@ -530,7 +531,7 @@ epiviz.controllers.Master = function($scope) {
             new vs.models.Query({'target': 'rows', 'targetLabel': 'end', 'test': '>=', 'testArgs': '1298894'})
           ]
         }
-      )
+      )*/
       /*'data': u.reflection.wrap({
         /!*'dirty': true,*!/
         'nrows': 51,
@@ -547,7 +548,7 @@ epiviz.controllers.Master = function($scope) {
         ],
         'vals': [
           {
-            'label': 'gwasPval',
+            'label': 'avg',
             'd': [
               // disease1
               0.404408372, 0.803992066, 0.507903609, 0.547426622, 0.871425707, 0.485113325, 0.942985046, 0.80968252, 0.59025104, 0.446705793, 0.367949548, 0.837335724, 0.149008212, 0.815750721, 0.093113352, 0.760738683, 0.930361486, 0.865139848, 0.287298789, 0.345222337, 0.265686873, 0.326640821, 0.780148806, 0.760738683, 0.188583291, 0.545830368, 0.660700041, 0.683667077, 0.568244947, 0.931031203, 0.264302602, 0.272114888, 0.385857376, 0.184553922, 0.931031203, 0.545830368, 0.371864446, 0.345417064, 0.257295141, 0.747021106, 0.156752567, 0.896914644, 0.861281252, 0.039224306, 0.737350595, 0.814257925, 0.47957881, 0.49590813, 0.463224669, 0.468325228, 0.411346765,
@@ -563,7 +564,945 @@ epiviz.controllers.Master = function($scope) {
           new vs.models.Query({'target': 'rows', 'targetLabel': 'end', 'test': '>=', 'testArgs': '233430449'})
         ]
       }, vs.models.DataSource)*/
-    }, vs.ui.DataHandler)
+      /*'data': [
+        u.reflection.wrap({
+          "id": "sample1",
+          "label": "disease1",
+          "state": "static",
+          "rowMetadata": [
+            {
+              "label": "snpid"
+            },
+            {
+              "label": "chr"
+            },
+            {
+              "label": "start",
+              "boundaries": {
+                "min": 233430449,
+                "max": 233517394
+              },
+              "type": "number"
+            },
+            {
+              "label": "end",
+              "boundaries": {
+                "min": 233430449,
+                "max": 233517394
+              },
+              "type": "number"
+            },
+            {
+              "label": "avg",
+              "type": "number",
+              "boundaries": {
+                "min": 0,
+                "max": 1
+              }
+            }
+          ],
+          "d": [
+            /!*{
+             "snpid": "rs114551744",
+             "chr": "chr1",
+             "start": 233430449,
+             "end": 233430449,
+             "avg": 0.404408372,
+             "__d__": "sample1"
+             },*!/
+            {
+              "snpid": "rs10752752",
+              "chr": "chr1",
+              "start": 233430787,
+              "end": 233430787,
+              "avg": 0.803992066,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "rs186333629",
+              "chr": "chr1",
+              "start": 233434167,
+              "end": 233434167,
+              "avg": 0.507903609,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "rs12567310",
+              "chr": "chr1",
+              "start": 233440166,
+              "end": 233440166,
+              "avg": 0.547426622,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "rs192416686",
+              "chr": "chr1",
+              "start": 233445488,
+              "end": 233445488,
+              "avg": 0.871425707,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "rs183897471",
+              "chr": "chr1",
+              "start": 233451557,
+              "end": 233451557,
+              "avg": 0.485113325,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "rs145193745",
+              "chr": "chr1",
+              "start": 233451592,
+              "end": 233451592,
+              "avg": 0.942985046,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "rs186202256",
+              "chr": "chr1",
+              "start": 233454543,
+              "end": 233454543,
+              "avg": 0.80968252,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "rs186081217",
+              "chr": "chr1",
+              "start": 233458743,
+              "end": 233458743,
+              "avg": 0.59025104,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "rs192275158",
+              "chr": "chr1",
+              "start": 233460369,
+              "end": 233460369,
+              "avg": 0.446705793,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "rs72751993",
+              "chr": "chr1",
+              "start": 233468388,
+              "end": 233468388,
+              "avg": 0.367949548,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "rs1294299",
+              "chr": "chr1",
+              "start": 233468950,
+              "end": 233468950,
+              "avg": 0.837335724,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "rs1294287",
+              "chr": "chr1",
+              "start": 233471626,
+              "end": 233471626,
+              "avg": 0.149008212,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "rs183137223",
+              "chr": "chr1",
+              "start": 233472817,
+              "end": 233472817,
+              "avg": 0.815750721,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "rs190017470",
+              "chr": "chr1",
+              "start": 233474525,
+              "end": 233474525,
+              "avg": 0.093113352,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "rs114235520",
+              "chr": "chr1",
+              "start": 233475563,
+              "end": 233475563,
+              "avg": 0.760738683,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "rs149955012",
+              "chr": "chr1",
+              "start": 233476091,
+              "end": 233476091,
+              "avg": 0.930361486,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "rs1294266",
+              "chr": "chr1",
+              "start": 233476263,
+              "end": 233476263,
+              "avg": 0.865139848,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "rs142045052",
+              "chr": "chr1",
+              "start": 233476611,
+              "end": 233476611,
+              "avg": 0.287298789,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "rs75917843",
+              "chr": "chr1",
+              "start": 233477990,
+              "end": 233477990,
+              "avg": 0.345222337,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "rs77516196",
+              "chr": "chr1",
+              "start": 233479122,
+              "end": 233479122,
+              "avg": 0.265686873,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "rs192643817",
+              "chr": "chr1",
+              "start": 233479411,
+              "end": 233479411,
+              "avg": 0.326640821,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "rs148457912",
+              "chr": "chr1",
+              "start": 233480171,
+              "end": 233480171,
+              "avg": 0.780148806,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "rs77061983",
+              "chr": "chr1",
+              "start": 233482035,
+              "end": 233482035,
+              "avg": 0.760738683,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "rs12566188",
+              "chr": "chr1",
+              "start": 233482794,
+              "end": 233482794,
+              "avg": 0.188583291,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "rs190201031",
+              "chr": "chr1",
+              "start": 233485458,
+              "end": 233485458,
+              "avg": 0.545830368,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "rs192453879",
+              "chr": "chr1",
+              "start": 233485758,
+              "end": 233485758,
+              "avg": 0.660700041,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "rs183717127",
+              "chr": "chr1",
+              "start": 233485785,
+              "end": 233485785,
+              "avg": 0.683667077,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "rs148650720",
+              "chr": "chr1",
+              "start": 233488494,
+              "end": 233488494,
+              "avg": 0.568244947,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "rs962786",
+              "chr": "chr1",
+              "start": 233489054,
+              "end": 233489054,
+              "avg": 0.931031203,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "rs185014438",
+              "chr": "chr1",
+              "start": 233490356,
+              "end": 233490356,
+              "avg": 0.264302602,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "chr1:233490543",
+              "chr": "chr1",
+              "start": 233490543,
+              "end": 233490543,
+              "avg": 0.272114888,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "rs143728354",
+              "chr": "chr1",
+              "start": 233490874,
+              "end": 233490874,
+              "avg": 0.385857376,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "rs58507994",
+              "chr": "chr1",
+              "start": 233491638,
+              "end": 233491638,
+              "avg": 0.184553922,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "rs192456647",
+              "chr": "chr1",
+              "start": 233491660,
+              "end": 233491660,
+              "avg": 0.931031203,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "rs4649305",
+              "chr": "chr1",
+              "start": 233491811,
+              "end": 233491811,
+              "avg": 0.545830368,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "rs188603098",
+              "chr": "chr1",
+              "start": 233493514,
+              "end": 233493514,
+              "avg": 0.371864446,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "rs12093733",
+              "chr": "chr1",
+              "start": 233494747,
+              "end": 233494747,
+              "avg": 0.345417064,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "rs183414162",
+              "chr": "chr1",
+              "start": 233498953,
+              "end": 233498953,
+              "avg": 0.257295141,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "rs147666657",
+              "chr": "chr1",
+              "start": 233500924,
+              "end": 233500924,
+              "avg": 0.747021106,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "rs185545182",
+              "chr": "chr1",
+              "start": 233502622,
+              "end": 233502622,
+              "avg": 0.156752567,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "rs187596032",
+              "chr": "chr1",
+              "start": 233504063,
+              "end": 233504063,
+              "avg": 0.896914644,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "rs140818495",
+              "chr": "chr1",
+              "start": 233508441,
+              "end": 233508441,
+              "avg": 0.861281252,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "rs6669125",
+              "chr": "chr1",
+              "start": 233509349,
+              "end": 233509349,
+              "avg": 0.039224306,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "rs12046622",
+              "chr": "chr1",
+              "start": 233510220,
+              "end": 233510220,
+              "avg": 0.737350595,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "rs191178764",
+              "chr": "chr1",
+              "start": 233514010,
+              "end": 233514010,
+              "avg": 0.814257925,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "rs142593417",
+              "chr": "chr1",
+              "start": 233515209,
+              "end": 233515209,
+              "avg": 0.47957881,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "rs12021569",
+              "chr": "chr1",
+              "start": 233516041,
+              "end": 233516041,
+              "avg": 0.49590813,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "rs1294244",
+              "chr": "chr1",
+              "start": 233516495,
+              "end": 233516495,
+              "avg": 0.463224669,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "rs145593563",
+              "chr": "chr1",
+              "start": 233516539,
+              "end": 233516539,
+              "avg": 0.468325228,
+              "__d__": "sample1"
+            },
+            {
+              "snpid": "rs1294240",
+              "chr": "chr1",
+              "start": 233517394,
+              "end": 233517394,
+              "avg": 0.411346765,
+              "__d__": "sample1"
+            }
+          ],
+          "query": [
+            new vs.models.Query({
+              "target": "chr",
+              "test": "==",
+              "testArgs": "chr1"
+            }),
+            new vs.models.Query({
+              "target": "start",
+              "test": "<",
+              "testArgs": "233517394"
+            }),
+            new vs.models.Query({
+              "target": "end",
+              "test": ">=",
+              "testArgs": "233430449"
+            })
+          ],
+          "metadata": {
+            "name": "disease1",
+            "id": 1
+          }
+        }, vs.models.DataSource),
+        u.reflection.wrap({
+          "id": "sample2",
+          "label": "disease2",
+          "state": "static",
+          "rowMetadata": [
+            {
+              "label": "snpid"
+            },
+            {
+              "label": "chr"
+            },
+            {
+              "label": "start",
+              "boundaries": {
+                "min": 233430449,
+                "max": 233517394
+              },
+              "type": "number"
+            },
+            {
+              "label": "end",
+              "boundaries": {
+                "min": 233430449,
+                "max": 233517394
+              },
+              "type": "number"
+            },
+            {
+              "label": "avg",
+              "type": "number",
+              "boundaries": {
+                "min": 0,
+                "max": 1
+              }
+            }
+          ],
+          "d": [
+            {
+              "snpid": "rs114551744",
+              "chr": "chr1",
+              "start": 233430449,
+              "end": 233430449,
+              "avg": 0.882708277,
+              "__d__": "sample2"
+            },
+            /!*{
+             "snpid": "rs10752752",
+             "chr": "chr1",
+             "start": 233430787,
+             "end": 233430787,
+             "avg": 0.382179127,
+             "__d__": "sample2"
+             },*!/
+            {
+              "snpid": "rs186333629",
+              "chr": "chr1",
+              "start": 233434167,
+              "end": 233434167,
+              "avg": 0.004464214,
+              "__d__": "sample2"
+            },
+            {
+              "snpid": "rs12567310",
+              "chr": "chr1",
+              "start": 233440166,
+              "end": 233440166,
+              "avg": 0.956819961,
+              "__d__": "sample2"
+            },
+            {
+              "snpid": "rs192416686",
+              "chr": "chr1",
+              "start": 233445488,
+              "end": 233445488,
+              "avg": 0.63578401,
+              "__d__": "sample2"
+            },
+            {
+              "snpid": "rs183897471",
+              "chr": "chr1",
+              "start": 233451557,
+              "end": 233451557,
+              "avg": 0.006068026,
+              "__d__": "sample2"
+            },
+            {
+              "snpid": "rs145193745",
+              "chr": "chr1",
+              "start": 233451592,
+              "end": 233451592,
+              "avg": 0.011369486,
+              "__d__": "sample2"
+            },
+            {
+              "snpid": "rs186202256",
+              "chr": "chr1",
+              "start": 233454543,
+              "end": 233454543,
+              "avg": 0.849105131,
+              "__d__": "sample2"
+            },
+            {
+              "snpid": "rs186081217",
+              "chr": "chr1",
+              "start": 233458743,
+              "end": 233458743,
+              "avg": 0.045518979,
+              "__d__": "sample2"
+            },
+            {
+              "snpid": "rs192275158",
+              "chr": "chr1",
+              "start": 233460369,
+              "end": 233460369,
+              "avg": 0.073306556,
+              "__d__": "sample2"
+            },
+            {
+              "snpid": "rs72751993",
+              "chr": "chr1",
+              "start": 233468388,
+              "end": 233468388,
+              "avg": 0.355315744,
+              "__d__": "sample2"
+            },
+            {
+              "snpid": "rs1294299",
+              "chr": "chr1",
+              "start": 233468950,
+              "end": 233468950,
+              "avg": 0.836675429,
+              "__d__": "sample2"
+            },
+            {
+              "snpid": "rs1294287",
+              "chr": "chr1",
+              "start": 233471626,
+              "end": 233471626,
+              "avg": 0.247715838,
+              "__d__": "sample2"
+            },
+            {
+              "snpid": "rs183137223",
+              "chr": "chr1",
+              "start": 233472817,
+              "end": 233472817,
+              "avg": 0.878707621,
+              "__d__": "sample2"
+            },
+            {
+              "snpid": "rs190017470",
+              "chr": "chr1",
+              "start": 233474525,
+              "end": 233474525,
+              "avg": 0.17187381,
+              "__d__": "sample2"
+            },
+            {
+              "snpid": "rs114235520",
+              "chr": "chr1",
+              "start": 233475563,
+              "end": 233475563,
+              "avg": 0.975673874,
+              "__d__": "sample2"
+            },
+            {
+              "snpid": "rs149955012",
+              "chr": "chr1",
+              "start": 233476091,
+              "end": 233476091,
+              "avg": 0.040117816,
+              "__d__": "sample2"
+            },
+            {
+              "snpid": "rs1294266",
+              "chr": "chr1",
+              "start": 233476263,
+              "end": 233476263,
+              "avg": 0.814716033,
+              "__d__": "sample2"
+            },
+            {
+              "snpid": "rs142045052",
+              "chr": "chr1",
+              "start": 233476611,
+              "end": 233476611,
+              "avg": 0.252212106,
+              "__d__": "sample2"
+            },
+            {
+              "snpid": "rs75917843",
+              "chr": "chr1",
+              "start": 233477990,
+              "end": 233477990,
+              "avg": 0.250706362,
+              "__d__": "sample2"
+            },
+            {
+              "snpid": "rs77516196",
+              "chr": "chr1",
+              "start": 233479122,
+              "end": 233479122,
+              "avg": 0.240120589,
+              "__d__": "sample2"
+            },
+            {
+              "snpid": "rs192643817",
+              "chr": "chr1",
+              "start": 233479411,
+              "end": 233479411,
+              "avg": 0.213638592,
+              "__d__": "sample2"
+            },
+            {
+              "snpid": "rs148457912",
+              "chr": "chr1",
+              "start": 233480171,
+              "end": 233480171,
+              "avg": 0.950169885,
+              "__d__": "sample2"
+            },
+            {
+              "snpid": "rs77061983",
+              "chr": "chr1",
+              "start": 233482035,
+              "end": 233482035,
+              "avg": 0.975673874,
+              "__d__": "sample2"
+            },
+            {
+              "snpid": "rs12566188",
+              "chr": "chr1",
+              "start": 233482794,
+              "end": 233482794,
+              "avg": 0.02665442,
+              "__d__": "sample2"
+            },
+            {
+              "snpid": "rs190201031",
+              "chr": "chr1",
+              "start": 233485458,
+              "end": 233485458,
+              "avg": 0.732943237,
+              "__d__": "sample2"
+            },
+            {
+              "snpid": "rs192453879",
+              "chr": "chr1",
+              "start": 233485758,
+              "end": 233485758,
+              "avg": 0.835452127,
+              "__d__": "sample2"
+            },
+            {
+              "snpid": "rs183717127",
+              "chr": "chr1",
+              "start": 233485785,
+              "end": 233485785,
+              "avg": 0.292697145,
+              "__d__": "sample2"
+            },
+            {
+              "snpid": "rs148650720",
+              "chr": "chr1",
+              "start": 233488494,
+              "end": 233488494,
+              "avg": 0.803356351,
+              "__d__": "sample2"
+            },
+            {
+              "snpid": "rs962786",
+              "chr": "chr1",
+              "start": 233489054,
+              "end": 233489054,
+              "avg": 0.570762048,
+              "__d__": "sample2"
+            },
+            {
+              "snpid": "rs185014438",
+              "chr": "chr1",
+              "start": 233490356,
+              "end": 233490356,
+              "avg": 0.25849114,
+              "__d__": "sample2"
+            },
+            {
+              "snpid": "chr1:233490543",
+              "chr": "chr1",
+              "start": 233490543,
+              "end": 233490543,
+              "avg": 0.389962194,
+              "__d__": "sample2"
+            },
+            {
+              "snpid": "rs143728354",
+              "chr": "chr1",
+              "start": 233490874,
+              "end": 233490874,
+              "avg": 0.677604718,
+              "__d__": "sample2"
+            },
+            {
+              "snpid": "rs58507994",
+              "chr": "chr1",
+              "start": 233491638,
+              "end": 233491638,
+              "avg": 0.135996401,
+              "__d__": "sample2"
+            },
+            {
+              "snpid": "rs192456647",
+              "chr": "chr1",
+              "start": 233491660,
+              "end": 233491660,
+              "avg": 0.570762048,
+              "__d__": "sample2"
+            },
+            {
+              "snpid": "rs4649305",
+              "chr": "chr1",
+              "start": 233491811,
+              "end": 233491811,
+              "avg": 0.732943237,
+              "__d__": "sample2"
+            },
+            {
+              "snpid": "rs188603098",
+              "chr": "chr1",
+              "start": 233493514,
+              "end": 233493514,
+              "avg": 0.206626417,
+              "__d__": "sample2"
+            },
+            {
+              "snpid": "rs12093733",
+              "chr": "chr1",
+              "start": 233494747,
+              "end": 233494747,
+              "avg": 0.746734601,
+              "__d__": "sample2"
+            },
+            {
+              "snpid": "rs183414162",
+              "chr": "chr1",
+              "start": 233498953,
+              "end": 233498953,
+              "avg": 0.140132017,
+              "__d__": "sample2"
+            },
+            {
+              "snpid": "rs147666657",
+              "chr": "chr1",
+              "start": 233500924,
+              "end": 233500924,
+              "avg": 0.417547526,
+              "__d__": "sample2"
+            },
+            {
+              "snpid": "rs185545182",
+              "chr": "chr1",
+              "start": 233502622,
+              "end": 233502622,
+              "avg": 0.991532188,
+              "__d__": "sample2"
+            },
+            {
+              "snpid": "rs187596032",
+              "chr": "chr1",
+              "start": 233504063,
+              "end": 233504063,
+              "avg": 0.690396282,
+              "__d__": "sample2"
+            },
+            {
+              "snpid": "rs140818495",
+              "chr": "chr1",
+              "start": 233508441,
+              "end": 233508441,
+              "avg": 0.179808891,
+              "__d__": "sample2"
+            },
+            {
+              "snpid": "rs6669125",
+              "chr": "chr1",
+              "start": 233509349,
+              "end": 233509349,
+              "avg": 0.99351707,
+              "__d__": "sample2"
+            },
+            {
+              "snpid": "rs12046622",
+              "chr": "chr1",
+              "start": 233510220,
+              "end": 233510220,
+              "avg": 0.588622432,
+              "__d__": "sample2"
+            },
+            {
+              "snpid": "rs191178764",
+              "chr": "chr1",
+              "start": 233514010,
+              "end": 233514010,
+              "avg": 0.032090482,
+              "__d__": "sample2"
+            },
+            {
+              "snpid": "rs142593417",
+              "chr": "chr1",
+              "start": 233515209,
+              "end": 233515209,
+              "avg": 0.478861261,
+              "__d__": "sample2"
+            },
+            {
+              "snpid": "rs12021569",
+              "chr": "chr1",
+              "start": 233516041,
+              "end": 233516041,
+              "avg": 0.441972278,
+              "__d__": "sample2"
+            },
+            {
+              "snpid": "rs1294244",
+              "chr": "chr1",
+              "start": 233516495,
+              "end": 233516495,
+              "avg": 0.402009328,
+              "__d__": "sample2"
+            },
+            {
+              "snpid": "rs145593563",
+              "chr": "chr1",
+              "start": 233516539,
+              "end": 233516539,
+              "avg": 0.502378328,
+              "__d__": "sample2"
+            },
+            {
+              "snpid": "rs1294240",
+              "chr": "chr1",
+              "start": 233517394,
+              "end": 233517394,
+              "avg": 0.289511637,
+              "__d__": "sample2"
+            }
+          ],
+          "query": [
+            new vs.models.Query({
+              "target": "chr",
+              "test": "==",
+              "testArgs": "chr1"
+            }),
+            new vs.models.Query({
+              "target": "start",
+              "test": "<",
+              "testArgs": "233517394"
+            }),
+            new vs.models.Query({
+              "target": "end",
+              "test": ">=",
+              "testArgs": "233430449"
+            })
+          ],
+          "metadata": {
+            "name": "disease2",
+            "id": 2
+          }
+        }, vs.models.DataSource)
+      ]*/
+    }, /** @type {function(new:vs.ui.DataHandler)} */ (vs.ui.DataHandler))
   ];
 
   /**
@@ -827,10 +1766,31 @@ epiviz.main.config(['configurationProvider', function(configuration) {
   })
 }]);
 
+epiviz.main.config(['linkProvider', /** @param {vs.linking.LinkProvider} linkProvider */ function(linkProvider) {
+  var snpLink = function(d1, objects1, d2) {
+    // Can be done faster
+    return u.fast.concat(u.fast.map(objects1, function(o) {
+      return u.fast.filter(d2.d, function (item) {
+        return item.chr == o.chr && item.start < o.end && item.end > o.start;
+      });
+    }));
+  };
+
+  for (var i = 0; i < 6 - 1; ++i) {
+    for (var j = i+1; j < 6; ++j) {
+      linkProvider.register('sample' + i, 'sample' + j, snpLink);
+      linkProvider.register('sample' + j, 'sample' + i, snpLink);
+    }
+  }
+
+  /*linkProvider.register('sample1', 'sample2', snpLink);
+  linkProvider.register('sample2', 'sample1', snpLink);*/
+}]);
+
 epiviz.main.controller('epiviz.controllers.Master', ['$scope', function($scope) {
-  return u.reflection.applyConstructor(epiviz.controllers.Master, arguments);
+  return u.reflection.applyConstructor(/** @type {function (new:epiviz.controllers.Master)} */ (epiviz.controllers.Master), arguments);
 }]);
 
 epiviz.main.controller('epiviz.controllers.DataContext', ['$scope', function($scope) {
-  return u.reflection.applyConstructor(epiviz.controllers.DataContext, arguments);
+  return u.reflection.applyConstructor(/** @type {function (new:epiviz.controllers.DataContext)} */ (epiviz.controllers.DataContext), arguments);
 }]);
