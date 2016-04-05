@@ -315,7 +315,7 @@ u.log.error = function(args) {};
 
 /**
  * @param {Array|Object.<number|string, *>} obj
- * @param {function((number|string), *)} callback
+ * @param {function((number|string), *)|Function} callback
  * @returns {Array|Object}
  */
 u.each = function(obj, callback) {};
@@ -410,6 +410,49 @@ u.rgb2hex = function(r, g, b) {};
  * @returns {string}
  */
 u.hex2rgba = function(hex, alpha) {};
+
+
+/**
+ * Copyright (c) 2009-2016, Alexis Sellier <self@cloudhead.net>
+ * See for details: https://github.com/less/less.js
+ * @param {string} hex
+ * @returns {{h: number, s: number, l: number}}
+ */
+u.hex2hsl = function(hex) {};
+
+/**
+ * Copyright (c) 2009-2016, Alexis Sellier <self@cloudhead.net>
+ * See for details: https://github.com/less/less.js
+ * @param {{h:number, s:number, l:number}} hsl
+ * @returns {{r: number, g: number, b: number}}
+ */
+u.hsl2rgb = function(hsl) {};
+
+/**
+ * @param {{h:number, s:number, l:number}} hsl
+ * @returns {string}
+ */
+u.hsl2hex = function(hsl) {};
+
+/**
+ * Copyright (c) 2009-2016, Alexis Sellier <self@cloudhead.net>
+ * See for details: https://github.com/less/less.js
+ * @param {string} hex
+ * @param {number} pc Percent
+ * @returns {string}
+ */
+u.lighten = function (hex, pc) {};
+
+/**
+ * Copyright (c) 2009-2016, Alexis Sellier <self@cloudhead.net>
+ * See for details: https://github.com/less/less.js
+ * @param {string} hex
+ * @param {number} pc Percent
+ * @returns {string}
+ */
+u.darken = function (hex, pc) {};
+
+
 
 /**
  * @param {number} milliseconds Must be positive
@@ -515,6 +558,16 @@ u.QuadTree.prototype.overlaps = function(x, y, w, h) {};
 u.QuadTree.prototype.leaves = function() {};
 
 /**
+ * @returns {Array}
+ */
+u.QuadTree.prototype.values = function() {};
+
+/**
+ * @returns {Array.<{x: number, y: number, w: number, h: number, value: *}>}
+ */
+u.QuadTree.prototype.items = function() {};
+
+/**
  * @param {number} x
  * @param {number} y
  * @param {number} size
@@ -537,7 +590,7 @@ u.fast = {};
 
 /**
  * @param {Array} arr
- * @param {function(*, (number|undefined)): *} callback
+ * @param {function(*, (number|undefined)): *|Function} callback
  * @returns {!Array}
  */
 u.fast.map = function(arr, callback) {};
@@ -550,14 +603,14 @@ u.fast.concat = function(arrays) {};
 
 /**
  * @param {Array} arr
- * @param {function(*, (number|undefined)): boolean} predicate
+ * @param {function(*, (number|undefined)): boolean|Function} predicate
  * @returns {!Array}
  */
 u.fast.filter = function(arr, predicate) {};
 
 /**
  * @param {Array} arr
- * @param {function((*|undefined), (number|undefined), (Array|undefined))} callback
+ * @param {function((*|undefined)=, (number|undefined)=, (Array|undefined)=)|Function} callback
  * @param {*} [thisArg]
  */
 u.fast.forEach = function(arr, callback, thisArg) {};

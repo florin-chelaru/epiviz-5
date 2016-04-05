@@ -6,6 +6,9 @@
 
 goog.provide('epiviz');
 
+goog.require('ngu');
+goog.require('ngb');
+
 goog.require('epiviz.Configuration');
 goog.require('epiviz.controllers.Master');
 goog.require('epiviz.controllers.DataContext');
@@ -72,6 +75,10 @@ epiviz.main.controller('epiviz.controllers.Master', ['$scope', function($scope) 
   return u.reflection.applyConstructor(/** @type {function (new:epiviz.controllers.Master)} */ (epiviz.controllers.Master), arguments);
 }]);
 
-epiviz.main.controller('epiviz.controllers.DataContext', ['$scope', function($scope) {
+epiviz.main.controller('epiviz.controllers.DataContext', ['$scope', '$ngbModal', function($scope) {
   return u.reflection.applyConstructor(/** @type {function (new:epiviz.controllers.DataContext)} */ (epiviz.controllers.DataContext), arguments);
+}]);
+
+epiviz.main.controller('epiviz.controllers.AddVisualization', ['$scope', '$uibModalInstance', '$ngbAnimation', 'bodyTemplateUrl', 'options', 'dataHandler', 'configuration', function() {
+  return u.reflection.applyConstructor(/** @type {function(new: epiviz.controllers.AddVisualization)} */ (epiviz.controllers.AddVisualization), arguments);
 }]);

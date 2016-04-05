@@ -96,7 +96,7 @@ epiviz.controllers.Master = function($scope) {
             ]
           }
         },*/
-        {
+        /*{
           'construct': {
             'render': 'svg',
             'type': 'scatterplot'
@@ -154,7 +154,7 @@ epiviz.controllers.Master = function($scope) {
               }
             ]
           }
-        },
+        },*/
         /*
         {
           'construct': {
@@ -219,7 +219,7 @@ epiviz.controllers.Master = function($scope) {
             ]
           }
         },*/
-        {
+        /*{
           'construct': {
             'render': 'svg',
             'type': 'manhattan'
@@ -281,7 +281,8 @@ epiviz.controllers.Master = function($scope) {
               }
             ]
           }
-        }/*,
+        }*/
+        /*,
         {
           'construct': {
             'render': 'svg',

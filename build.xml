@@ -3,16 +3,17 @@
   <property name="rootpath" value="."/>
   <property name="rootdir" location="${rootpath}"/>
   <property name="level" value="ADVANCED_OPTIMIZATIONS"/>
-  <property name="src" value="${rootpath}/src"/>
   <property name="compiler" value="${rootpath}/bower_components/closure-compiler/lib/vendor/compiler.jar"/>
-  <property name="closure_src"
-            value="${rootpath}/bower_components/google-closure-library/closure/goog"/>
-  <property name="closure_tp_src"
-            value="${rootpath}/bower_components/google-closure-library/third_party/closure/goog"/>
-  <property name="depswriter"
-            value="${rootpath}/bower_components/google-closure-library/closure/bin/build/depswriter.py"/>
-  <property name="closurebuilder"
-            value="${rootpath}/bower_components/google-closure-library/closure/bin/build/closurebuilder.py"/>
+
+  <property name="src" value="${rootpath}/src"/>
+  <property name="closure_src" value="${rootpath}/bower_components/google-closure-library/closure/goog"/>
+  <property name="closure_tp_src" value="${rootpath}/bower_components/google-closure-library/third_party/closure/goog"/>
+
+  <property name="ngu_src" value="${rootpath}/bower_components/ng-utils/src/ngu"/>
+  <property name="ngb_src" value="${rootpath}/bower_components/ng-bootstrap-controls/src/ngb"/>
+
+  <property name="depswriter" value="${rootpath}/bower_components/google-closure-library/closure/bin/build/depswriter.py"/>
+  <property name="closurebuilder" value="${rootpath}/bower_components/google-closure-library/closure/bin/build/closurebuilder.py"/>
   <property name="depend" value="deps.js" />
   <property name="export" value="${rootpath}/export"/>
   <property name="externs" value="${rootpath}/externs"/>
@@ -38,6 +39,8 @@
       <arg line="${closurebuilder}"/>
       <arg line="--root=&quot;${closure_src}&quot;"/>
       <arg line="--root=&quot;${closure_tp_src}&quot;"/>
+      <arg line="--root=&quot;${ngu_src}&quot;"/>
+      <arg line="--root=&quot;${ngb_src}&quot;"/>
       <arg line="--root=&quot;${src}&quot;"/>
       <arg line="--namespace=&quot;epiviz&quot;"/>
       <redirector outputproperty="srcfiles" errorproperty="depserr">
@@ -59,6 +62,8 @@
       <arg line="${closurebuilder}"/>
       <arg line="--root=&quot;${closure_src}&quot;"/>
       <arg line="--root=&quot;${closure_tp_src}&quot;"/>
+      <arg line="--root=&quot;${ngu_src}&quot;"/>
+      <arg line="--root=&quot;${ngb_src}&quot;"/>
       <arg line="--root=&quot;${src}&quot;"/>
       <arg line="--namespace=&quot;epiviz&quot;"/>
       <redirector outputproperty="libfiles" errorproperty="depserr">

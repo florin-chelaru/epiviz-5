@@ -20,6 +20,8 @@
 
 goog.provide('epiviz.Configuration');
 
+goog.require('ngu.Configuration');
+
 /**
  * @constructor
  * @extends {ngu.Configuration}
@@ -33,17 +35,197 @@ goog.inherits(epiviz.Configuration, ngu.Configuration);
 Object.defineProperties(epiviz.Configuration.prototype, {});
 
 
+goog.provide('epiviz.controllers.AddVisualization');
+
+goog.require('ngb.s.ModalController');
+
+/**
+ * @param {angular.Scope} $scope
+ * @param {{result: angular.$q.Promise, opened: angular.$q.Promise, closed: angular.$q.Promise, rendered: angular.$q.Promise, close: Function, dismiss: Function}} $uibModalInstance
+ * @param {angular.$q.Deferred} $ngbAnimation
+ * @param {string} bodyTemplateUrl
+ * @param {{headerTemplateUrl: string, footerTemplateUrl: string, title: string, loaderClass: string, sendMessage: (Function|undefined), fixed: boolean}} options
+ * @param {vs.ui.DataHandler} dataHandler
+ * @param {vs.Configuration} config
+ * @constructor
+ * @extends {ngb.s.ModalController}
+ */
+epiviz.controllers.AddVisualization = function ($scope, $uibModalInstance, $ngbAnimation, bodyTemplateUrl, options, dataHandler, config) {
+  ngb.s.ModalController.apply(this, arguments);
+
+  /**
+   * @type {vs.ui.DataHandler}
+   * @private
+   */
+  this._dataHandler = dataHandler;
+
+  /**
+   * @type {vs.Configuration}
+   * @private
+   */
+  this._config = config;
+
+  /**
+   * @type {string|null}
+   * @private
+   */
+  this._selectedVis = null;
+
+  /**
+   * @type {null}
+   * @private
+   */
+  this._selectedRenderEngine = null;
+
+  /**
+   * @type {Object.<string, *>}
+   * @private
+   */
+  this._selectedVisOptions = null;
+
+  /**
+   * @type {Object.<string, vs.ui.Setting>}
+   * @private
+   */
+  this._selectedVisSettings = null;
+
+  /**
+   * @type {Object.<string, angular.NgModelController>}
+   * @private
+   */
+  this._form = {};
+};
+
+goog.inherits(epiviz.controllers.AddVisualization, ngb.s.ModalController);
+
+Object.defineProperties(epiviz.controllers.AddVisualization.prototype, {
+  'visualizations': {
+    get: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function () {
+      return Object.keys(this._config['options']['visualizations']);
+    })
+  },
+  'selectedVis': {
+    get: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function () {
+      return this._selectedVis || this['visualizations'][0];
+    }),
+    set: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function (value) {
+      this._selectedVis = value;
+
+      this._selectedVisOptions = null;
+    })
+  },
+
+  'renderEngines': {
+    get: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function () {
+      return Object.keys(this._config['options']['visualizations'][this['selectedVis']]).filter(function(r) { return r != 'default'; });
+    })
+  },
+
+  'selectedRenderEngine': {
+    get: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function () {
+      var engines = this._config['options']['visualizations'][this['selectedVis']];
+
+      if (!this._selectedRenderEngine || !(this._selectedRenderEngine in engines)) {
+        if ('default' in engines) {
+          this._selectedRenderEngine = engines['default'];
+        } else {
+          this._selectedRenderEngine = engines[Object.keys(engines)[0]];
+        }
+      }
+
+      return this._selectedRenderEngine;
+    }),
+    set: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function (value) {
+      this._selectedRenderEngine = value;
+
+      this._selectedVisOptions = null;
+    })
+  },
+
+  'selectedVisSettings': {
+    get: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function () {
+      this.calcSelectedVisSettings();
+
+      return this._selectedVisSettings;
+    })
+  },
+
+  'selectedVisOptions': {
+    get: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function () {
+      this.calcSelectedVisSettings();
+
+      return this._selectedVisOptions;
+    })
+  },
+
+  'form': {
+    get: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function () {
+      return this._form;
+    }),
+    set: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function (value) {
+      this._form = value;
+    })
+  },
+
+  'footerButtons': {
+    get: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function () {
+      var self = this;
+      var $modalInstance = this['$modalInstance'];
+      return [
+        {
+          'label': 'Ok',
+          'click': function() { $modalInstance['close']({ 'visualization': self['selectedVis'], 'engine': self['selectedRenderEngine'], 'options': self['selectedVisOptions']}); },
+          'disabled': function() { return false; },
+          'class': 'btn-primary'
+        },
+        {
+          'label': 'Cancel',
+          'click': function() { $modalInstance['dismiss']('cancel'); },
+          'class': 'btn-default',
+          'disabled': function() { return false; }
+        }
+      ];
+    })
+  }
+});
+
+epiviz.controllers.AddVisualization.prototype.calcSelectedVisSettings = function() {
+  if (!this._selectedVisOptions) {
+    var visClassStr = this._config['options']['visualizations'][this['selectedVis']][this['selectedRenderEngine']];
+    var visClass = u.reflection.evaluateFullyQualifiedTypeName(visClassStr);
+    var settings = visClass ? visClass['Settings'] : {};
+    var opts = {};
+
+    var dataHandler = this._dataHandler;
+    u.each(settings, function(k, setting) {
+      opts[k] = setting.getValue(opts, null, dataHandler.data, settings);
+    });
+
+    this._selectedVisOptions = opts;
+    this._selectedVisSettings = settings;
+  }
+};
+
+
 goog.provide('epiviz.controllers.DataContext');
 
+goog.require('epiviz.controllers.AddVisualization');
 goog.require('goog.string.format');
 
 /**
  * @param {angular.Scope} $scope
+ * @param {ngb.s.Modal} $ngbModal
  * @constructor
  * @extends {ngu.Controller}
  */
-epiviz.controllers.DataContext = function($scope) {
+epiviz.controllers.DataContext = function($scope, $ngbModal) {
   ngu.Controller.apply(this, arguments);
+
+  /**
+   * @type {ngb.s.Modal}
+   * @private
+   */
+  this._$modal = $ngbModal;
 
   /**
    * @type {vs.ui.DataHandler}
@@ -190,6 +372,88 @@ epiviz.controllers.DataContext.prototype.mousedown = function(e) {
   this._$window.trigger(new $.Event('mousedown', {'target': this._$window[0], 'originalEvent': e, 'pageX': e.pageX, 'pageY': e.pageY}));
 };
 
+epiviz.controllers.DataContext.prototype.addVis = function() {
+  var self = this;
+  var $scope = this['$scope'];
+  var h = this._dataHandler;
+  var dlg = {
+    'size': 'lg',
+    'animation': true,
+
+    'bodyTemplateUrl': 'res/templates/_add-vis.html',
+    //'headerTemplateUrl': 'res/html/_user-profile-header.html',
+    //'footerTemplateUrl': 'res/html/_login-footer.html',
+    'title': 'Add visualization',
+    'loaderClass': 'tf-loader',// tf-loader is not defined, which means we don't use a loader
+    'fixed': false,
+    'useFooterInputText': false,
+    'controller': 'epiviz.controllers.AddVisualization',
+    'controllerAs': 'addVis',
+    'resolve': {
+      'dataHandler': function() { return h; }
+    }
+  };
+
+  var modalInstance = this._$modal.open(dlg);
+  modalInstance.result.then(
+    /**
+     * @param {{visualization: string, engine: string, options: Object.<string, *>}} r
+     */
+    function(r) {
+      // TODO
+      // $scope.$emit('addVis', r);
+      // console.log(r.visualization, r.engine, r.options);
+      self._dataHandler.visualizations.push({
+        'construct': {
+          'render': r['engine'],
+          'type': r['visualization']
+        },
+        'options': u.extend({'x': 50, 'y': 50}, r['options']),
+        'decorators': {
+          'cls': [
+            'vs-window',
+            'vs-resizable',
+            'vs-movable',
+            'vs-loader'
+          ],
+          'elem': [
+            /*{
+              'cls': 'vs-axis',
+              'options': {
+                'type': 'x',
+                'ticks': 10,
+                'label': 'true'
+              }
+            },
+            {
+              'cls': 'vs-axis',
+              'options': {
+                'type': 'y',
+                'label': 'true'
+              }
+            },
+            {
+              'cls': 'vs-grid',
+              'options': {
+                'type': 'x',
+                'ticks': 10
+              }
+            },
+            {
+              'cls': 'vs-grid',
+              'options': {
+                'type': 'y'
+              }
+            }*/
+          ]
+        }
+      })
+    }, function () {
+      console.info('Modal dismissed at: ' + new Date());
+    });
+
+};
+
 
 goog.provide('epiviz.controllers.Master');
 
@@ -283,7 +547,7 @@ epiviz.controllers.Master = function($scope) {
             ]
           }
         },*/
-        {
+        /*{
           'construct': {
             'render': 'svg',
             'type': 'scatterplot'
@@ -341,7 +605,7 @@ epiviz.controllers.Master = function($scope) {
               }
             ]
           }
-        },
+        },*/
         /*
         {
           'construct': {
@@ -406,7 +670,7 @@ epiviz.controllers.Master = function($scope) {
             ]
           }
         },*/
-        {
+        /*{
           'construct': {
             'render': 'svg',
             'type': 'manhattan'
@@ -468,7 +732,8 @@ epiviz.controllers.Master = function($scope) {
               }
             ]
           }
-        }/*,
+        }*/
+        /*,
         {
           'construct': {
             'render': 'svg',
@@ -1731,6 +1996,9 @@ epiviz.controllers.Master.prototype.selectAllGroups = function() {
 
 goog.provide('epiviz');
 
+goog.require('ngu');
+goog.require('ngb');
+
 goog.require('epiviz.Configuration');
 goog.require('epiviz.controllers.Master');
 goog.require('epiviz.controllers.DataContext');
@@ -1797,6 +2065,10 @@ epiviz.main.controller('epiviz.controllers.Master', ['$scope', function($scope) 
   return u.reflection.applyConstructor(/** @type {function (new:epiviz.controllers.Master)} */ (epiviz.controllers.Master), arguments);
 }]);
 
-epiviz.main.controller('epiviz.controllers.DataContext', ['$scope', function($scope) {
+epiviz.main.controller('epiviz.controllers.DataContext', ['$scope', '$ngbModal', function($scope) {
   return u.reflection.applyConstructor(/** @type {function (new:epiviz.controllers.DataContext)} */ (epiviz.controllers.DataContext), arguments);
+}]);
+
+epiviz.main.controller('epiviz.controllers.AddVisualization', ['$scope', '$uibModalInstance', '$ngbAnimation', 'bodyTemplateUrl', 'options', 'dataHandler', 'configuration', function() {
+  return u.reflection.applyConstructor(/** @type {function(new: epiviz.controllers.AddVisualization)} */ (epiviz.controllers.AddVisualization), arguments);
 }]);

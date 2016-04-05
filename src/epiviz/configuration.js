@@ -6,6 +6,8 @@
 
 goog.provide('epiviz.Configuration');
 
+goog.require('ngu.Configuration');
+
 /**
  * @constructor
  * @extends {ngu.Configuration}

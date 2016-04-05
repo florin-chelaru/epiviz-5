@@ -1,0 +1,83 @@
+@import (reference,less) "../../bower_components/bootstrap/less/mixins.less";
+
+@ez-edit-width: 350px;
+@ez-edit-height: 70px;
+@ez-edit-margin-v: 20px;
+@ez-edit-margin-h: 40px;
+@ez-edit-padding-v: 5px;
+@ez-edit-padding-h: 0px;
+
+.ez-edit-position {
+  position: relative;
+  width: @ez-edit-width + 4 * (@ez-edit-padding-h + @ez-edit-margin-h);
+  padding: @ez-edit-padding-v @ez-edit-padding-h;
+  margin: @ez-edit-margin-v 0;
+
+  background-color: #b8d2eb;
+
+  font-size: 12px;
+
+  input[type=text],
+  input[type=number] {
+    border: 0;
+    text-align: center;
+    width: 40px;
+  }
+}
+
+.ez-edit-margins {
+  position: relative;
+  width: @ez-edit-width + 2 * (@ez-edit-padding-h + @ez-edit-margin-h);
+  margin: @ez-edit-margin-v @ez-edit-margin-h;
+  padding: @ez-edit-padding-v @ez-edit-padding-h;
+
+  background-color: #f2aeac;
+}
+
+.ez-edit-size {
+  position: relative;
+  width: @ez-edit-width;
+  height: @ez-edit-height;
+  margin: @ez-edit-margin-v @ez-edit-margin-h;
+  padding: @ez-edit-padding-v @ez-edit-padding-h;
+
+  background-color: #d8e4aa;
+}
+
+.ez-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  .translate(-50%, -50%);
+}
+
+.ez-center-left {
+  position: absolute;
+  top: 50%;
+  left: @ez-edit-margin-h / 2;
+  .translate(-50%, -50%);
+}
+.ez-center-bottom {
+  position: absolute;
+  bottom: @ez-edit-padding-v;
+  left: 50%;
+  .translate(-50%, 0);
+}
+.ez-center-right {
+  position: absolute;
+  right: @ez-edit-margin-h / 2;
+  top: 50%;
+  .translate(50%, -50%);
+}
+.ez-center-top {
+  position: absolute;
+  top: @ez-edit-padding-v;
+  left: 50%;
+  .translate(-50%, 0);
+}
+
+.ez-top-left {
+  position: absolute;
+  top: @ez-edit-padding-v;
+  left: @ez-edit-padding-v;
+}

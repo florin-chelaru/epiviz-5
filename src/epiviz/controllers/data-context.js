@@ -6,15 +6,23 @@
 
 goog.provide('epiviz.controllers.DataContext');
 
+goog.require('epiviz.controllers.AddVisualization');
 goog.require('goog.string.format');
 
 /**
  * @param {angular.Scope} $scope
+ * @param {ngb.s.Modal} $ngbModal
  * @constructor
  * @extends {ngu.Controller}
  */
-epiviz.controllers.DataContext = function($scope) {
+epiviz.controllers.DataContext = function($scope, $ngbModal) {
   ngu.Controller.apply(this, arguments);
+
+  /**
+   * @type {ngb.s.Modal}
+   * @private
+   */
+  this._$modal = $ngbModal;
 
   /**
    * @type {vs.ui.DataHandler}
@@ -159,4 +167,86 @@ epiviz.controllers.DataContext.prototype.zoomIn = function() {
 
 epiviz.controllers.DataContext.prototype.mousedown = function(e) {
   this._$window.trigger(new $.Event('mousedown', {'target': this._$window[0], 'originalEvent': e, 'pageX': e.pageX, 'pageY': e.pageY}));
+};
+
+epiviz.controllers.DataContext.prototype.addVis = function() {
+  var self = this;
+  var $scope = this['$scope'];
+  var h = this._dataHandler;
+  var dlg = {
+    'size': 'lg',
+    'animation': true,
+
+    'bodyTemplateUrl': 'res/templates/_add-vis.html',
+    //'headerTemplateUrl': 'res/html/_user-profile-header.html',
+    //'footerTemplateUrl': 'res/html/_login-footer.html',
+    'title': 'Add visualization',
+    'loaderClass': 'tf-loader',// tf-loader is not defined, which means we don't use a loader
+    'fixed': false,
+    'useFooterInputText': false,
+    'controller': 'epiviz.controllers.AddVisualization',
+    'controllerAs': 'addVis',
+    'resolve': {
+      'dataHandler': function() { return h; }
+    }
+  };
+
+  var modalInstance = this._$modal.open(dlg);
+  modalInstance.result.then(
+    /**
+     * @param {{visualization: string, engine: string, options: Object.<string, *>}} r
+     */
+    function(r) {
+      // TODO
+      // $scope.$emit('addVis', r);
+      // console.log(r.visualization, r.engine, r.options);
+      self._dataHandler.visualizations.push({
+        'construct': {
+          'render': r['engine'],
+          'type': r['visualization']
+        },
+        'options': u.extend({'x': 50, 'y': 50}, r['options']),
+        'decorators': {
+          'cls': [
+            'vs-window',
+            'vs-resizable',
+            'vs-movable',
+            'vs-loader'
+          ],
+          'elem': [
+            /*{
+              'cls': 'vs-axis',
+              'options': {
+                'type': 'x',
+                'ticks': 10,
+                'label': 'true'
+              }
+            },
+            {
+              'cls': 'vs-axis',
+              'options': {
+                'type': 'y',
+                'label': 'true'
+              }
+            },
+            {
+              'cls': 'vs-grid',
+              'options': {
+                'type': 'x',
+                'ticks': 10
+              }
+            },
+            {
+              'cls': 'vs-grid',
+              'options': {
+                'type': 'y'
+              }
+            }*/
+          ]
+        }
+      })
+    }, function () {
+      console.info('Modal dismissed at: ' + new Date());
+    });
+
 };

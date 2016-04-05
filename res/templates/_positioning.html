@@ -1,0 +1,60 @@
+<div class="ez-edit-position">
+  <span class="ez-top-left">position</span>
+  <a href="" class="ez-center-top" ng-show="!addVis.editTop" ng-click="addVis.editTop = true;">{{ addVis.selectedVisOptions.y }}px</a>
+  <input type="number" class="ez-center-top" autofocus
+         ng-show="addVis.editTop"
+         ng-model="addVis.selectedVisOptions.y"
+         ng-keyup="$event.keyCode == 13 && (addVis.editTop = false)" />
+
+  <a href="" class="ez-center-left" ng-show="!addVis.editLeft" ng-click="addVis.editLeft = true;">{{ addVis.selectedVisOptions.x }}px</a>
+  <input type="number" class="ez-center-left" autofocus
+         ng-show="addVis.editLeft"
+         ng-model="addVis.selectedVisOptions.x"
+         ng-keyup="$event.keyCode == 13 && (addVis.editLeft = false)" />
+
+  <div class="ez-edit-margins">
+    <span class="ez-top-left">margins</span>
+
+    <a href="" class="ez-center-top" ng-show="!addVis.editTopMargin" ng-click="addVis.editTopMargin = true;">{{ addVis.selectedVisOptions.margins.top }}px</a>
+    <input type="number" class="ez-center-top" autofocus
+           ng-show="addVis.editTopMargin"
+           ng-model="addVis.selectedVisOptions.margins.top"
+           ng-keyup="$event.keyCode == 13 && (addVis.editTopMargin = false)" />
+
+    <a href="" class="ez-center-left" ng-show="!addVis.editLeftMargin" ng-click="addVis.editLeftMargin = true;">{{ addVis.selectedVisOptions.margins.left }}px</a>
+    <input type="number" class="ez-center-left" autofocus
+           ng-show="addVis.editLeftMargin"
+           ng-model="addVis.selectedVisOptions.margins.left"
+           ng-keyup="$event.keyCode == 13 && (addVis.editLeftMargin = false)" />
+
+    <a href="" class="ez-center-bottom" ng-show="!addVis.editBottomMargin" ng-click="addVis.editBottomMargin = true;">{{ addVis.selectedVisOptions.margins.bottom }}px</a>
+    <input type="number" class="ez-center-bottom" autofocus
+           ng-show="addVis.editBottomMargin"
+           ng-model="addVis.selectedVisOptions.margins.bottom"
+           ng-keyup="$event.keyCode == 13 && (addVis.editBottomMargin = false)" />
+
+    <a href="" class="ez-center-right" ng-show="!addVis.editRightMargin" ng-click="addVis.editRightMargin = true;">{{ addVis.selectedVisOptions.margins.right }}px</a>
+    <input type="number" class="ez-center-right" autofocus
+           ng-show="addVis.editRightMargin"
+           ng-model="addVis.selectedVisOptions.margins.right"
+           ng-keyup="$event.keyCode == 13 && (addVis.editRightMargin = false)" />
+
+    <div class="ez-edit-size">
+      <span class="ez-top-left">size</span>
+
+      <span class="ez-center">
+        <a href="" ng-show="!addVis.editWidth" ng-click="addVis.editWidth = true;">{{ addVis.selectedVisOptions.width }}px</a>
+        <input type="number" autofocus
+               ng-show="addVis.editWidth"
+               ng-model="addVis.selectedVisOptions.width"
+               ng-keyup="$event.keyCode == 13 && (addVis.editWidth = false)" />
+        ×
+        <a href="" ng-show="!addVis.editHeight" ng-click="addVis.editHeight = true;">{{ addVis.selectedVisOptions.height }}px</a>
+        <input type="number" autofocus
+               ng-show="addVis.editHeight"
+               ng-model="addVis.selectedVisOptions.height"
+               ng-keyup="$event.keyCode == 13 && (addVis.editHeight = false)" />
+      </span>
+    </div>
+  </div>
+</div>

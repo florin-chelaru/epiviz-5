@@ -2,12 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="80ec56e4-01a3-4f57-ab9b-635059d01241" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/externs/google_maps_api_v3_24.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/css/positioning.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/templates/_add-vis.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/templates/_positioning.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/templates/_string.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/epiviz/controllers/add-visualization.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/externs/ng-utils.externs.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower.json" afterPath="$PROJECT_DIR$/bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.xml" afterPath="$PROJECT_DIR$/build.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/deps.js" afterPath="$PROJECT_DIR$/deps.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/epiviz.css" afterPath="$PROJECT_DIR$/epiviz.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/epiviz.js" afterPath="$PROJECT_DIR$/epiviz.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/epiviz.less" afterPath="$PROJECT_DIR$/epiviz.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/epiviz.min.css" afterPath="$PROJECT_DIR$/epiviz.min.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/epiviz.min.js" afterPath="$PROJECT_DIR$/epiviz.min.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/epiviz.min.js.map" afterPath="$PROJECT_DIR$/epiviz.min.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/externs/utils.externs.js" afterPath="$PROJECT_DIR$/externs/utils.externs.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index-local-min.html" afterPath="$PROJECT_DIR$/index-local-min.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index-local.html" afterPath="$PROJECT_DIR$/index-local.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index-min.html" afterPath="$PROJECT_DIR$/index-min.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/templates/_data-context-nav.html" afterPath="$PROJECT_DIR$/res/templates/_data-context-nav.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/epiviz/configuration.js" afterPath="$PROJECT_DIR$/src/epiviz/configuration.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/epiviz/controllers/data-context.js" afterPath="$PROJECT_DIR$/src/epiviz/controllers/data-context.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/epiviz/controllers/master.js" afterPath="$PROJECT_DIR$/src/epiviz/controllers/master.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/epiviz/epiviz.js" afterPath="$PROJECT_DIR$/src/epiviz/epiviz.js" />
     </list>
     <ignored path="epiviz-5.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,239 +47,97 @@
     <favorites_list name="epiviz-5" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.49067432">
+    <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/index.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-24.846153">
-                  <caret line="38" column="64" selection-start-line="38" selection-start-column="64" selection-end-line="38" selection-end-column="64" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="svg-axis.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/bower_components/vis.js/src/vs/ui/svg/svg-axis.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="epiviz.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/epiviz/epiviz.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="75" column="132" selection-start-line="75" selection-start-column="132" selection-end-line="75" selection-end-column="132" />
-                  <folding>
-                    <element signature="e#0#118#0" expanded="false" />
-                    <element signature="e#706#842#0" expanded="false" />
-                    <element signature="e#863#1003#0" expanded="false" />
-                    <element signature="e#1022#1100#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="vis.externs.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/externs/vis.externs.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="configuration.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/epiviz/configuration.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="13" column="43" selection-start-line="13" selection-start-column="43" selection-end-line="13" selection-end-column="43" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="master.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/epiviz/controllers/master.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="299" column="14" selection-start-line="299" selection-start-column="14" selection-end-line="299" selection-end-column="14" />
-                  <folding>
-                    <element signature="e#0#118#0" expanded="false" />
-                    <element signature="e#164#249#0" expanded="false" />
-                    <element signature="e#952#2553#0" expanded="false" />
-                    <element signature="e#9041#11400#0" expanded="false" />
-                    <element signature="e#11407#16170#0" expanded="false" />
-                    <element signature="e#47031#47074#0" expanded="false" />
-                    <element signature="e#47108#47192#0" expanded="false" />
-                    <element signature="e#47229#47272#0" expanded="false" />
-                    <element signature="e#47298#47341#0" expanded="false" />
-                    <element signature="e#47368#47441#0" expanded="false" />
-                    <element signature="e#47512#47586#0" expanded="false" />
-                    <element signature="e#47892#47935#0" expanded="false" />
-                    <element signature="e#47965#48049#0" expanded="false" />
-                    <element signature="e#48142#48234#0" expanded="false" />
-                    <element signature="e#48286#48362#0" expanded="false" />
-                    <element signature="e#48417#48518#0" expanded="false" />
-                    <element signature="e#48568#48686#0" expanded="false" />
-                    <element signature="e#48805#50599#0" expanded="false" />
-                    <element signature="e#48825#48940#0" expanded="false" />
-                    <element signature="e#48836#48892#0" expanded="false" />
-                    <element signature="e#48959#49209#0" expanded="false" />
-                    <element signature="e#48970#49026#0" expanded="false" />
-                    <element signature="e#49040#49078#0" expanded="false" />
-                    <element signature="e#49090#49146#0" expanded="false" />
-                    <element signature="e#49165#49204#0" expanded="false" />
-                    <element signature="e#49233#49493#0" expanded="false" />
-                    <element signature="e#49244#49300#0" expanded="false" />
-                    <element signature="e#49314#49357#0" expanded="false" />
-                    <element signature="e#49369#49425#0" expanded="false" />
-                    <element signature="e#49444#49488#0" expanded="false" />
-                    <element signature="e#49520#49786#0" expanded="false" />
-                    <element signature="e#49531#49587#0" expanded="false" />
-                    <element signature="e#49601#49647#0" expanded="false" />
-                    <element signature="e#49659#49715#0" expanded="false" />
-                    <element signature="e#49734#49781#0" expanded="false" />
-                    <element signature="e#49801#50043#0" expanded="false" />
-                    <element signature="e#49812#49868#0" expanded="false" />
-                    <element signature="e#49882#49916#0" expanded="false" />
-                    <element signature="e#49928#49984#0" expanded="false" />
-                    <element signature="e#50003#50038#0" expanded="false" />
-                    <element signature="e#50063#50315#0" expanded="false" />
-                    <element signature="e#50074#50130#0" expanded="false" />
-                    <element signature="e#50144#50183#0" expanded="false" />
-                    <element signature="e#50195#50251#0" expanded="false" />
-                    <element signature="e#50270#50310#0" expanded="false" />
-                    <element signature="e#50338#50596#0" expanded="false" />
-                    <element signature="e#50349#50405#0" expanded="false" />
-                    <element signature="e#50419#50461#0" expanded="false" />
-                    <element signature="e#50473#50529#0" expanded="false" />
-                    <element signature="e#50548#50591#0" expanded="false" />
-                    <element signature="e#50603#50632#0" expanded="false" />
-                    <element signature="e#50701#50911#0" expanded="false" />
-                    <element signature="e#50764#50787#0" expanded="false" />
-                    <element signature="e#50914#50921#0" expanded="false" />
-                    <element signature="e#50991#51112#0" expanded="false" />
-                    <element signature="e#51115#51144#0" expanded="false" />
-                    <element signature="e#51209#51228#0" expanded="false" />
-                    <element signature="e#51231#51238#0" expanded="false" />
-                    <element signature="e#51304#51414#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="bower-master.json" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/bower-master.json">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.3567393">
-                  <caret line="26" column="87" selection-start-line="26" selection-start-column="87" selection-end-line="26" selection-end-column="87" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="vs.models.plugins.externs.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/externs/vs.models.plugins.externs.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="12" column="69" selection-start-line="12" selection-start-column="69" selection-end-line="12" selection-end-column="69" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="master.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/export/controllers/master.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="data-context.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/epiviz/controllers/data-context.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="87" column="38" selection-start-line="87" selection-start-column="38" selection-end-line="87" selection-end-column="38" />
+                  <caret line="207" column="46" selection-start-line="207" selection-start-column="46" selection-end-line="207" selection-end-column="46" />
                   <folding>
-                    <element signature="e#1262#1336#0" expanded="false" />
-                    <element signature="e#1474#1535#0" expanded="false" />
-                    <element signature="e#1588#1822#0" expanded="false" />
-                    <element signature="e#1599#1660#0" expanded="false" />
-                    <element signature="e#1711#1772#0" expanded="false" />
-                    <element signature="e#2952#2979#0" expanded="false" />
-                    <element signature="e#3443#3470#0" expanded="false" />
-                    <element signature="e#4602#4629#0" expanded="false" />
-                    <element signature="e#4699#4839#0" expanded="false" />
+                    <element signature="e#1440#1514#0" expanded="false" />
+                    <element signature="e#1652#1713#0" expanded="false" />
+                    <element signature="e#1766#2000#0" expanded="false" />
+                    <element signature="e#1777#1838#0" expanded="false" />
+                    <element signature="e#1889#1950#0" expanded="false" />
+                    <element signature="e#3130#3157#0" expanded="false" />
+                    <element signature="e#3621#3648#0" expanded="false" />
+                    <element signature="e#4780#4807#0" expanded="false" />
+                    <element signature="e#4877#5017#0" expanded="false" />
+                    <element signature="e#6434#7102#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="deps.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/deps.js">
+          <file leaf-file-name="add-visualization.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/epiviz/controllers/add-visualization.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="2" column="73" selection-start-line="2" selection-start-column="73" selection-end-line="2" selection-end-column="73" />
+                <state vertical-scroll-proportion="0.7095199">
+                  <caret line="269" column="19" selection-start-line="269" selection-start-column="19" selection-end-line="269" selection-end-column="19" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="epiviz.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/epiviz.js">
+          <file leaf-file-name="_positioning.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/res/templates/_positioning.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+                <state vertical-scroll-proportion="-36.615383">
+                  <caret line="56" column="13" selection-start-line="56" selection-start-column="13" selection-end-line="56" selection-end-column="13" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="data-context.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/export/controllers/data-context.js">
+          <file leaf-file-name="common.rnc" pinned="false" current-in-tab="false">
+            <entry file="jar://$APPLICATION_HOME_DIR$/lib/phpstorm.jar!/resources/html5-schema/html5/common.rnc">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="13" column="127" selection-start-line="13" selection-start-column="127" selection-end-line="13" selection-end-column="127" />
+                  <caret line="126" column="14" selection-start-line="126" selection-start-column="14" selection-end-line="126" selection-end-column="14" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="_master.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/res/templates/_master.html">
+          <file leaf-file-name="_string.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/res/templates/_string.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-17.0">
-                  <caret line="26" column="6" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
+                <state vertical-scroll-proportion="-0.65384614">
+                  <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="_data-context-nav.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/res/templates/_data-context-nav.html">
+          <file leaf-file-name="_add-vis.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/res/templates/_add-vis.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="12" column="12" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
+                <state vertical-scroll-proportion="-12.423077">
+                  <caret line="19" column="53" selection-start-line="19" selection-start-column="53" selection-end-line="19" selection-end-column="53" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="epiviz.less" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/epiviz.less">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="-1.3076923">
+                  <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="epiviz.css" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/epiviz.css">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="-0.0">
+                  <caret line="78" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
                   <folding>
-                    <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#a#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#ul#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#ul#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+                    <marker date="1459891563375" expanded="true" signature="129:162" placeholder="{...}" />
                   </folding>
                 </state>
               </provider>
@@ -268,28 +146,56 @@
           <file leaf-file-name="index-local.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/index-local.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-22.884615">
-                  <caret line="35" column="30" selection-start-line="35" selection-start-column="30" selection-end-line="35" selection-end-column="30" />
+                <state vertical-scroll-proportion="-4.018182">
+                  <caret line="13" column="28" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="index-min.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/index-min.html">
+          <file leaf-file-name="positioning.less" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/res/css/positioning.less">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-9.807693">
-                  <caret line="15" column="55" selection-start-line="15" selection-start-column="55" selection-end-line="15" selection-end-column="55" />
-                  <folding />
+                <state vertical-scroll-proportion="-3.2692308">
+                  <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
+                  <folding>
+                    <marker date="1459891563048" expanded="true" signature="1052:1128" placeholder="{...}" />
+                    <marker date="1459891563048" expanded="true" signature="1478:1566" placeholder="{...}" />
+                    <marker date="1459891563048" expanded="true" signature="1581:1661" placeholder="{...}" />
+                  </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="bower.json" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/bower.json">
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="data-context.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/epiviz/controllers/data-context.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.3292978">
-                  <caret line="24" column="98" selection-start-line="24" selection-start-column="98" selection-end-line="24" selection-end-column="98" />
+                <state vertical-scroll-proportion="0.21155411">
+                  <caret line="145" column="21" selection-start-line="145" selection-start-column="21" selection-end-line="145" selection-end-column="21" />
+                  <folding>
+                    <element signature="e#1440#1514#0" expanded="false" />
+                    <element signature="e#1652#1713#0" expanded="false" />
+                    <element signature="e#1766#2000#0" expanded="false" />
+                    <element signature="e#1777#1838#0" expanded="false" />
+                    <element signature="e#1889#1950#0" expanded="false" />
+                    <element signature="e#3130#3157#0" expanded="false" />
+                    <element signature="e#3621#3648#0" expanded="false" />
+                    <element signature="e#4780#4807#0" expanded="false" />
+                    <element signature="e#4877#5017#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="configuration.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/epiviz/configuration.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="8" column="34" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
                   <folding />
                 </state>
               </provider>
@@ -304,6 +210,7 @@
       <list>
         <option value="JavaScript File" />
         <option value="Html5" />
+        <option value="HTML File" />
         <option value="Less File" />
       </list>
     </option>
@@ -320,7 +227,6 @@
         <option value="$PROJECT_DIR$/LICENSE" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/epiviz/controllers/main.js" />
-        <option value="$PROJECT_DIR$/build.xml" />
         <option value="$PROJECT_DIR$/deps.js" />
         <option value="$PROJECT_DIR$/bower_components/vis.js/vis.js" />
         <option value="$PROJECT_DIR$/export/epiviz.js" />
@@ -331,24 +237,30 @@
         <option value="$PROJECT_DIR$/externs/vis.externs.js" />
         <option value="$PROJECT_DIR$/epiviz.js" />
         <option value="$PROJECT_DIR$/test.json" />
-        <option value="$PROJECT_DIR$/epiviz.less" />
         <option value="$PROJECT_DIR$/res/css/data-context-nav.less" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/epigenomes" />
         <option value="$PROJECT_DIR$/export/controllers/master.js" />
-        <option value="$PROJECT_DIR$/res/templates/_data-context-nav.html" />
-        <option value="$PROJECT_DIR$/src/epiviz/configuration.js" />
-        <option value="$PROJECT_DIR$/index-local.html" />
-        <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/index-local-min.html" />
         <option value="$PROJECT_DIR$/externs/vs.models.plugins.externs.js" />
         <option value="$PROJECT_DIR$/res/templates/_master.html" />
-        <option value="$PROJECT_DIR$/src/epiviz/controllers/data-context.js" />
-        <option value="$PROJECT_DIR$/src/epiviz/epiviz.js" />
-        <option value="$PROJECT_DIR$/index-min.html" />
-        <option value="$PROJECT_DIR$/src/epiviz/controllers/master.js" />
         <option value="$PROJECT_DIR$/bower_components/vis.js/src/vs/ui/svg/svg-axis.js" />
         <option value="$PROJECT_DIR$/bower.json" />
+        <option value="$PROJECT_DIR$/res/templates/_data-context-nav.html" />
+        <option value="$PROJECT_DIR$/build.xml" />
+        <option value="$PROJECT_DIR$/src/epiviz/epiviz.js" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/index-local-min.html" />
+        <option value="$PROJECT_DIR$/index-min.html" />
+        <option value="$PROJECT_DIR$/src/epiviz/configuration.js" />
+        <option value="$PROJECT_DIR$/src/epiviz/controllers/master.js" />
+        <option value="$PROJECT_DIR$/src/epiviz/controllers/data-context.js" />
+        <option value="$PROJECT_DIR$/res/templates/_string.html" />
+        <option value="$PROJECT_DIR$/epiviz.less" />
+        <option value="$PROJECT_DIR$/index-local.html" />
+        <option value="$PROJECT_DIR$/res/css/positioning.less" />
+        <option value="$PROJECT_DIR$/res/templates/_positioning.html" />
+        <option value="$PROJECT_DIR$/res/templates/_add-vis.html" />
+        <option value="$PROJECT_DIR$/src/epiviz/controllers/add-visualization.js" />
       </list>
     </option>
   </component>
@@ -367,8 +279,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="2572" />
-    <option name="height" value="1452" />
+    <option name="width" value="2576" />
+    <option name="height" value="1416" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -395,6 +307,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -573,7 +486,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="vis.js" />
+              <option name="myItemId" value="font-awesome" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -591,15 +504,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="vis.js" />
+              <option name="myItemId" value="font-awesome" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vs" />
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -617,19 +526,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="vis.js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
+              <option name="myItemId" value="bootstrap" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -647,99 +544,22 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="vis.js" />
+              <option name="myItemId" value="bootstrap" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="svg" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="epiviz-5" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="epiviz-5" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bower_components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vis.js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="decorators" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="epiviz-5" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="epiviz-5" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bower_components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vis.js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="linking" />
+              <option name="myItemId" value="less" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../epiviz-data-api" />
-    <property name="DefaultHtmlFileTemplate" value="Html5" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SearchEverywhereHistoryKey" value="ma&#9;FILE&#9;file://C:/mit/git/epiviz-5/src/epiviz/controllers/master.js" />
     <property name="js-jscs-nodeInterpreter" value="C:\nodejs\node.exe" />
     <property name="settings.editor.selected.configurable" value="watcher.settings" />
@@ -748,10 +568,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\mit\git\epiviz-5" />
       <recent name="C:\mit\git\epiviz-5\externs" />
+      <recent name="C:\mit\git\epiviz-5\src\epiviz\controllers" />
+      <recent name="C:\mit\git\epiviz-5\res\templates" />
+      <recent name="C:\mit\git\epiviz-5" />
       <recent name="C:\mit\git\epiviz-5\export" />
-      <recent name="C:\mit\git\epiviz-5\src\epiviz" />
     </key>
   </component>
   <component name="RunManager">
@@ -783,25 +604,25 @@
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="2572" height="1452" extended-state="0" />
+    <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17048146" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17021276" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34765315" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293556" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3481717" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -820,95 +641,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/externs/vs.models.plugins.externs.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/epiviz/configuration.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/epiviz/controllers/master.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="43" selection-start-line="13" selection-start-column="43" selection-end-line="13" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#118#0" expanded="false" />
-            <element signature="e#164#249#0" expanded="false" />
-            <element signature="e#952#2553#0" expanded="false" />
-            <element signature="e#9041#11400#0" expanded="false" />
-            <element signature="e#11407#16170#0" expanded="false" />
-            <element signature="e#47031#47074#0" expanded="false" />
-            <element signature="e#47108#47192#0" expanded="false" />
-            <element signature="e#47229#47272#0" expanded="false" />
-            <element signature="e#47298#47341#0" expanded="false" />
-            <element signature="e#47368#47441#0" expanded="false" />
-            <element signature="e#47512#47586#0" expanded="false" />
-            <element signature="e#47892#47935#0" expanded="false" />
-            <element signature="e#47965#48049#0" expanded="false" />
-            <element signature="e#48142#48234#0" expanded="false" />
-            <element signature="e#48286#48362#0" expanded="false" />
-            <element signature="e#48417#48518#0" expanded="false" />
-            <element signature="e#48568#48686#0" expanded="false" />
-            <element signature="e#48805#50599#0" expanded="false" />
-            <element signature="e#48825#48940#0" expanded="false" />
-            <element signature="e#48836#48892#0" expanded="false" />
-            <element signature="e#48959#49209#0" expanded="false" />
-            <element signature="e#48970#49026#0" expanded="false" />
-            <element signature="e#49040#49078#0" expanded="false" />
-            <element signature="e#49090#49146#0" expanded="false" />
-            <element signature="e#49165#49204#0" expanded="false" />
-            <element signature="e#49233#49493#0" expanded="false" />
-            <element signature="e#49244#49300#0" expanded="false" />
-            <element signature="e#49314#49357#0" expanded="false" />
-            <element signature="e#49369#49425#0" expanded="false" />
-            <element signature="e#49444#49488#0" expanded="false" />
-            <element signature="e#49520#49786#0" expanded="false" />
-            <element signature="e#49531#49587#0" expanded="false" />
-            <element signature="e#49601#49647#0" expanded="false" />
-            <element signature="e#49659#49715#0" expanded="false" />
-            <element signature="e#49734#49781#0" expanded="false" />
-            <element signature="e#49801#50043#0" expanded="false" />
-            <element signature="e#49812#49868#0" expanded="false" />
-            <element signature="e#49882#49916#0" expanded="false" />
-            <element signature="e#49928#49984#0" expanded="false" />
-            <element signature="e#50003#50038#0" expanded="false" />
-            <element signature="e#50063#50315#0" expanded="false" />
-            <element signature="e#50074#50130#0" expanded="false" />
-            <element signature="e#50144#50183#0" expanded="false" />
-            <element signature="e#50195#50251#0" expanded="false" />
-            <element signature="e#50270#50310#0" expanded="false" />
-            <element signature="e#50338#50596#0" expanded="false" />
-            <element signature="e#50349#50405#0" expanded="false" />
-            <element signature="e#50419#50461#0" expanded="false" />
-            <element signature="e#50473#50529#0" expanded="false" />
-            <element signature="e#50548#50591#0" expanded="false" />
-            <element signature="e#50603#50632#0" expanded="false" />
-            <element signature="e#50701#50911#0" expanded="false" />
-            <element signature="e#50764#50787#0" expanded="false" />
-            <element signature="e#50914#50921#0" expanded="false" />
-            <element signature="e#50991#51112#0" expanded="false" />
-            <element signature="e#51115#51144#0" expanded="false" />
-            <element signature="e#51209#51228#0" expanded="false" />
-            <element signature="e#51231#51238#0" expanded="false" />
-            <element signature="e#51304#51414#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bower_components/zlib.js/bin/zlib.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web.config">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -927,13 +659,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.6296296">
           <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="62" column="41" selection-start-line="62" selection-start-column="41" selection-end-line="62" selection-end-column="41" />
         </state>
       </provider>
     </entry>
@@ -994,40 +719,19 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/epiviz.min.js.map">
+      <provider editor-type-id="sourcemapFileViewerProvider">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.2108696">
           <caret line="6" column="1901" selection-start-line="6" selection-start-column="1901" selection-end-line="6" selection-end-column="1901" />
         </state>
-      </provider>
-      <provider editor-type-id="sourcemapFileViewerProvider">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/epiviz.min.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/epiviz.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/epiviz.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1052,31 +756,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/css/data-context-nav.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="1" selection-start-line="0" selection-start-column="1" selection-end-line="0" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/templates/_data-context-nav.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="12" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#ul#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#ul#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/deps.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="73" selection-start-line="2" selection-start-column="73" selection-end-line="2" selection-end-column="73" />
+          <caret line="3" column="73" selection-start-line="3" selection-start-column="73" selection-end-line="3" selection-end-column="73" />
           <folding />
         </state>
       </provider>
@@ -1089,19 +772,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/externs/ng-utils.externs.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/export/configuration.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="64" selection-start-line="7" selection-start-column="64" selection-end-line="7" selection-end-column="64" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1110,21 +784,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index-local-min.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="77" selection-start-line="19" selection-start-column="77" selection-end-line="19" selection-end-column="77" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/externs/utils.externs.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.24878049">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1152,7 +811,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/export/controllers/master.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.16707617">
           <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding />
         </state>
@@ -1160,7 +819,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/res/templates/_master.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.0">
+        <state vertical-scroll-proportion="0.0">
           <caret line="26" column="6" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
           <folding />
         </state>
@@ -1174,129 +833,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/epiviz/controllers/data-context.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="87" column="38" selection-start-line="87" selection-start-column="38" selection-end-line="87" selection-end-column="38" />
-          <folding>
-            <element signature="e#1262#1336#0" expanded="false" />
-            <element signature="e#1474#1535#0" expanded="false" />
-            <element signature="e#1588#1822#0" expanded="false" />
-            <element signature="e#1599#1660#0" expanded="false" />
-            <element signature="e#1711#1772#0" expanded="false" />
-            <element signature="e#2952#2979#0" expanded="false" />
-            <element signature="e#3443#3470#0" expanded="false" />
-            <element signature="e#4602#4629#0" expanded="false" />
-            <element signature="e#4699#4839#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index-local.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-22.884615">
-          <caret line="35" column="30" selection-start-line="35" selection-start-column="30" selection-end-line="35" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index-min.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.807693">
-          <caret line="15" column="55" selection-start-line="15" selection-start-column="55" selection-end-line="15" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/epiviz/configuration.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="43" selection-start-line="13" selection-start-column="43" selection-end-line="13" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/epiviz/epiviz.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="75" column="132" selection-start-line="75" selection-start-column="132" selection-end-line="75" selection-end-column="132" />
-          <folding>
-            <element signature="e#0#118#0" expanded="false" />
-            <element signature="e#706#842#0" expanded="false" />
-            <element signature="e#863#1003#0" expanded="false" />
-            <element signature="e#1022#1100#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/epiviz/controllers/master.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="299" column="14" selection-start-line="299" selection-start-column="14" selection-end-line="299" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#118#0" expanded="false" />
-            <element signature="e#164#249#0" expanded="false" />
-            <element signature="e#952#2553#0" expanded="false" />
-            <element signature="e#9041#11400#0" expanded="false" />
-            <element signature="e#11407#16170#0" expanded="false" />
-            <element signature="e#47031#47074#0" expanded="false" />
-            <element signature="e#47108#47192#0" expanded="false" />
-            <element signature="e#47229#47272#0" expanded="false" />
-            <element signature="e#47298#47341#0" expanded="false" />
-            <element signature="e#47368#47441#0" expanded="false" />
-            <element signature="e#47512#47586#0" expanded="false" />
-            <element signature="e#47892#47935#0" expanded="false" />
-            <element signature="e#47965#48049#0" expanded="false" />
-            <element signature="e#48142#48234#0" expanded="false" />
-            <element signature="e#48286#48362#0" expanded="false" />
-            <element signature="e#48417#48518#0" expanded="false" />
-            <element signature="e#48568#48686#0" expanded="false" />
-            <element signature="e#48805#50599#0" expanded="false" />
-            <element signature="e#48825#48940#0" expanded="false" />
-            <element signature="e#48836#48892#0" expanded="false" />
-            <element signature="e#48959#49209#0" expanded="false" />
-            <element signature="e#48970#49026#0" expanded="false" />
-            <element signature="e#49040#49078#0" expanded="false" />
-            <element signature="e#49090#49146#0" expanded="false" />
-            <element signature="e#49165#49204#0" expanded="false" />
-            <element signature="e#49233#49493#0" expanded="false" />
-            <element signature="e#49244#49300#0" expanded="false" />
-            <element signature="e#49314#49357#0" expanded="false" />
-            <element signature="e#49369#49425#0" expanded="false" />
-            <element signature="e#49444#49488#0" expanded="false" />
-            <element signature="e#49520#49786#0" expanded="false" />
-            <element signature="e#49531#49587#0" expanded="false" />
-            <element signature="e#49601#49647#0" expanded="false" />
-            <element signature="e#49659#49715#0" expanded="false" />
-            <element signature="e#49734#49781#0" expanded="false" />
-            <element signature="e#49801#50043#0" expanded="false" />
-            <element signature="e#49812#49868#0" expanded="false" />
-            <element signature="e#49882#49916#0" expanded="false" />
-            <element signature="e#49928#49984#0" expanded="false" />
-            <element signature="e#50003#50038#0" expanded="false" />
-            <element signature="e#50063#50315#0" expanded="false" />
-            <element signature="e#50074#50130#0" expanded="false" />
-            <element signature="e#50144#50183#0" expanded="false" />
-            <element signature="e#50195#50251#0" expanded="false" />
-            <element signature="e#50270#50310#0" expanded="false" />
-            <element signature="e#50338#50596#0" expanded="false" />
-            <element signature="e#50349#50405#0" expanded="false" />
-            <element signature="e#50419#50461#0" expanded="false" />
-            <element signature="e#50473#50529#0" expanded="false" />
-            <element signature="e#50548#50591#0" expanded="false" />
-            <element signature="e#50603#50632#0" expanded="false" />
-            <element signature="e#50701#50911#0" expanded="false" />
-            <element signature="e#50764#50787#0" expanded="false" />
-            <element signature="e#50914#50921#0" expanded="false" />
-            <element signature="e#50991#51112#0" expanded="false" />
-            <element signature="e#51115#51144#0" expanded="false" />
-            <element signature="e#51209#51228#0" expanded="false" />
-            <element signature="e#51231#51238#0" expanded="false" />
-            <element signature="e#51304#51414#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bower_components/vis.js/src/vs/ui/svg/svg-axis.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1305,26 +841,285 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
+    <entry file="file://$PROJECT_DIR$/bower-master.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-24.846153">
-          <caret line="38" column="64" selection-start-line="38" selection-start-column="64" selection-end-line="38" selection-end-column="64" />
+        <state vertical-scroll-proportion="0.36987448">
+          <caret line="26" column="87" selection-start-line="26" selection-start-column="87" selection-end-line="26" selection-end-column="87" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bower.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3292978">
-          <caret line="24" column="98" selection-start-line="24" selection-start-column="98" selection-end-line="24" selection-end-column="98" />
+        <state vertical-scroll-proportion="-22.23077">
+          <caret line="34" column="35" selection-start-line="34" selection-start-column="34" selection-end-line="34" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bower-master.json">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3567393">
-          <caret line="26" column="87" selection-start-line="26" selection-start-column="87" selection-end-line="26" selection-end-column="87" />
+        <state vertical-scroll-proportion="0.041769043">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/templates/_data-context-nav.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.076923">
+          <caret line="20" column="82" selection-start-line="20" selection-start-column="82" selection-end-line="20" selection-end-column="82" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#a#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#ul#0;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#ul#1;n#div#0;n#div#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.076923">
+          <caret line="65" column="49" selection-start-line="65" selection-start-column="49" selection-end-line="65" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/externs/google_maps_api_v3_24.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/epiviz/epiviz.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="77" column="80" selection-start-line="77" selection-start-column="80" selection-end-line="77" selection-end-column="80" />
+          <folding>
+            <element signature="e#0#118#0" expanded="false" />
+            <element signature="e#749#885#0" expanded="false" />
+            <element signature="e#906#1046#0" expanded="false" />
+            <element signature="e#1065#1143#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.423077">
+          <caret line="19" column="81" selection-start-line="19" selection-start-column="81" selection-end-line="19" selection-end-column="81" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index-local-min.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.423077">
+          <caret line="19" column="85" selection-start-line="19" selection-start-column="85" selection-end-line="19" selection-end-column="85" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index-min.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.423077">
+          <caret line="19" column="85" selection-start-line="19" selection-start-column="85" selection-end-line="19" selection-end-column="85" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/epiviz/configuration.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="34" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bower_components/vis.js/src/vs/ui/data-handler.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/epiviz/controllers/master.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="7.62069">
+          <caret line="326" column="103" selection-start-line="326" selection-start-column="103" selection-end-line="326" selection-end-column="103" />
+          <folding>
+            <element signature="e#0#118#0" expanded="false" />
+            <element signature="e#164#249#0" expanded="false" />
+            <element signature="e#952#2553#0" expanded="false" />
+            <element signature="e#3991#5604#0" expanded="false" />
+            <element signature="e#7232#8069#0" expanded="false" />
+            <element signature="e#9058#11417#0" expanded="false" />
+            <element signature="e#11424#16187#0" expanded="false" />
+            <element signature="e#16194#42497#0" expanded="false" />
+            <element signature="e#47048#47091#0" expanded="false" />
+            <element signature="e#47125#47209#0" expanded="false" />
+            <element signature="e#47246#47289#0" expanded="false" />
+            <element signature="e#47315#47358#0" expanded="false" />
+            <element signature="e#47385#47458#0" expanded="false" />
+            <element signature="e#47529#47603#0" expanded="false" />
+            <element signature="e#47909#47952#0" expanded="false" />
+            <element signature="e#47982#48066#0" expanded="false" />
+            <element signature="e#48159#48251#0" expanded="false" />
+            <element signature="e#48303#48379#0" expanded="false" />
+            <element signature="e#48434#48535#0" expanded="false" />
+            <element signature="e#48585#48703#0" expanded="false" />
+            <element signature="e#48822#50616#0" expanded="false" />
+            <element signature="e#48842#48957#0" expanded="false" />
+            <element signature="e#48853#48909#0" expanded="false" />
+            <element signature="e#48976#49226#0" expanded="false" />
+            <element signature="e#48987#49043#0" expanded="false" />
+            <element signature="e#49057#49095#0" expanded="false" />
+            <element signature="e#49107#49163#0" expanded="false" />
+            <element signature="e#49182#49221#0" expanded="false" />
+            <element signature="e#49250#49510#0" expanded="false" />
+            <element signature="e#49261#49317#0" expanded="false" />
+            <element signature="e#49331#49374#0" expanded="false" />
+            <element signature="e#49386#49442#0" expanded="false" />
+            <element signature="e#49461#49505#0" expanded="false" />
+            <element signature="e#49537#49803#0" expanded="false" />
+            <element signature="e#49548#49604#0" expanded="false" />
+            <element signature="e#49618#49664#0" expanded="false" />
+            <element signature="e#49676#49732#0" expanded="false" />
+            <element signature="e#49751#49798#0" expanded="false" />
+            <element signature="e#49818#50060#0" expanded="false" />
+            <element signature="e#49829#49885#0" expanded="false" />
+            <element signature="e#49899#49933#0" expanded="false" />
+            <element signature="e#49945#50001#0" expanded="false" />
+            <element signature="e#50020#50055#0" expanded="false" />
+            <element signature="e#50080#50332#0" expanded="false" />
+            <element signature="e#50091#50147#0" expanded="false" />
+            <element signature="e#50161#50200#0" expanded="false" />
+            <element signature="e#50212#50268#0" expanded="false" />
+            <element signature="e#50287#50327#0" expanded="false" />
+            <element signature="e#50355#50613#0" expanded="false" />
+            <element signature="e#50366#50422#0" expanded="false" />
+            <element signature="e#50436#50478#0" expanded="false" />
+            <element signature="e#50490#50546#0" expanded="false" />
+            <element signature="e#50565#50608#0" expanded="false" />
+            <element signature="e#50620#50649#0" expanded="false" />
+            <element signature="e#50718#50928#0" expanded="false" />
+            <element signature="e#50781#50804#0" expanded="false" />
+            <element signature="e#50931#50938#0" expanded="false" />
+            <element signature="e#51008#51129#0" expanded="false" />
+            <element signature="e#51132#51161#0" expanded="false" />
+            <element signature="e#51226#51245#0" expanded="false" />
+            <element signature="e#51248#51255#0" expanded="false" />
+            <element signature="e#51321#51431#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/css/data-context-nav.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="1" selection-start-line="0" selection-start-column="1" selection-end-line="0" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/epiviz.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.3076923">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/epiviz.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="78" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
+          <folding>
+            <marker date="1459891563375" expanded="true" signature="129:162" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/phpstorm.jar!/resources/html5-schema/html5/common.rnc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="126" column="14" selection-start-line="126" selection-start-column="14" selection-end-line="126" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/epiviz/controllers/data-context.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="207" column="46" selection-start-line="207" selection-start-column="46" selection-end-line="207" selection-end-column="46" />
+          <folding>
+            <element signature="e#1440#1514#0" expanded="false" />
+            <element signature="e#1652#1713#0" expanded="false" />
+            <element signature="e#1766#2000#0" expanded="false" />
+            <element signature="e#1777#1838#0" expanded="false" />
+            <element signature="e#1889#1950#0" expanded="false" />
+            <element signature="e#3130#3157#0" expanded="false" />
+            <element signature="e#3621#3648#0" expanded="false" />
+            <element signature="e#4780#4807#0" expanded="false" />
+            <element signature="e#4877#5017#0" expanded="false" />
+            <element signature="e#6434#7102#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/css/positioning.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.2692308">
+          <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
+          <folding>
+            <marker date="1459891563048" expanded="true" signature="1052:1128" placeholder="{...}" />
+            <marker date="1459891563048" expanded="true" signature="1478:1566" placeholder="{...}" />
+            <marker date="1459891563048" expanded="true" signature="1581:1661" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index-local.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.018182">
+          <caret line="13" column="28" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/templates/_positioning.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-36.615383">
+          <caret line="56" column="13" selection-start-line="56" selection-start-column="13" selection-end-line="56" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/templates/_string.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.65384614">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/templates/_add-vis.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.423077">
+          <caret line="19" column="53" selection-start-line="19" selection-start-column="53" selection-end-line="19" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/epiviz/controllers/add-visualization.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7095199">
+          <caret line="269" column="19" selection-start-line="269" selection-start-column="19" selection-end-line="269" selection-end-column="19" />
           <folding />
         </state>
       </provider>
