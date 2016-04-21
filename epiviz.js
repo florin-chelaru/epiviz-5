@@ -35,426 +35,6 @@ goog.inherits(epiviz.Configuration, ngu.Configuration);
 Object.defineProperties(epiviz.Configuration.prototype, {});
 
 
-goog.provide('epiviz.controllers.AddVisualization');
-
-goog.require('ngb.s.ModalController');
-
-/**
- * @param {angular.Scope} $scope
- * @param {{result: angular.$q.Promise, opened: angular.$q.Promise, closed: angular.$q.Promise, rendered: angular.$q.Promise, close: Function, dismiss: Function}} $uibModalInstance
- * @param {angular.$q.Deferred} $ngbAnimation
- * @param {string} bodyTemplateUrl
- * @param {{headerTemplateUrl: string, footerTemplateUrl: string, title: string, loaderClass: string, sendMessage: (Function|undefined), fixed: boolean}} options
- * @param {vs.ui.DataHandler} dataHandler
- * @param {vs.Configuration} config
- * @constructor
- * @extends {ngb.s.ModalController}
- */
-epiviz.controllers.AddVisualization = function ($scope, $uibModalInstance, $ngbAnimation, bodyTemplateUrl, options, dataHandler, config) {
-  ngb.s.ModalController.apply(this, arguments);
-
-  /**
-   * @type {vs.ui.DataHandler}
-   * @private
-   */
-  this._dataHandler = dataHandler;
-
-  /**
-   * @type {vs.Configuration}
-   * @private
-   */
-  this._config = config;
-
-  /**
-   * @type {string|null}
-   * @private
-   */
-  this._selectedVis = null;
-
-  /**
-   * @type {null}
-   * @private
-   */
-  this._selectedRenderEngine = null;
-
-  /**
-   * @type {Object.<string, *>}
-   * @private
-   */
-  this._selectedVisOptions = null;
-
-  /**
-   * @type {Object.<string, vs.ui.Setting>}
-   * @private
-   */
-  this._selectedVisSettings = null;
-
-  /**
-   * @type {Object.<string, angular.NgModelController>}
-   * @private
-   */
-  this._form = {};
-};
-
-goog.inherits(epiviz.controllers.AddVisualization, ngb.s.ModalController);
-
-Object.defineProperties(epiviz.controllers.AddVisualization.prototype, {
-  'visualizations': {
-    get: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function () {
-      return Object.keys(this._config['options']['visualizations']);
-    })
-  },
-  'selectedVis': {
-    get: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function () {
-      return this._selectedVis || this['visualizations'][0];
-    }),
-    set: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function (value) {
-      this._selectedVis = value;
-
-      this._selectedVisOptions = null;
-    })
-  },
-
-  'renderEngines': {
-    get: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function () {
-      return Object.keys(this._config['options']['visualizations'][this['selectedVis']]).filter(function(r) { return r != 'default'; });
-    })
-  },
-
-  'selectedRenderEngine': {
-    get: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function () {
-      var engines = this._config['options']['visualizations'][this['selectedVis']];
-
-      if (!this._selectedRenderEngine || !(this._selectedRenderEngine in engines)) {
-        if ('default' in engines) {
-          this._selectedRenderEngine = engines['default'];
-        } else {
-          this._selectedRenderEngine = engines[Object.keys(engines)[0]];
-        }
-      }
-
-      return this._selectedRenderEngine;
-    }),
-    set: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function (value) {
-      this._selectedRenderEngine = value;
-
-      this._selectedVisOptions = null;
-    })
-  },
-
-  'selectedVisSettings': {
-    get: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function () {
-      this.calcSelectedVisSettings();
-
-      return this._selectedVisSettings;
-    })
-  },
-
-  'selectedVisOptions': {
-    get: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function () {
-      this.calcSelectedVisSettings();
-
-      return this._selectedVisOptions;
-    })
-  },
-
-  'form': {
-    get: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function () {
-      return this._form;
-    }),
-    set: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function (value) {
-      this._form = value;
-    })
-  },
-
-  'footerButtons': {
-    get: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function () {
-      var self = this;
-      var $modalInstance = this['$modalInstance'];
-      return [
-        {
-          'label': 'Ok',
-          'click': function() { $modalInstance['close']({ 'visualization': self['selectedVis'], 'engine': self['selectedRenderEngine'], 'options': self['selectedVisOptions']}); },
-          'disabled': function() { return false; },
-          'class': 'btn-primary'
-        },
-        {
-          'label': 'Cancel',
-          'click': function() { $modalInstance['dismiss']('cancel'); },
-          'class': 'btn-default',
-          'disabled': function() { return false; }
-        }
-      ];
-    })
-  }
-});
-
-epiviz.controllers.AddVisualization.prototype.calcSelectedVisSettings = function() {
-  if (!this._selectedVisOptions) {
-    var visClassStr = this._config['options']['visualizations'][this['selectedVis']][this['selectedRenderEngine']];
-    var visClass = u.reflection.evaluateFullyQualifiedTypeName(visClassStr);
-    var settings = visClass ? visClass['Settings'] : {};
-    var opts = {};
-
-    var dataHandler = this._dataHandler;
-    u.each(settings, function(k, setting) {
-      opts[k] = setting.getValue(opts, null, dataHandler.data, settings);
-    });
-
-    this._selectedVisOptions = opts;
-    this._selectedVisSettings = settings;
-  }
-};
-
-
-goog.provide('epiviz.controllers.DataContext');
-
-goog.require('epiviz.controllers.AddVisualization');
-goog.require('goog.string.format');
-
-/**
- * @param {angular.Scope} $scope
- * @param {ngb.s.Modal} $ngbModal
- * @constructor
- * @extends {ngu.Controller}
- */
-epiviz.controllers.DataContext = function($scope, $ngbModal) {
-  ngu.Controller.apply(this, arguments);
-
-  /**
-   * @type {ngb.s.Modal}
-   * @private
-   */
-  this._$modal = $ngbModal;
-
-  /**
-   * @type {vs.ui.DataHandler}
-   * @private
-   */
-  this._dataHandler = $scope['vsDataContext'].handler;
-
-  /**
-   * @type {jQuery}
-   * @private
-   */
-  this._$window = $scope['vsWindow'].$window;
-
-  /**
-   * @type {string}
-   * @private
-   */
-  this._name = this._dataHandler.name;
-
-  var range = vs.models.GenomicRangeQuery.extract(u.fast.concat(u.fast.map(this._dataHandler.data, function(d) { return d.query; })));
-
-  /**
-   * @type {string}
-   * @private
-   */
-  this._location = goog.string.format('%s:%s-%s', range.chr, range.start, range.end);
-
-  /**
-   * @type {RegExp}
-   * @private
-   */
-  this._locationRegex = /^\s*([a-zA-Z0-9]+)\s*\:\s*([0-9]+)\s*\-\s*([0-9]+)\s*$/;
-};
-
-goog.inherits(epiviz.controllers.DataContext, ngu.Controller);
-
-/**
- * @type {string}
- * @name epiviz.controllers.DataContext#name
- */
-epiviz.controllers.DataContext.prototype.name;
-
-/**
- * @type {string}
- * @name epiviz.controllers.DataContext#location
- */
-epiviz.controllers.DataContext.prototype.location;
-
-Object.defineProperties(epiviz.controllers.DataContext.prototype, {
-  'name': { get: /** @type {function (this:epiviz.controllers.DataContext)} */ (function() { return this._name; })},
-  'location': {
-    get: /** @type {function (this:epiviz.controllers.DataContext)} */ (function() { return this._location; }),
-    set: /** @type {function (this:epiviz.controllers.DataContext)} */ (function(value) { this._location = value; })
-  }
-});
-
-epiviz.controllers.DataContext.prototype.query = function() {
-  var matches = this._location.match(this._locationRegex);
-  if (!matches || matches.length < 4) { u.log.error('Invalid query:' + this._location); }
-
-  try {
-    var chr = matches[1];
-    var start = parseInt(matches[2], 10);
-    var end = parseInt(matches[3], 10);
-
-    var q = new vs.models.GenomicRangeQuery(chr, start, end);
-
-    u.log.info(q.chr + ' ' + q.start + ' ' + q.end);
-    this._dataHandler.query(q.query)
-      .then(function (data) {
-        u.log.info('query, data:', q, data);
-      });
-  } catch (err) {
-    u.log.error(err);
-  }
-};
-
-epiviz.controllers.DataContext.prototype.left = function() {
-  try {
-    var range = vs.models.GenomicRangeQuery.extract(u.fast.concat(u.fast.map(this._dataHandler.data, function(d) { return d.query; })));
-    var width = range.end - range.start;
-    if (width <= 0) { return; }
-    var tenth = Math.ceil(width * 0.1);
-
-    var start = Math.max(0, range.start - tenth);
-    var end = start + width;
-    this._location = goog.string.format('%s:%s-%s', range.chr, start, end);
-    this.query();
-  } catch (err) {
-    u.log.error(err);
-  }
-};
-
-epiviz.controllers.DataContext.prototype.right = function() {
-  try {
-    var range = vs.models.GenomicRangeQuery.extract(u.fast.concat(u.fast.map(this._dataHandler.data, function(d) { return d.query; })));
-    var width = range.end - range.start;
-    if (width <= 0) { return; }
-    var tenth = Math.ceil(width * 0.1);
-
-    this._location = goog.string.format('%s:%s-%s', range.chr, range.start + tenth, range.end + tenth);
-    this.query();
-  } catch (err) {
-    u.log.error(err);
-  }
-};
-
-epiviz.controllers.DataContext.prototype.zoomOut = function() {
-  try {
-    var range = vs.models.GenomicRangeQuery.extract(u.fast.concat(u.fast.map(this._dataHandler.data, function(d) { return d.query; })));
-    var width = range.end - range.start;
-    if (width <= 0) { return; }
-    var tenth = Math.ceil(width * 0.1);
-
-    var start = Math.max(0, range.start - tenth);
-    var end = start + width + 2 * tenth;
-
-    this._location = goog.string.format('%s:%s-%s', range.chr, start, end);
-    this.query();
-  } catch (err) {
-    u.log.error(err);
-  }
-};
-
-epiviz.controllers.DataContext.prototype.zoomIn = function() {
-  try {
-    var range = vs.models.GenomicRangeQuery.extract(u.array.unique(u.fast.concat(u.fast.map(this._dataHandler.data, function(d) { return d.query; }))));
-    var width = range.end - range.start;
-    if (width <= 1) { return; }
-    var tenth = Math.ceil(width * 0.1);
-    if (width - 2 * tenth < 1) { return; }
-
-    var start = range.start + tenth;
-    var end = start + width - 2 * tenth;
-
-    this._location = goog.string.format('%s:%s-%s', range.chr, start, end);
-    this.query();
-  } catch (err) {
-    u.log.error(err);
-  }
-};
-
-epiviz.controllers.DataContext.prototype.mousedown = function(e) {
-  this._$window.trigger(new $.Event('mousedown', {'target': this._$window[0], 'originalEvent': e, 'pageX': e.pageX, 'pageY': e.pageY}));
-};
-
-epiviz.controllers.DataContext.prototype.addVis = function() {
-  var self = this;
-  var $scope = this['$scope'];
-  var h = this._dataHandler;
-  var dlg = {
-    'size': 'lg',
-    'animation': true,
-
-    'bodyTemplateUrl': 'res/templates/_add-vis.html',
-    //'headerTemplateUrl': 'res/html/_user-profile-header.html',
-    //'footerTemplateUrl': 'res/html/_login-footer.html',
-    'title': 'Add visualization',
-    'loaderClass': 'tf-loader',// tf-loader is not defined, which means we don't use a loader
-    'fixed': false,
-    'useFooterInputText': false,
-    'controller': 'epiviz.controllers.AddVisualization',
-    'controllerAs': 'addVis',
-    'resolve': {
-      'dataHandler': function() { return h; }
-    }
-  };
-
-  var modalInstance = this._$modal.open(dlg);
-  modalInstance.result.then(
-    /**
-     * @param {{visualization: string, engine: string, options: Object.<string, *>}} r
-     */
-    function(r) {
-      // TODO
-      // $scope.$emit('addVis', r);
-      // console.log(r.visualization, r.engine, r.options);
-      self._dataHandler.visualizations.push({
-        'construct': {
-          'render': r['engine'],
-          'type': r['visualization']
-        },
-        'options': u.extend({'x': 50, 'y': 50}, r['options']),
-        'decorators': {
-          'cls': [
-            'vs-window',
-            'vs-resizable',
-            'vs-movable',
-            'vs-loader'
-          ],
-          'elem': [
-            /*{
-              'cls': 'vs-axis',
-              'options': {
-                'type': 'x',
-                'ticks': 10,
-                'label': 'true'
-              }
-            },
-            {
-              'cls': 'vs-axis',
-              'options': {
-                'type': 'y',
-                'label': 'true'
-              }
-            },
-            {
-              'cls': 'vs-grid',
-              'options': {
-                'type': 'x',
-                'ticks': 10
-              }
-            },
-            {
-              'cls': 'vs-grid',
-              'options': {
-                'type': 'y'
-              }
-            }*/
-          ]
-        }
-      })
-    }, function () {
-      console.info('Modal dismissed at: ' + new Date());
-    });
-
-};
-
-
 goog.provide('epiviz.controllers.Master');
 
 /**
@@ -1994,6 +1574,565 @@ epiviz.controllers.Master.prototype.selectAllGroups = function() {
 };
 
 
+
+goog.provide('ngb.d.InfiniteNumberSlider');
+
+goog.require('ngu.Directive');
+
+/**
+ * @param {angular.Scope} $scope
+ * @param $rootScope {angular.$rootScope}
+ * @param $q
+ * @constructor
+ * @extends {ngu.Directive}
+ */
+ngb.d.InfiniteNumberSlider = function ($scope, $rootScope, $q) {
+  ngu.Directive.apply(this, arguments);
+};
+
+goog.inherits(ngb.d.InfiniteNumberSlider, ngu.Directive);
+
+/**
+ * @param {angular.Scope} $scope
+ * @param {jQuery} $element
+ * @param {angular.Attributes} $attrs
+ * @override
+ */
+ngb.d.InfiniteNumberSlider.prototype.link = function ($scope, $element, $attrs) {
+
+  console.log($element);
+
+};
+
+
+goog.provide('epiviz.controllers.AddVisualization');
+
+goog.require('ngb.s.ModalController');
+
+/**
+ * @param {angular.Scope} $scope
+ * @param {{result: angular.$q.Promise, opened: angular.$q.Promise, closed: angular.$q.Promise, rendered: angular.$q.Promise, close: Function, dismiss: Function}} $uibModalInstance
+ * @param {angular.$q.Deferred} $ngbAnimation
+ * @param {string} bodyTemplateUrl
+ * @param {{headerTemplateUrl: string, footerTemplateUrl: string, title: string, loaderClass: string, sendMessage: (Function|undefined), fixed: boolean}} options
+ * @param {vs.ui.DataHandler} dataHandler
+ * @param {vs.Configuration} config
+ * @constructor
+ * @extends {ngb.s.ModalController}
+ */
+epiviz.controllers.AddVisualization = function ($scope, $uibModalInstance, $ngbAnimation, bodyTemplateUrl, options, dataHandler, config) {
+  ngb.s.ModalController.apply(this, arguments);
+
+  /**
+   * @type {vs.ui.DataHandler}
+   * @private
+   */
+  this._dataHandler = dataHandler;
+
+  /**
+   * @type {vs.Configuration}
+   * @private
+   */
+  this._config = config;
+
+  /**
+   * @type {string|null}
+   * @private
+   */
+  this._selectedVis = null;
+
+  /**
+   * @type {null}
+   * @private
+   */
+  this._selectedRenderEngine = null;
+
+  /**
+   * @type {Object.<string, *>}
+   * @private
+   */
+  this._selectedVisOptions = null;
+
+  /**
+   * @type {Object.<string, vs.ui.Setting>}
+   * @private
+   */
+  this._selectedVisSettings = null;
+
+  /**
+   * @type {Object.<string, vs.ui.Setting>}
+   * @private
+   */
+  this._editableSettings = null;
+
+  /**
+   * @type {Object.<string, angular.NgModelController>}
+   * @private
+   */
+  this._form = {};
+
+  this._editTop = false;
+  this._editLeft = false;
+  this._editTopMargin = false;
+  this._editLeftMargin = false;
+  this._editBottomMargin = false;
+  this._editRightMargin = false;
+  this._editWidth = false;
+  this._editHeight = false;
+};
+
+goog.inherits(epiviz.controllers.AddVisualization, ngb.s.ModalController);
+
+Object.defineProperties(epiviz.controllers.AddVisualization.prototype, {
+  'visualizations': {
+    get: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function () {
+      return Object.keys(this._config['options']['visualizations']);
+    })
+  },
+  'selectedVis': {
+    get: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function () {
+      return this._selectedVis || this['visualizations'][0];
+    }),
+    set: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function (value) {
+      this._selectedVis = value;
+
+      this._selectedVisOptions = null;
+    })
+  },
+
+  'renderEngines': {
+    get: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function () {
+      return Object.keys(this._config['options']['visualizations'][this['selectedVis']]).filter(function(r) { return r != 'default'; });
+    })
+  },
+
+  'selectedRenderEngine': {
+    get: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function () {
+      var engines = this._config['options']['visualizations'][this['selectedVis']];
+
+      if (!this._selectedRenderEngine || !(this._selectedRenderEngine in engines)) {
+        if ('default' in engines) {
+          this._selectedRenderEngine = engines['default'];
+        } else {
+          this._selectedRenderEngine = engines[Object.keys(engines)[0]];
+        }
+      }
+
+      return this._selectedRenderEngine;
+    }),
+    set: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function (value) {
+      this._selectedRenderEngine = value;
+
+      this._selectedVisOptions = null;
+    })
+  },
+
+  'selectedVisSettings': {
+    get: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function () {
+      this.calcSelectedVisSettings();
+
+      return this._selectedVisSettings;
+    })
+  },
+
+  'editableSettings': {
+    get: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function () {
+      this.calcSelectedVisSettings();
+
+      return this._editableSettings;
+    })
+  },
+
+  'selectedVisOptions': {
+    get: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function () {
+      this.calcSelectedVisSettings();
+
+      return this._selectedVisOptions;
+    })
+  },
+
+  'form': {
+    get: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function () {
+      return this._form;
+    }),
+    set: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function (value) {
+      this._form = value;
+    })
+  },
+
+  'footerButtons': {
+    get: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function () {
+      var self = this;
+      var $modalInstance = this['$modalInstance'];
+      return [
+        {
+          'label': 'Ok',
+          'click': function() { $modalInstance['close']({ 'visualization': self['selectedVis'], 'engine': self['selectedRenderEngine'], 'options': self['selectedVisOptions']}); },
+          'disabled': function() { return false; },
+          'class': 'btn-primary'
+        },
+        {
+          'label': 'Cancel',
+          'click': function() { $modalInstance['dismiss']('cancel'); },
+          'class': 'btn-default',
+          'disabled': function() { return false; }
+        }
+      ];
+    })
+  },
+
+  'editTop': {
+    get: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function () {
+      return this._editTop;
+    }),
+    set: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function (value) {
+      this.resetEdits();
+      this._editTop = value;
+    })
+  },
+  'editLeft': {
+    get: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function () {
+      return this._editLeft;
+    }),
+    set: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function (value) {
+      this.resetEdits();
+      this._editLeft = value;
+    })
+  },
+  'editTopMargin': {
+    get: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function () {
+      return this._editTopMargin;
+    }),
+    set: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function (value) {
+      this.resetEdits();
+      this._editTopMargin = value;
+    })
+  },
+  'editLeftMargin': {
+    get: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function () {
+      return this._editLeftMargin;
+    }),
+    set: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function (value) {
+      this.resetEdits();
+      this._editLeftMargin = value;
+    })
+  },
+  'editRightMargin': {
+    get: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function () {
+      return this._editRightMargin;
+    }),
+    set: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function (value) {
+      this.resetEdits();
+      this._editRightMargin = value;
+    })
+  },
+  'editBottomMargin': {
+    get: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function () {
+      return this._editBottomMargin;
+    }),
+    set: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function (value) {
+      this.resetEdits();
+      this._editBottomMargin = value;
+    })
+  },
+  'editWidth': {
+    get: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function () {
+      return this._editWidth;
+    }),
+    set: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function (value) {
+      this.resetEdits();
+      this._editWidth = value;
+    })
+  },
+  'editHeight': {
+    get: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function () {
+      return this._editHeight;
+    }),
+    set: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function (value) {
+      this.resetEdits();
+      this._editHeight = value;
+    })
+  }
+});
+
+epiviz.controllers.AddVisualization.prototype.calcSelectedVisSettings = function() {
+  if (!this._selectedVisOptions) {
+    var visClassStr = this._config['options']['visualizations'][this['selectedVis']][this['selectedRenderEngine']];
+    var visClass = u.reflection.evaluateFullyQualifiedTypeName(visClassStr);
+    var settings = visClass ? visClass['Settings'] : {};
+    var opts = {};
+
+    var dataHandler = this._dataHandler;
+    u.each(settings, function(k, setting) {
+      opts[k] = setting.getValue(opts, null, dataHandler.data, settings);
+    });
+
+    var editableSettings = {};
+    u.each(settings, function(key, setting) {
+      if (['x', 'y', 'width', 'height', 'margins'].indexOf(key) < 0) {
+        editableSettings[key] = setting;
+      }
+    });
+
+    this._selectedVisOptions = opts;
+    this._selectedVisSettings = settings;
+    this._editableSettings = editableSettings;
+  }
+};
+
+epiviz.controllers.AddVisualization.prototype.resetEdits = function() {
+  this._editTop = this._editLeft = this._editTopMargin = this._editLeftMargin = this._editRightMargin = this._editBottomMargin = this._editWidth = this._editHeight = false;
+};
+
+
+goog.provide('epiviz.controllers.DataContext');
+
+goog.require('epiviz.controllers.AddVisualization');
+goog.require('goog.string.format');
+
+/**
+ * @param {angular.Scope} $scope
+ * @param {ngb.s.Modal} $ngbModal
+ * @constructor
+ * @extends {ngu.Controller}
+ */
+epiviz.controllers.DataContext = function($scope, $ngbModal) {
+  ngu.Controller.apply(this, arguments);
+
+  /**
+   * @type {ngb.s.Modal}
+   * @private
+   */
+  this._$modal = $ngbModal;
+
+  /**
+   * @type {vs.ui.DataHandler}
+   * @private
+   */
+  this._dataHandler = $scope['vsDataContext'].handler;
+
+  /**
+   * @type {jQuery}
+   * @private
+   */
+  this._$window = $scope['vsWindow'].$window;
+
+  /**
+   * @type {string}
+   * @private
+   */
+  this._name = this._dataHandler.name;
+
+  var range = vs.models.GenomicRangeQuery.extract(u.fast.concat(u.fast.map(this._dataHandler.data, function(d) { return d.query; })));
+
+  /**
+   * @type {string}
+   * @private
+   */
+  this._location = goog.string.format('%s:%s-%s', range.chr, range.start, range.end);
+
+  /**
+   * @type {RegExp}
+   * @private
+   */
+  this._locationRegex = /^\s*([a-zA-Z0-9]+)\s*\:\s*([0-9]+)\s*\-\s*([0-9]+)\s*$/;
+};
+
+goog.inherits(epiviz.controllers.DataContext, ngu.Controller);
+
+/**
+ * @type {string}
+ * @name epiviz.controllers.DataContext#name
+ */
+epiviz.controllers.DataContext.prototype.name;
+
+/**
+ * @type {string}
+ * @name epiviz.controllers.DataContext#location
+ */
+epiviz.controllers.DataContext.prototype.location;
+
+Object.defineProperties(epiviz.controllers.DataContext.prototype, {
+  'name': { get: /** @type {function (this:epiviz.controllers.DataContext)} */ (function() { return this._name; })},
+  'location': {
+    get: /** @type {function (this:epiviz.controllers.DataContext)} */ (function() { return this._location; }),
+    set: /** @type {function (this:epiviz.controllers.DataContext)} */ (function(value) { this._location = value; })
+  }
+});
+
+epiviz.controllers.DataContext.prototype.query = function() {
+  var matches = this._location.match(this._locationRegex);
+  if (!matches || matches.length < 4) { u.log.error('Invalid query:' + this._location); }
+
+  try {
+    var chr = matches[1];
+    var start = parseInt(matches[2], 10);
+    var end = parseInt(matches[3], 10);
+
+    var q = new vs.models.GenomicRangeQuery(chr, start, end);
+
+    u.log.info(q.chr + ' ' + q.start + ' ' + q.end);
+    this._dataHandler.query(q.query)
+      .then(function (data) {
+        u.log.info('query, data:', q, data);
+      });
+  } catch (err) {
+    u.log.error(err);
+  }
+};
+
+epiviz.controllers.DataContext.prototype.left = function() {
+  try {
+    var range = vs.models.GenomicRangeQuery.extract(u.fast.concat(u.fast.map(this._dataHandler.data, function(d) { return d.query; })));
+    var width = range.end - range.start;
+    if (width <= 0) { return; }
+    var tenth = Math.ceil(width * 0.1);
+
+    var start = Math.max(0, range.start - tenth);
+    var end = start + width;
+    this._location = goog.string.format('%s:%s-%s', range.chr, start, end);
+    this.query();
+  } catch (err) {
+    u.log.error(err);
+  }
+};
+
+epiviz.controllers.DataContext.prototype.right = function() {
+  try {
+    var range = vs.models.GenomicRangeQuery.extract(u.fast.concat(u.fast.map(this._dataHandler.data, function(d) { return d.query; })));
+    var width = range.end - range.start;
+    if (width <= 0) { return; }
+    var tenth = Math.ceil(width * 0.1);
+
+    this._location = goog.string.format('%s:%s-%s', range.chr, range.start + tenth, range.end + tenth);
+    this.query();
+  } catch (err) {
+    u.log.error(err);
+  }
+};
+
+epiviz.controllers.DataContext.prototype.zoomOut = function() {
+  try {
+    var range = vs.models.GenomicRangeQuery.extract(u.fast.concat(u.fast.map(this._dataHandler.data, function(d) { return d.query; })));
+    var width = range.end - range.start;
+    if (width <= 0) { return; }
+    var tenth = Math.ceil(width * 0.1);
+
+    var start = Math.max(0, range.start - tenth);
+    var end = start + width + 2 * tenth;
+
+    this._location = goog.string.format('%s:%s-%s', range.chr, start, end);
+    this.query();
+  } catch (err) {
+    u.log.error(err);
+  }
+};
+
+epiviz.controllers.DataContext.prototype.zoomIn = function() {
+  try {
+    var range = vs.models.GenomicRangeQuery.extract(u.array.unique(u.fast.concat(u.fast.map(this._dataHandler.data, function(d) { return d.query; }))));
+    var width = range.end - range.start;
+    if (width <= 1) { return; }
+    var tenth = Math.ceil(width * 0.1);
+    if (width - 2 * tenth < 1) { return; }
+
+    var start = range.start + tenth;
+    var end = start + width - 2 * tenth;
+
+    this._location = goog.string.format('%s:%s-%s', range.chr, start, end);
+    this.query();
+  } catch (err) {
+    u.log.error(err);
+  }
+};
+
+epiviz.controllers.DataContext.prototype.mousedown = function(e) {
+  this._$window.trigger(new $.Event('mousedown', {'target': this._$window[0], 'originalEvent': e, 'pageX': e.pageX, 'pageY': e.pageY}));
+};
+
+epiviz.controllers.DataContext.prototype.addVis = function() {
+  var self = this;
+  var $scope = this['$scope'];
+  var h = this._dataHandler;
+  var dlg = {
+    'size': 'lg',
+    'animation': true,
+
+    'bodyTemplateUrl': 'res/templates/_add-vis.html',
+    //'headerTemplateUrl': 'res/html/_user-profile-header.html',
+    //'footerTemplateUrl': 'res/html/_login-footer.html',
+    'title': 'Add visualization',
+    'loaderClass': 'tf-loader',// tf-loader is not defined, which means we don't use a loader
+    'fixed': true,
+    'useFooterInputText': false,
+    'controller': 'epiviz.controllers.AddVisualization',
+    'controllerAs': 'addVis',
+    'resolve': {
+      'dataHandler': function() { return h; }
+    }
+  };
+
+  var modalInstance = this._$modal.open(dlg);
+  modalInstance.result.then(
+    /**
+     * @param {{visualization: string, engine: string, options: Object.<string, *>}} r
+     */
+    function(r) {
+      // TODO
+      // $scope.$emit('addVis', r);
+      // console.log(r.visualization, r.engine, r.options);
+      self._dataHandler.visualizations.push({
+        'construct': {
+          'render': r['engine'],
+          'type': r['visualization']
+        },
+        'options': u.extend({'x': 50, 'y': 50}, r['options']),
+        'decorators': {
+          'cls': [
+            'vs-window',
+            'vs-resizable',
+            'vs-movable',
+            'vs-loader'
+          ],
+          'elem': [
+            /*{
+              'cls': 'vs-axis',
+              'options': {
+                'type': 'x',
+                'ticks': 10,
+                'label': 'true'
+              }
+            },
+            {
+              'cls': 'vs-axis',
+              'options': {
+                'type': 'y',
+                'label': 'true'
+              }
+            },
+            {
+              'cls': 'vs-grid',
+              'options': {
+                'type': 'x',
+                'ticks': 10
+              }
+            },
+            {
+              'cls': 'vs-grid',
+              'options': {
+                'type': 'y'
+              }
+            }*/
+          ]
+        }
+      })
+    }, function () {
+      console.info('Modal dismissed at: ' + new Date());
+    });
+
+};
+
+
 goog.provide('epiviz');
 
 goog.require('ngu');
@@ -2002,6 +2141,7 @@ goog.require('ngb');
 goog.require('epiviz.Configuration');
 goog.require('epiviz.controllers.Master');
 goog.require('epiviz.controllers.DataContext');
+goog.require('ngb.d.InfiniteNumberSlider');
 
 u.log.VERBOSE = 'info';
 
@@ -2072,3 +2212,8 @@ epiviz.main.controller('epiviz.controllers.DataContext', ['$scope', '$ngbModal',
 epiviz.main.controller('epiviz.controllers.AddVisualization', ['$scope', '$uibModalInstance', '$ngbAnimation', 'bodyTemplateUrl', 'options', 'dataHandler', 'configuration', function() {
   return u.reflection.applyConstructor(/** @type {function(new: epiviz.controllers.AddVisualization)} */ (epiviz.controllers.AddVisualization), arguments);
 }]);
+
+epiviz.main.directive('ngbInfiniteNumberSlider', [function() {
+  return ngu.Directive.createNew('ngbInfiniteNumberSlider', /** @type {function(new: ngu.Directive)} */ (ngb.d.InfiniteNumberSlider), arguments, {restrict: 'A'});
+}]);
+

@@ -1,0 +1,11 @@
+<td>
+  <label ng-attr-for="{{ setting.key }}">{{ setting.label }}</label>
+</td>
+<td>
+  <input type="number"
+         ng-attr-name="{{ setting.key }}"
+         class="form-control"
+         ng-attr-placeholder="{{ setting.label }}"
+         ng-model="addVis.selectedVisOptions[key]"
+         ngb-infinite-number-slider />
+</td>

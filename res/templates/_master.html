@@ -1,4 +1,4 @@
-<div ng-controller="epiviz.controllers.Master as master">
+<div ng-controller="epiviz.controllers.Master as master" class="ez-main-container">
   <div ng-repeat="dataContext in master.dataContexts" vs-style="{width: '950px', height: '750px', left: '10px', top: ($index * 600 + 10 + 'px')}"
        class="vs-data-context vs-window vs-movable vs-resizable">
     <div ng-include="'res/templates/_data-context-nav.html'"></div>

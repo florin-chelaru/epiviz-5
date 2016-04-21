@@ -1,0 +1,40 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+.ez-main-container {
+  width: 100%;
+  height: 100%;
+}
+.table.ez-centered-table {
+  /* first column */
+  /* second column */
+  /* third column */
+  /*tr > td:first-child + td + td {
+    color: blue;
+  }*/
+}
+.table.ez-centered-table tr > td {
+  vertical-align: middle;
+}
+.table.ez-centered-table tr > td:first-child {
+  text-align: right;
+  width: 50%;
+}
+.table.ez-centered-table tr > td:first-child + td {
+  text-align: left;
+  width: 50%;
+}
+.table.ez-centered-table tr > td[colspan="2"] {
+  text-align: center;
+}
+.table.ez-centered-table tr > td[colspan="2"] * {
+  display: inline-block;
+}
+/* This is the search box autocomplete results container */
+.colorpicker {
+  -webkit-filter: none;
+  /* Chrome, Safari, Opera */
+  filter: none;
+}

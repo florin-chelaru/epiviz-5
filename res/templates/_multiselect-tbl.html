@@ -1,0 +1,9 @@
+<td>
+  <label ng-attr-for="{{ setting.key }}">{{ setting.label }}</label>
+</td>
+<td>
+  <tags-input class="" ng-attr-placeholder="{{ setting.label }}" ng-model="addVis.selectedVisOptions['__' + key]" min-length="0" add-from-autocomplete-only="true" >
+    <auto-complete source="addVis.arrayPossibleValues(setting)" min-length="0" load-on-down-arrow="true" load-on-empty="true" load-on-focus="true"></auto-complete>
+  </tags-input>
+  <!--<input type="text" ng-attr-name="{{ setting.key }}" class="form-control" ng-attr-placeholder="{{ setting.label }}" ng-model="addVis.selectedVisOptions[key]" />-->
+</td>

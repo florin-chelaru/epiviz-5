@@ -1,0 +1,9 @@
+<td>
+  <label ng-attr-for="{{ setting.key }}">{{ setting.label }}</label>
+</td>
+<td>
+  <span slider ng-model="addVis.selectedVisOptions[key]"
+        min="setting.possibleValues(addVis.selectedVisOptions, null, addVis.data, addVis.selectedVisSettings).min"
+        max="setting.possibleValues(addVis.selectedVisOptions, null, addVis.data, addVis.selectedVisSettings).max"
+        step="setting.possibleValues(addVis.selectedVisOptions, null, addVis.data, addVis.selectedVisSettings).step"></span>
+</td>

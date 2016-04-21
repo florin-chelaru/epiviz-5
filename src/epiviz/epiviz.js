@@ -12,10 +12,11 @@ goog.require('ngb');
 goog.require('epiviz.Configuration');
 goog.require('epiviz.controllers.Master');
 goog.require('epiviz.controllers.DataContext');
+goog.require('ngb.d.InfiniteNumberSlider');
 
 u.log.VERBOSE = 'info';
 
-epiviz.main = angular.module('epiviz', ['vs', 'ngb']);
+epiviz.main = angular.module('epiviz', ['vs', 'ngb', 'ngTagsInput', 'ui.bootstrap-slider', 'colorpicker.module']);
 
 epiviz.main.provider('epivizConfig', function() {
   return new epiviz.Configuration();
@@ -82,3 +83,8 @@ epiviz.main.controller('epiviz.controllers.DataContext', ['$scope', '$ngbModal',
 epiviz.main.controller('epiviz.controllers.AddVisualization', ['$scope', '$uibModalInstance', '$ngbAnimation', 'bodyTemplateUrl', 'options', 'dataHandler', 'configuration', function() {
   return u.reflection.applyConstructor(/** @type {function(new: epiviz.controllers.AddVisualization)} */ (epiviz.controllers.AddVisualization), arguments);
 }]);
+
+epiviz.main.directive('ngbInfiniteNumberSlider', [function() {
+  return ngu.Directive.createNew('ngbInfiniteNumberSlider', /** @type {function(new: ngu.Directive)} */ (ngb.d.InfiniteNumberSlider), arguments, {restrict: 'A'});
+}]);
+

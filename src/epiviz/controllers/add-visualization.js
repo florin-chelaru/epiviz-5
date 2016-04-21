@@ -83,6 +83,12 @@ epiviz.controllers.AddVisualization = function ($scope, $uibModalInstance, $ngbA
 goog.inherits(epiviz.controllers.AddVisualization, ngb.s.ModalController);
 
 Object.defineProperties(epiviz.controllers.AddVisualization.prototype, {
+  'data': {
+    get: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function () {
+      return this._dataHandler.data;
+    })
+  },
+
   'visualizations': {
     get: /** @type {function (this:epiviz.controllers.AddVisualization)} */ (function () {
       return Object.keys(this._config['options']['visualizations']);
@@ -166,7 +172,7 @@ Object.defineProperties(epiviz.controllers.AddVisualization.prototype, {
       return [
         {
           'label': 'Ok',
-          'click': function() { $modalInstance['close']({ 'visualization': self['selectedVis'], 'engine': self['selectedRenderEngine'], 'options': self['selectedVisOptions']}); },
+          'click': function() { self.ok(); },
           'disabled': function() { return false; },
           'class': 'btn-primary'
         },
@@ -263,12 +269,30 @@ epiviz.controllers.AddVisualization.prototype.calcSelectedVisSettings = function
 
     var dataHandler = this._dataHandler;
     u.each(settings, function(k, setting) {
+      if (setting['hidden']) { return; }
+      if (setting['type'] == vs.ui.Setting.Type['ARRAY'] && setting['template'] == '_multiselect-tbl.html') {
+        var _opt = setting.getValue(opts, null, dataHandler.data, settings);
+        Object.defineProperty(opts, '__' + k, {
+          get: function() { return _opt; },
+          set: function(value) {
+            _opt = value;
+
+            if (!value || !(Array.isArray(value))) { return; }
+
+            opts[k] = u.fast.map(value, function(o) { return ('text' in o) ? o['text'] : o; });
+          },
+          enumerable: true,
+          configurable: true
+        });
+      }
       opts[k] = setting.getValue(opts, null, dataHandler.data, settings);
     });
 
+    opts['y'] = Math.max(opts['y'], 50); // navbar overlaps
+
     var editableSettings = {};
     u.each(settings, function(key, setting) {
-      if (['x', 'y', 'width', 'height', 'margins'].indexOf(key) < 0) {
+      if (['x', 'y', 'width', 'height', 'margins'].indexOf(key) < 0 && !setting['hidden']) {
         editableSettings[key] = setting;
       }
     });
@@ -276,9 +300,73 @@ epiviz.controllers.AddVisualization.prototype.calcSelectedVisSettings = function
     this._selectedVisOptions = opts;
     this._selectedVisSettings = settings;
     this._editableSettings = editableSettings;
+
+    var $scope = this['$scope'];
+    u.each(settings, function(key, setting) {
+      if (setting['hidden']) { return; }
+      var deps = setting['dependencies'];
+      if (!deps) { return; }
+      u.each(deps, function(k, dep) {
+        if (settings[dep]['type'] == vs.ui.Setting.Type['ARRAY'] && settings[dep]['template'] == '_multiselect-tbl.html') {
+          $scope.$watchCollection(function() { return opts['__' + dep]; }, function(newVal, oldVal) {
+            opts[dep] = u.fast.map(newVal, function(o) { return (typeof o == 'object' && 'text' in o) ? o['text'] : o; });
+            delete opts[key];
+            opts[key] = setting.getValue(opts, null, dataHandler.data, settings);
+          });
+        } else {
+          $scope.$watch(function() { return opts[dep]; }, function(newVal, oldVal) {
+            delete opts[key];
+            opts[key] = setting.getValue(opts, null, dataHandler.data, settings);
+          });
+        }
+      });
+    });
   }
 };
 
 epiviz.controllers.AddVisualization.prototype.resetEdits = function() {
   this._editTop = this._editLeft = this._editTopMargin = this._editLeftMargin = this._editRightMargin = this._editBottomMargin = this._editWidth = this._editHeight = false;
+};
+
+/**
+ * @param {vs.ui.Setting} setting
+ * @returns {string}
+ */
+epiviz.controllers.AddVisualization.prototype.getTemplate = function(setting) {
+  var supportedTemplates = ['_categorical.html', '_string.html', '_multiselect-tbl.html', '_boundaries.html', '_number.html', '_slider.html', '_color.html'];
+  if (supportedTemplates.indexOf(setting.template) < 0) {
+    switch (setting.type) {
+      case vs.ui.Setting.Type.CATEGORICAL:
+        return '_categorical.html';
+      default:
+        return '_string.html';
+    }
+  } else {
+    return setting.template;
+  }
+};
+
+/**
+ * @param {vs.ui.Setting} setting
+ * @returns {Array.<string>}
+ */
+epiviz.controllers.AddVisualization.prototype.arrayPossibleValues = function(setting) {
+  return setting.possibleValues(this['selectedVisOptions'], null, this['data'], this['selectedVisSettings']);
+};
+
+epiviz.controllers.AddVisualization.prototype.ok = function() {
+  var $modalInstance = this['$modalInstance'];
+
+  /*var self = this;
+  u.each(this['editableSettings'], function(key, setting) {
+    if (setting['type'] == vs.ui.Setting.Type['ARRAY'] && setting['template'] == '_multiselect-tbl.html') {
+      self['selectedVisOptions'][key] = u.fast.map(self['selectedVisOptions'][key], function(o) { return o['text']; });
+    }
+  });*/
+
+  $modalInstance['close']({
+    'visualization': this['selectedVis'],
+    'engine': this['selectedRenderEngine'],
+    'options': this['selectedVisOptions']
+  });
 };

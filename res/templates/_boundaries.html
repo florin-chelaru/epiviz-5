@@ -1,0 +1,13 @@
+<td>
+  <label ng-attr-for="{{ setting.key }}">{{ setting.label }}</label>
+</td>
+<td>
+  <!--<input type="text" ng-attr-name="{{ setting.key }}" class="form-control" ng-attr-placeholder="{{ setting.label }}" ng-model="addVis.selectedVisOptions[key]" />-->
+  <input type="number" class="form-control" ngb-infinite-number-slider
+         style="margin-bottom: 5px;"
+         ng-attr-placeholder="min"
+         ng-model="addVis.selectedVisOptions[key].min" />
+  <input type="number" class="form-control" ngb-infinite-number-slider
+         ng-attr-placeholder="max"
+         ng-model="addVis.selectedVisOptions[key].max" />
+</td>

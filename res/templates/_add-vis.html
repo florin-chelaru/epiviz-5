@@ -1,21 +1,41 @@
 <form name="addVis.form" ng-submit="addVis.submit()">
-  <div class="form-group">
-    <label>Visualization:</label>
-    <div class="btn-group dropdown" is-open="false">
-      <button type="button" class="btn btn-default dropdown-toggle"
-              dropdown-toggle data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        {{ addVis.selectedVis }} <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu" role="menu">
-        <li ng-repeat="vis in addVis.visualizations">
-          <a href="" ng-click="addVis.selectedVis = vis">{{ vis }}</a>
-        </li>
-      </ul>
-    </div>
-    <div class="btn-group" aria-label="Rendering engine">
-      <label class="btn btn-default" ng-model="addVis.selectedRenderEngine" uib-btn-radio="render" ng-repeat="render in addVis.renderEngines">{{ render }}</label>
-    </div>
-  </div>
-  <div ng-include="'res/templates/_positioning.html'"></div>
-    <div ng-repeat="(key, setting) in addVis.editableSettings" class="form-group" ng-include="'res/templates/_string.html'"></div>
+  <table class="table table-striped ez-centered-table">
+    <tbody>
+      <tr>
+        <td>
+          <label>Visualization</label>
+        </td>
+        <td>
+          <div class="">
+            <div class="btn-group dropdown" is-open="false">
+              <button type="button" class="btn btn-default dropdown-toggle"
+                      dropdown-toggle data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{ addVis.selectedVis }} <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li ng-repeat="vis in addVis.visualizations">
+                  <a href="" ng-click="addVis.selectedVis = vis">{{ vis }}</a>
+                </li>
+              </ul>
+            </div>
+            <div class="btn-group" aria-label="Rendering engine">
+              <label class="btn btn-default" ng-model="addVis.selectedRenderEngine" uib-btn-radio="render" ng-repeat="render in addVis.renderEngines">{{ render }}</label>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <div ng-include="'res/templates/_positioning.html'"></div>
+        </td>
+      </tr>
+      <tr ng-repeat="(key, setting) in addVis.editableSettings" ng-include="'res/templates/' + addVis.getTemplate(setting)"></tr>
+    </tbody>
+  </table>
+
+
+
+
+
+  <!--<div ng-repeat="(key, setting) in addVis.editableSettings" class="form-group" ng-include="'res/templates/' + addVis.getTemplate(setting)"></div>-->
 </form>

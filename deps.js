@@ -4,4 +4,5 @@ goog.addDependency('../../../../src/epiviz/configuration.js', ['epiviz.Configura
 goog.addDependency('../../../../src/epiviz/controllers/add-visualization.js', ['epiviz.controllers.AddVisualization'], ['ngb.s.ModalController'], false);
 goog.addDependency('../../../../src/epiviz/controllers/data-context.js', ['epiviz.controllers.DataContext'], ['epiviz.controllers.AddVisualization', 'goog.string.format'], false);
 goog.addDependency('../../../../src/epiviz/controllers/master.js', ['epiviz.controllers.Master'], [], false);
-goog.addDependency('../../../../src/epiviz/epiviz.js', ['epiviz'], ['epiviz.Configuration', 'epiviz.controllers.DataContext', 'epiviz.controllers.Master', 'ngb', 'ngu'], false);
+goog.addDependency('../../../../src/epiviz/directives/infinite-number-slider.js', ['ngb.d.InfiniteNumberSlider'], ['ngu.Directive'], false);
+goog.addDependency('../../../../src/epiviz/epiviz.js', ['epiviz'], ['epiviz.Configuration', 'epiviz.controllers.DataContext', 'epiviz.controllers.Master', 'ngb', 'ngb.d.InfiniteNumberSlider', 'ngu'], false);

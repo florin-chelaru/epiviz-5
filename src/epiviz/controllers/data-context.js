@@ -174,7 +174,7 @@ epiviz.controllers.DataContext.prototype.addVis = function() {
   var $scope = this['$scope'];
   var h = this._dataHandler;
   var dlg = {
-    'size': 'lg',
+    'size': 'md',
     'animation': true,
 
     'bodyTemplateUrl': 'res/templates/_add-vis.html',
@@ -182,10 +182,11 @@ epiviz.controllers.DataContext.prototype.addVis = function() {
     //'footerTemplateUrl': 'res/html/_login-footer.html',
     'title': 'Add visualization',
     'loaderClass': 'tf-loader',// tf-loader is not defined, which means we don't use a loader
-    'fixed': false,
+    'fixed': true,
     'useFooterInputText': false,
     'controller': 'epiviz.controllers.AddVisualization',
     'controllerAs': 'addVis',
+    'backdrop': 'static',
     'resolve': {
       'dataHandler': function() { return h; }
     }
@@ -214,21 +215,20 @@ epiviz.controllers.DataContext.prototype.addVis = function() {
             'vs-loader'
           ],
           'elem': [
-            /*{
+            {
               'cls': 'vs-axis',
               'options': {
                 'type': 'x',
-                'ticks': 10,
-                'label': 'true'
+                'ticks': 10
               }
             },
             {
               'cls': 'vs-axis',
               'options': {
-                'type': 'y',
-                'label': 'true'
+                'type': 'y'
               }
-            },
+            }
+            /*,
             {
               'cls': 'vs-grid',
               'options': {

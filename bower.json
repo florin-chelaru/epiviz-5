@@ -32,14 +32,14 @@
     "jquery": "~2.2.0",
     "bootstrap": "~3.3.6",
     "angular-bootstrap": "~1.1.2",
+    "angular-bootstrap-slider": "git://github.com/seiyria/angular-bootstrap-slider.git#0cb37e4bc8530b67369244b3e6812d0fc095fd49",
+    "ng-tags-input": "~3.0.0",
     "ng-utils": "git://github.com/florin-chelaru/ng-utils.git",
-    "ng-bootstrap-controls": "git://github.com/florin-chelaru/ng-bootstrap-controls.git"
+    "ng-bootstrap-controls": "git://github.com/florin-chelaru/ng-bootstrap-controls.git",
+    "angular-bootstrap-colorpicker": "~3.0.25"
   },
   "devDependencies": {
     "closure-compiler": "0.2.7",
     "qunit": "1.19.0"
-  },
-  "resolutions": {
-    "vis.js": "19a5437556db9539c6911d2320e2c1d1065f8246"
   }
 }

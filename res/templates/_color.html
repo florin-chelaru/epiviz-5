@@ -1,0 +1,20 @@
+<td>
+  <label ng-attr-for="{{ setting.key }}">{{ setting.label }}</label>
+</td>
+<td>
+  <!--<input colorpicker="rgba" type="text"
+         ng-model="addVis.selectedVisOptions[key]"
+         ng-attr-name="{{ setting.key }}"
+         class="form-control"
+         ng-attr-placeholder="{{ setting.label }}" />-->
+
+  <!--<input colorpicker="rgba" type="text"
+         ng-model="addVis.selectedVisOptions[key]"
+         ng-attr-name="{{ setting.key }}"
+         class="form-control"
+         ng-attr-placeholder="{{ setting.label }}" />-->
+  <button colorpicker="rgba" type="button"
+          colorpicker-position="top"
+          ng-model="addVis.selectedVisOptions[key]"
+          class="btn" ng-style="{ 'background-color': addVis.selectedVisOptions[key] }">{{ addVis.selectedVisOptions[key] }}</button>
+</td>
