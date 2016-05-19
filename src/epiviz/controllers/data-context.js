@@ -227,8 +227,7 @@ epiviz.controllers.DataContext.prototype.addVis = function() {
               'options': {
                 'type': 'y'
               }
-            }
-            /*,
+            },
             {
               'cls': 'vs-grid',
               'options': {
@@ -241,7 +240,7 @@ epiviz.controllers.DataContext.prototype.addVis = function() {
               'options': {
                 'type': 'y'
               }
-            }*/
+            }
           ]
         }
       })

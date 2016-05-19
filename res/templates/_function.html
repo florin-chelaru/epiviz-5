@@ -1,0 +1,17 @@
+<td>
+  <label>{{ setting.label }}</label>
+</td>
+<td>
+  <div class="btn-group dropdown" is-open="false">
+    <button type="button" class="btn btn-default dropdown-toggle"
+            dropdown-toggle data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      {{ addVis.selectedVisOptions[key].label }} <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+      <li ng-repeat="v in setting.possibleValues(addVis.selectedVisOptions, null, addVis.data, addVis.selectedVisSettings)">
+        <a href="" ng-click="addVis.selectedVisOptions[key] = v">{{ v.label }}</a>
+      </li>
+      <!--<li><a href="">aaa</a></li>-->
+    </ul>
+  </div>
+</td>

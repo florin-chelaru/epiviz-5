@@ -47,6 +47,27 @@ epiviz.main.config(['configurationProvider', function(configuration) {
     'parallel': {
       'nthreads': 16,
       'worker': '/worker.js'
+    },
+    'decorators': {
+      'cls': [
+      ],
+      'elem': [
+        {
+          'cls': 'vs-axis',
+          'render': {
+            'svg': 'vs.ui.svg.SvgAxis',
+            'canvas': 'vs.ui.canvas.CanvasAxis'
+          }
+        },
+        {
+          'cls': 'vs-grid',
+          'render': {
+            'svg': 'vs.ui.svg.SvgGrid',
+            'canvas': 'vs.ui.canvas.CanvasGrid'
+          }
+        }
+      ]
+
     }
   })
 }]);

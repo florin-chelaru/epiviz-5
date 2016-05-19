@@ -333,7 +333,7 @@ epiviz.controllers.AddVisualization.prototype.resetEdits = function() {
  * @returns {string}
  */
 epiviz.controllers.AddVisualization.prototype.getTemplate = function(setting) {
-  var supportedTemplates = ['_categorical.html', '_string.html', '_multiselect-tbl.html', '_boundaries.html', '_number.html', '_slider.html', '_color.html'];
+  var supportedTemplates = ['_categorical.html', '_string.html', '_multiselect-tbl.html', '_boundaries.html', '_number.html', '_slider.html', '_color.html', '_function.html'];
   if (supportedTemplates.indexOf(setting.template) < 0) {
     switch (setting.type) {
       case vs.ui.Setting.Type.CATEGORICAL:
