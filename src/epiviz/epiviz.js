@@ -42,6 +42,9 @@ epiviz.main.config(['configurationProvider', function(configuration) {
       'heatmap': {
         'svg': 'vs.ui.plugins.svg.Heatmap',
         'default': 'svg'
+      },
+      'line': {
+        'svg': 'vs.ui.plugins.svg.Line'
       }
     },
     'parallel': {
